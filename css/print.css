@@ -1,0 +1,808 @@
+/*
+ * Print Styles - RecruitPro Theme
+ * 
+ * Optimized print styles for recruitment agencies
+ * Professional document formatting for job listings, candidate profiles, and business documents
+ * 
+ * @package RecruitPro
+ * @since 1.0.0
+ */
+
+/* =================================================================
+   PRINT MEDIA QUERY
+================================================================= */
+
+@media print {
+
+/* =================================================================
+   GLOBAL PRINT RESETS
+================================================================= */
+
+    /* Reset all elements for print */
+    * {
+        background: transparent !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+        -ms-filter: none !important;
+    }
+    
+    /* Page setup */
+    @page {
+        margin: 2cm 1.5cm;
+        size: A4;
+    }
+    
+    @page :first {
+        margin-top: 3cm;
+    }
+    
+    @page :left {
+        margin-left: 2.5cm;
+        margin-right: 1.5cm;
+    }
+    
+    @page :right {
+        margin-left: 1.5cm;
+        margin-right: 2.5cm;
+    }
+
+/* =================================================================
+   BASIC PRINT OPTIMIZATIONS
+================================================================= */
+
+    html {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    body {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 12pt;
+        line-height: 1.4;
+        color: #000000;
+        background: #ffffff;
+        margin: 0;
+        padding: 0;
+    }
+
+/* =================================================================
+   HIDE NON-PRINTABLE ELEMENTS
+================================================================= */
+
+    /* Navigation and interactive elements */
+    .header-main,
+    .main-navigation,
+    .mobile-menu,
+    .search-form,
+    .social-links,
+    .breadcrumbs,
+    .pagination,
+    .post-navigation,
+    .widget-area,
+    .sidebar,
+    .footer-widgets,
+    .back-to-top,
+    .scroll-indicator,
+    
+    /* Buttons and forms */
+    .btn,
+    .button,
+    input[type="submit"],
+    input[type="button"],
+    button,
+    .form-submit,
+    .contact-form,
+    .newsletter-signup,
+    .application-form,
+    
+    /* Interactive components */
+    .modal,
+    .popup,
+    .tooltip,
+    .dropdown,
+    .accordion-toggle,
+    .tab-navigation,
+    .slider-controls,
+    .video-controls,
+    
+    /* CRM and admin elements */
+    .crm-dashboard,
+    .admin-bar,
+    .edit-link,
+    .comments-area,
+    .comment-form,
+    .wp-block-comments,
+    
+    /* Social and sharing */
+    .share-buttons,
+    .social-share,
+    .like-button,
+    .follow-button,
+    
+    /* Ads and tracking */
+    .advertisement,
+    .ads,
+    .tracking-pixel,
+    .analytics-code,
+    
+    /* Utility classes */
+    .screen-reader-text,
+    .visually-hidden,
+    .no-print,
+    .print-hidden {
+        display: none !important;
+    }
+
+/* =================================================================
+   SHOW PRINT-ONLY ELEMENTS
+================================================================= */
+
+    .print-only,
+    .print-visible {
+        display: block !important;
+    }
+    
+    .print-inline {
+        display: inline !important;
+    }
+    
+    .print-table {
+        display: table !important;
+    }
+    
+    .print-table-row {
+        display: table-row !important;
+    }
+    
+    .print-table-cell {
+        display: table-cell !important;
+    }
+
+/* =================================================================
+   TYPOGRAPHY FOR PRINT
+================================================================= */
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin: 0.5em 0 0.3em;
+        page-break-after: avoid;
+        keep-with-next: always;
+    }
+    
+    h1 {
+        font-size: 18pt;
+        margin-bottom: 0.5em;
+        border-bottom: 2pt solid #000000;
+        padding-bottom: 0.2em;
+    }
+    
+    h2 {
+        font-size: 16pt;
+    }
+    
+    h3 {
+        font-size: 14pt;
+    }
+    
+    h4 {
+        font-size: 13pt;
+    }
+    
+    h5 {
+        font-size: 12pt;
+    }
+    
+    h6 {
+        font-size: 11pt;
+        text-transform: uppercase;
+    }
+    
+    p {
+        margin: 0 0 0.5em;
+        orphans: 3;
+        widows: 3;
+    }
+    
+    blockquote {
+        border-left: 3pt solid #000000;
+        padding-left: 1em;
+        margin: 1em 0;
+        font-style: italic;
+    }
+    
+    code, pre {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 10pt;
+        border: 1pt solid #000000;
+        padding: 0.2em;
+    }
+    
+    pre {
+        padding: 0.5em;
+        white-space: pre-wrap;
+        page-break-inside: avoid;
+    }
+
+/* =================================================================
+   LINKS AND REFERENCES
+================================================================= */
+
+    a {
+        color: #000000;
+        text-decoration: underline;
+    }
+    
+    /* Show URLs after links */
+    a[href^="http"]:after,
+    a[href^="https"]:after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        color: #666666;
+        word-wrap: break-word;
+    }
+    
+    /* Don't show URLs for email links */
+    a[href^="mailto:"]:after {
+        content: "";
+    }
+    
+    /* Don't show URLs for tel links */
+    a[href^="tel:"]:after {
+        content: "";
+    }
+    
+    /* Don't show URLs for internal links */
+    a[href^="#"]:after {
+        content: "";
+    }
+
+/* =================================================================
+   LISTS AND TABLES
+================================================================= */
+
+    ul, ol {
+        margin: 0.5em 0;
+        padding-left: 2em;
+    }
+    
+    li {
+        margin-bottom: 0.3em;
+        page-break-inside: avoid;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1em 0;
+        page-break-inside: avoid;
+    }
+    
+    th, td {
+        border: 1pt solid #000000;
+        padding: 0.3em 0.5em;
+        text-align: left;
+        vertical-align: top;
+    }
+    
+    th {
+        background: #f0f0f0 !important;
+        font-weight: bold;
+        page-break-after: avoid;
+    }
+    
+    tr {
+        page-break-inside: avoid;
+    }
+    
+    thead {
+        display: table-header-group;
+    }
+    
+    tfoot {
+        display: table-footer-group;
+    }
+
+/* =================================================================
+   IMAGES AND MEDIA
+================================================================= */
+
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        page-break-inside: avoid;
+        display: block;
+        margin: 0.5em 0;
+    }
+    
+    /* Company logos */
+    .logo,
+    .company-logo {
+        max-width: 200px !important;
+        max-height: 80px !important;
+    }
+    
+    /* Profile photos */
+    .profile-photo,
+    .candidate-photo {
+        max-width: 120px !important;
+        max-height: 150px !important;
+        float: right;
+        margin: 0 0 1em 1em;
+    }
+    
+    /* Hide decorative images */
+    .decorative-image,
+    .background-image,
+    .hero-image {
+        display: none !important;
+    }
+
+/* =================================================================
+   PAGE BREAKS AND LAYOUT
+================================================================= */
+
+    /* Page breaks */
+    .page-break-before {
+        page-break-before: always;
+    }
+    
+    .page-break-after {
+        page-break-after: always;
+    }
+    
+    .page-break-inside-avoid {
+        page-break-inside: avoid;
+    }
+    
+    .keep-together {
+        page-break-inside: avoid;
+    }
+    
+    /* Avoid breaks after headings */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+    
+    /* Avoid widows and orphans */
+    p, li, blockquote {
+        orphans: 3;
+        widows: 3;
+    }
+
+/* =================================================================
+   RECRUITMENT-SPECIFIC PRINT STYLES
+================================================================= */
+
+    /* Job Listings */
+    .job-listing,
+    .single-job {
+        page-break-inside: avoid;
+        margin-bottom: 2em;
+        border: 1pt solid #000000;
+        padding: 1em;
+    }
+    
+    .job-title {
+        font-size: 16pt;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+        border-bottom: 1pt solid #000000;
+        padding-bottom: 0.2em;
+    }
+    
+    .job-company {
+        font-size: 14pt;
+        font-weight: bold;
+        margin-bottom: 0.3em;
+    }
+    
+    .job-location,
+    .job-salary,
+    .job-type {
+        font-size: 11pt;
+        margin-bottom: 0.2em;
+    }
+    
+    .job-description {
+        margin: 1em 0;
+        line-height: 1.5;
+    }
+    
+    .job-requirements,
+    .job-benefits {
+        margin: 1em 0;
+    }
+    
+    .job-requirements h4,
+    .job-benefits h4 {
+        font-size: 12pt;
+        margin-bottom: 0.3em;
+    }
+    
+    /* Candidate Profiles */
+    .candidate-profile {
+        page-break-inside: avoid;
+        margin-bottom: 2em;
+        padding: 1em;
+        border: 1pt solid #000000;
+    }
+    
+    .candidate-name {
+        font-size: 16pt;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+    }
+    
+    .candidate-title {
+        font-size: 14pt;
+        margin-bottom: 0.5em;
+        font-style: italic;
+    }
+    
+    .candidate-contact {
+        margin-bottom: 1em;
+        padding: 0.5em;
+        background: #f9f9f9 !important;
+        border: 1pt solid #cccccc;
+    }
+    
+    .candidate-summary,
+    .candidate-experience,
+    .candidate-education,
+    .candidate-skills {
+        margin: 1em 0;
+        page-break-inside: avoid;
+    }
+    
+    .candidate-skills ul {
+        columns: 2;
+        column-gap: 2em;
+    }
+    
+    /* Client Information */
+    .client-profile {
+        page-break-before: always;
+        padding: 1em;
+        border: 2pt solid #000000;
+    }
+    
+    .client-company-name {
+        font-size: 18pt;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+    
+    .client-contact-info {
+        margin: 1em 0;
+        padding: 0.5em;
+        background: #f0f0f0 !important;
+    }
+
+/* =================================================================
+   BUSINESS DOCUMENT FORMATTING
+================================================================= */
+
+    /* Invoice styles */
+    .invoice {
+        page-break-before: always;
+    }
+    
+    .invoice-header {
+        text-align: center;
+        margin-bottom: 2em;
+        border-bottom: 2pt solid #000000;
+        padding-bottom: 1em;
+    }
+    
+    .invoice-number {
+        font-size: 14pt;
+        font-weight: bold;
+    }
+    
+    .invoice-date {
+        font-size: 12pt;
+    }
+    
+    .invoice-details table {
+        width: 100%;
+        margin: 1em 0;
+    }
+    
+    .invoice-total {
+        text-align: right;
+        font-size: 14pt;
+        font-weight: bold;
+        margin-top: 1em;
+        padding-top: 0.5em;
+        border-top: 2pt solid #000000;
+    }
+    
+    /* Contract styles */
+    .contract {
+        page-break-before: always;
+        line-height: 1.6;
+    }
+    
+    .contract-title {
+        text-align: center;
+        font-size: 18pt;
+        font-weight: bold;
+        margin-bottom: 2em;
+    }
+    
+    .contract-section {
+        margin: 1.5em 0;
+        page-break-inside: avoid;
+    }
+    
+    .contract-signature-area {
+        margin-top: 3em;
+        page-break-inside: avoid;
+    }
+    
+    .signature-line {
+        border-bottom: 1pt solid #000000;
+        width: 200px;
+        height: 2em;
+        display: inline-block;
+        margin: 0 2em 1em 0;
+    }
+
+/* =================================================================
+   REPORT FORMATTING
+================================================================= */
+
+    .report {
+        page-break-before: always;
+    }
+    
+    .report-header {
+        text-align: center;
+        margin-bottom: 2em;
+        padding-bottom: 1em;
+        border-bottom: 2pt solid #000000;
+    }
+    
+    .report-title {
+        font-size: 18pt;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+    }
+    
+    .report-date {
+        font-size: 12pt;
+        color: #666666;
+    }
+    
+    .report-section {
+        margin: 2em 0;
+        page-break-inside: avoid;
+    }
+    
+    .report-section h3 {
+        background: #f0f0f0 !important;
+        padding: 0.5em;
+        margin-bottom: 1em;
+    }
+    
+    .report-table {
+        width: 100%;
+        margin: 1em 0;
+    }
+    
+    .report-summary {
+        margin-top: 2em;
+        padding: 1em;
+        border: 2pt solid #000000;
+        background: #f9f9f9 !important;
+    }
+
+/* =================================================================
+   FORM PRINTING
+================================================================= */
+
+    .print-form {
+        page-break-inside: avoid;
+    }
+    
+    .form-field {
+        margin: 0.5em 0;
+        page-break-inside: avoid;
+    }
+    
+    .form-label {
+        font-weight: bold;
+        display: inline-block;
+        width: 30%;
+        vertical-align: top;
+    }
+    
+    .form-value {
+        display: inline-block;
+        width: 65%;
+        border-bottom: 1pt solid #000000;
+        min-height: 1.2em;
+        padding-bottom: 0.2em;
+    }
+    
+    .checkbox-field::before {
+        content: "☐ ";
+        font-size: 14pt;
+    }
+    
+    .checkbox-field.checked::before {
+        content: "☑ ";
+    }
+
+/* =================================================================
+   HEADERS AND FOOTERS
+================================================================= */
+
+    .print-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2cm;
+        text-align: center;
+        font-size: 10pt;
+        border-bottom: 1pt solid #000000;
+        padding: 0.5em;
+        background: #ffffff;
+    }
+    
+    .print-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1.5cm;
+        text-align: center;
+        font-size: 10pt;
+        border-top: 1pt solid #000000;
+        padding: 0.3em;
+        background: #ffffff;
+    }
+    
+    /* Page numbers */
+    .page-number::after {
+        content: "Page " counter(page) " of " counter(pages);
+    }
+
+/* =================================================================
+   QR CODES AND DIGITAL REFERENCES
+================================================================= */
+
+    .qr-code {
+        max-width: 100px !important;
+        max-height: 100px !important;
+        float: right;
+        margin: 0 0 1em 1em;
+    }
+    
+    .digital-reference {
+        font-size: 10pt;
+        color: #666666;
+        border: 1pt solid #cccccc;
+        padding: 0.5em;
+        margin: 1em 0;
+    }
+    
+    .digital-reference::before {
+        content: "Digital version: ";
+        font-weight: bold;
+    }
+
+/* =================================================================
+   ACCESSIBILITY FOR PRINT
+================================================================= */
+
+    /* High contrast for better readability */
+    .high-contrast-print {
+        color: #000000 !important;
+        background: #ffffff !important;
+        border-color: #000000 !important;
+    }
+    
+    /* Larger text for accessibility */
+    .large-print {
+        font-size: 14pt !important;
+        line-height: 1.6 !important;
+    }
+    
+    /* Bold text for emphasis */
+    .print-emphasis {
+        font-weight: bold !important;
+    }
+
+/* =================================================================
+   UTILITY CLASSES
+================================================================= */
+
+    .text-center-print {
+        text-align: center !important;
+    }
+    
+    .text-right-print {
+        text-align: right !important;
+    }
+    
+    .margin-bottom-print {
+        margin-bottom: 1em !important;
+    }
+    
+    .padding-print {
+        padding: 0.5em !important;
+    }
+    
+    .border-print {
+        border: 1pt solid #000000 !important;
+    }
+    
+    .background-gray-print {
+        background: #f0f0f0 !important;
+    }
+
+/* =================================================================
+   END OF PRINT MEDIA QUERY
+================================================================= */
+
+} /* End @media print */
+
+/* =================================================================
+   PRINT PREVIEW STYLES (Screen)
+================================================================= */
+
+/* Styles for print preview on screen */
+.print-preview {
+    background: #ffffff;
+    color: #000000;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+    line-height: 1.4;
+    max-width: 21cm; /* A4 width */
+    margin: 0 auto;
+    padding: 2cm;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.print-preview .no-print {
+    display: none;
+}
+
+.print-preview .print-only {
+    display: block;
+}
+
+/* Print button for users */
+.print-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 9999;
+}
+
+.print-button:hover {
+    background: #1d4ed8;
+}
+
+@media print {
+    .print-button {
+        display: none !important;
+    }
+}
+
+/* =================================================================
+   END OF FILE
+================================================================= */

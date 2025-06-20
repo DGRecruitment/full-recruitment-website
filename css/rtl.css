@@ -1,0 +1,1064 @@
+/*
+ * Right-to-Left (RTL) Styles - RecruitPro Theme
+ * 
+ * RTL support for Arabic, Hebrew, Persian, Urdu and other RTL languages
+ * Optimized for recruitment agencies serving international markets
+ * 
+ * @package RecruitPro
+ * @since 1.0.0
+ */
+
+/* =================================================================
+   RTL DETECTION AND BASE SETUP
+================================================================= */
+
+/* Apply RTL styles when dir="rtl" is set on html or body */
+html[dir="rtl"],
+body[dir="rtl"],
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RTL Typography */
+html[dir="rtl"] body,
+body[dir="rtl"],
+.rtl {
+    font-family: 'Noto Sans Arabic', 'Amiri', 'Scheherazade New', 'Cairo', 'Tajawal', 'IBM Plex Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+}
+
+/* =================================================================
+   GLOBAL RTL ADJUSTMENTS
+================================================================= */
+
+/* Reset margins and padding for RTL */
+html[dir="rtl"] *,
+body[dir="rtl"] *,
+.rtl * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Text alignment */
+html[dir="rtl"] p,
+html[dir="rtl"] div,
+html[dir="rtl"] span,
+body[dir="rtl"] p,
+body[dir="rtl"] div,
+body[dir="rtl"] span,
+.rtl p,
+.rtl div,
+.rtl span {
+    text-align: right;
+}
+
+/* List alignment */
+html[dir="rtl"] ul,
+html[dir="rtl"] ol,
+body[dir="rtl"] ul,
+body[dir="rtl"] ol,
+.rtl ul,
+.rtl ol {
+    padding-right: 2em;
+    padding-left: 0;
+    text-align: right;
+}
+
+/* Table alignment */
+html[dir="rtl"] table,
+body[dir="rtl"] table,
+.rtl table {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] th,
+html[dir="rtl"] td,
+body[dir="rtl"] th,
+body[dir="rtl"] td,
+.rtl th,
+.rtl td {
+    text-align: right;
+}
+
+/* =================================================================
+   HEADER AND NAVIGATION RTL
+================================================================= */
+
+/* Header layout adjustments */
+html[dir="rtl"] .header-main,
+body[dir="rtl"] .header-main,
+.rtl .header-main {
+    direction: rtl;
+}
+
+html[dir="rtl"] .header-container,
+body[dir="rtl"] .header-container,
+.rtl .header-container {
+    flex-direction: row-reverse;
+}
+
+/* Logo positioning */
+html[dir="rtl"] .site-logo,
+body[dir="rtl"] .site-logo,
+.rtl .site-logo {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+/* Mobile menu toggle */
+html[dir="rtl"] .mobile-menu-toggle,
+body[dir="rtl"] .mobile-menu-toggle,
+.rtl .mobile-menu-toggle {
+    right: auto;
+    left: 1rem;
+}
+
+/* Main navigation */
+html[dir="rtl"] .main-navigation,
+body[dir="rtl"] .main-navigation,
+.rtl .main-navigation {
+    right: -100%;
+    left: auto;
+}
+
+html[dir="rtl"] .main-navigation.active,
+body[dir="rtl"] .main-navigation.active,
+.rtl .main-navigation.active {
+    right: 0;
+}
+
+html[dir="rtl"] .main-navigation ul,
+body[dir="rtl"] .main-navigation ul,
+.rtl .main-navigation ul {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .main-navigation li,
+body[dir="rtl"] .main-navigation li,
+.rtl .main-navigation li {
+    margin-right: 0;
+    margin-left: 2rem;
+}
+
+/* Sub-menu positioning */
+html[dir="rtl"] .main-navigation .sub-menu,
+body[dir="rtl"] .main-navigation .sub-menu,
+.rtl .main-navigation .sub-menu {
+    right: 0;
+    left: auto;
+    text-align: right;
+}
+
+html[dir="rtl"] .main-navigation .sub-menu .sub-menu,
+body[dir="rtl"] .main-navigation .sub-menu .sub-menu,
+.rtl .main-navigation .sub-menu .sub-menu {
+    right: 100%;
+    left: auto;
+}
+
+/* Menu indicators */
+html[dir="rtl"] .main-navigation .menu-item-has-children > a::after,
+body[dir="rtl"] .main-navigation .menu-item-has-children > a::after,
+.rtl .main-navigation .menu-item-has-children > a::after {
+    float: left;
+    margin-left: 0;
+    margin-right: 0.5em;
+}
+
+/* =================================================================
+   HERO SECTION RTL
+================================================================= */
+
+html[dir="rtl"] .hero-section,
+body[dir="rtl"] .hero-section,
+.rtl .hero-section {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .hero-content,
+body[dir="rtl"] .hero-content,
+.rtl .hero-content {
+    text-align: center; /* Keep centered for hero */
+}
+
+html[dir="rtl"] .hero-title,
+body[dir="rtl"] .hero-title,
+.rtl .hero-title {
+    text-align: center;
+}
+
+html[dir="rtl"] .hero-subtitle,
+body[dir="rtl"] .hero-subtitle,
+.rtl .hero-subtitle {
+    text-align: center;
+}
+
+/* =================================================================
+   FORMS AND INPUTS RTL
+================================================================= */
+
+/* Form layout */
+html[dir="rtl"] .form-group,
+body[dir="rtl"] .form-group,
+.rtl .form-group {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .form-label,
+body[dir="rtl"] .form-label,
+.rtl .form-label {
+    text-align: right;
+}
+
+html[dir="rtl"] .form-control,
+body[dir="rtl"] .form-control,
+.rtl .form-control {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Placeholder text alignment */
+html[dir="rtl"] input::placeholder,
+html[dir="rtl"] textarea::placeholder,
+body[dir="rtl"] input::placeholder,
+body[dir="rtl"] textarea::placeholder,
+.rtl input::placeholder,
+.rtl textarea::placeholder {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Select dropdown */
+html[dir="rtl"] .form-select,
+body[dir="rtl"] .form-select,
+.rtl .form-select {
+    background-position: left 0.75rem center;
+    padding-right: 0.875rem;
+    padding-left: 2.5rem;
+    text-align: right;
+    direction: rtl;
+}
+
+/* File upload */
+html[dir="rtl"] .file-upload-label,
+body[dir="rtl"] .file-upload-label,
+.rtl .file-upload-label {
+    text-align: center; /* Keep centered for file upload */
+}
+
+/* Checkbox and radio */
+html[dir="rtl"] input[type="checkbox"],
+html[dir="rtl"] input[type="radio"],
+body[dir="rtl"] input[type="checkbox"],
+body[dir="rtl"] input[type="radio"],
+.rtl input[type="checkbox"],
+.rtl input[type="radio"] {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+/* =================================================================
+   JOB LISTINGS RTL
+================================================================= */
+
+html[dir="rtl"] .job-listings,
+body[dir="rtl"] .job-listings,
+.rtl .job-listings {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .job-listing-item,
+body[dir="rtl"] .job-listing-item,
+.rtl .job-listing-item {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .job-title,
+body[dir="rtl"] .job-title,
+.rtl .job-title {
+    text-align: right;
+}
+
+html[dir="rtl"] .job-company,
+body[dir="rtl"] .job-company,
+.rtl .job-company {
+    text-align: right;
+}
+
+html[dir="rtl"] .job-meta,
+body[dir="rtl"] .job-meta,
+.rtl .job-meta {
+    justify-content: flex-end;
+    direction: rtl;
+}
+
+html[dir="rtl"] .job-meta-item,
+body[dir="rtl"] .job-meta-item,
+.rtl .job-meta-item {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+html[dir="rtl"] .job-meta-item:first-child,
+body[dir="rtl"] .job-meta-item:first-child,
+.rtl .job-meta-item:first-child {
+    margin-left: 0;
+}
+
+html[dir="rtl"] .job-meta-item:last-child,
+body[dir="rtl"] .job-meta-item:last-child,
+.rtl .job-meta-item:last-child {
+    margin-right: 0;
+}
+
+html[dir="rtl"] .job-excerpt,
+body[dir="rtl"] .job-excerpt,
+.rtl .job-excerpt {
+    text-align: right;
+}
+
+/* Job application button */
+html[dir="rtl"] .job-apply-btn,
+body[dir="rtl"] .job-apply-btn,
+.rtl .job-apply-btn {
+    text-align: center; /* Keep centered for buttons */
+}
+
+/* =================================================================
+   FEATURES GRID RTL
+================================================================= */
+
+html[dir="rtl"] .features-grid,
+body[dir="rtl"] .features-grid,
+.rtl .features-grid {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .features-title,
+body[dir="rtl"] .features-title,
+.rtl .features-title {
+    text-align: center;
+}
+
+html[dir="rtl"] .features-subtitle,
+body[dir="rtl"] .features-subtitle,
+.rtl .features-subtitle {
+    text-align: center;
+}
+
+html[dir="rtl"] .feature-item,
+body[dir="rtl"] .feature-item,
+.rtl .feature-item {
+    text-align: center;
+}
+
+html[dir="rtl"] .feature-title,
+body[dir="rtl"] .feature-title,
+.rtl .feature-title {
+    text-align: center;
+}
+
+html[dir="rtl"] .feature-description,
+body[dir="rtl"] .feature-description,
+.rtl .feature-description {
+    text-align: center;
+}
+
+/* =================================================================
+   BUTTONS AND LINKS RTL
+================================================================= */
+
+html[dir="rtl"] .btn,
+html[dir="rtl"] .button,
+body[dir="rtl"] .btn,
+body[dir="rtl"] .button,
+.rtl .btn,
+.rtl .button {
+    text-align: center;
+}
+
+html[dir="rtl"] .btn-primary,
+html[dir="rtl"] .btn-secondary,
+body[dir="rtl"] .btn-primary,
+body[dir="rtl"] .btn-secondary,
+.rtl .btn-primary,
+.rtl .btn-secondary {
+    text-align: center;
+}
+
+/* Icon positioning in buttons */
+html[dir="rtl"] .btn .icon-left,
+body[dir="rtl"] .btn .icon-left,
+.rtl .btn .icon-left {
+    margin-right: 0;
+    margin-left: 0.5rem;
+    order: 2;
+}
+
+html[dir="rtl"] .btn .icon-right,
+body[dir="rtl"] .btn .icon-right,
+.rtl .btn .icon-right {
+    margin-left: 0;
+    margin-right: 0.5rem;
+    order: -1;
+}
+
+/* =================================================================
+   LAYOUT AND GRID RTL
+================================================================= */
+
+/* Flexbox adjustments */
+html[dir="rtl"] .row,
+body[dir="rtl"] .row,
+.rtl .row {
+    direction: rtl;
+}
+
+/* Float adjustments */
+html[dir="rtl"] .float-left,
+body[dir="rtl"] .float-left,
+.rtl .float-left {
+    float: right;
+}
+
+html[dir="rtl"] .float-right,
+body[dir="rtl"] .float-right,
+.rtl .float-right {
+    float: left;
+}
+
+/* Text alignment classes */
+html[dir="rtl"] .text-left,
+body[dir="rtl"] .text-left,
+.rtl .text-left {
+    text-align: right;
+}
+
+html[dir="rtl"] .text-right,
+body[dir="rtl"] .text-right,
+.rtl .text-right {
+    text-align: left;
+}
+
+/* Margin and padding adjustments */
+html[dir="rtl"] .mr-1,
+body[dir="rtl"] .mr-1,
+.rtl .mr-1 {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+html[dir="rtl"] .mr-2,
+body[dir="rtl"] .mr-2,
+.rtl .mr-2 {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+html[dir="rtl"] .mr-3,
+body[dir="rtl"] .mr-3,
+.rtl .mr-3 {
+    margin-right: 0;
+    margin-left: 1.5rem;
+}
+
+html[dir="rtl"] .ml-1,
+body[dir="rtl"] .ml-1,
+.rtl .ml-1 {
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+
+html[dir="rtl"] .ml-2,
+body[dir="rtl"] .ml-2,
+.rtl .ml-2 {
+    margin-left: 0;
+    margin-right: 1rem;
+}
+
+html[dir="rtl"] .ml-3,
+body[dir="rtl"] .ml-3,
+.rtl .ml-3 {
+    margin-left: 0;
+    margin-right: 1.5rem;
+}
+
+/* Padding adjustments */
+html[dir="rtl"] .pr-1,
+body[dir="rtl"] .pr-1,
+.rtl .pr-1 {
+    padding-right: 0;
+    padding-left: 0.5rem;
+}
+
+html[dir="rtl"] .pr-2,
+body[dir="rtl"] .pr-2,
+.rtl .pr-2 {
+    padding-right: 0;
+    padding-left: 1rem;
+}
+
+html[dir="rtl"] .pr-3,
+body[dir="rtl"] .pr-3,
+.rtl .pr-3 {
+    padding-right: 0;
+    padding-left: 1.5rem;
+}
+
+html[dir="rtl"] .pl-1,
+body[dir="rtl"] .pl-1,
+.rtl .pl-1 {
+    padding-left: 0;
+    padding-right: 0.5rem;
+}
+
+html[dir="rtl"] .pl-2,
+body[dir="rtl"] .pl-2,
+.rtl .pl-2 {
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+html[dir="rtl"] .pl-3,
+body[dir="rtl"] .pl-3,
+.rtl .pl-3 {
+    padding-left: 0;
+    padding-right: 1.5rem;
+}
+
+/* =================================================================
+   FOOTER RTL
+================================================================= */
+
+html[dir="rtl"] .footer-main,
+body[dir="rtl"] .footer-main,
+.rtl .footer-main {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .footer-content,
+body[dir="rtl"] .footer-content,
+.rtl .footer-content {
+    direction: rtl;
+}
+
+html[dir="rtl"] .footer-section h4,
+body[dir="rtl"] .footer-section h4,
+.rtl .footer-section h4 {
+    text-align: right;
+}
+
+html[dir="rtl"] .footer-section ul,
+body[dir="rtl"] .footer-section ul,
+.rtl .footer-section ul {
+    text-align: right;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+html[dir="rtl"] .footer-bottom,
+body[dir="rtl"] .footer-bottom,
+.rtl .footer-bottom {
+    text-align: center;
+}
+
+/* =================================================================
+   RECRUITMENT-SPECIFIC RTL COMPONENTS
+================================================================= */
+
+/* Candidate profiles */
+html[dir="rtl"] .candidate-profile,
+body[dir="rtl"] .candidate-profile,
+.rtl .candidate-profile {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .candidate-name,
+body[dir="rtl"] .candidate-name,
+.rtl .candidate-name {
+    text-align: right;
+}
+
+html[dir="rtl"] .candidate-title,
+body[dir="rtl"] .candidate-title,
+.rtl .candidate-title {
+    text-align: right;
+}
+
+html[dir="rtl"] .candidate-photo,
+body[dir="rtl"] .candidate-photo,
+.rtl .candidate-photo {
+    float: left;
+    margin-right: 0;
+    margin-left: 1em;
+}
+
+/* Client information */
+html[dir="rtl"] .client-profile,
+body[dir="rtl"] .client-profile,
+.rtl .client-profile {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .client-company-name,
+body[dir="rtl"] .client-company-name,
+.rtl .client-company-name {
+    text-align: center;
+}
+
+/* Application forms */
+html[dir="rtl"] .application-form,
+body[dir="rtl"] .application-form,
+.rtl .application-form {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .application-form .form-row,
+body[dir="rtl"] .application-form .form-row,
+.rtl .application-form .form-row {
+    direction: rtl;
+}
+
+/* Skills and tags */
+html[dir="rtl"] .skills-list,
+body[dir="rtl"] .skills-list,
+.rtl .skills-list {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .skill-tag,
+body[dir="rtl"] .skill-tag,
+.rtl .skill-tag {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+html[dir="rtl"] .skill-tag:first-child,
+body[dir="rtl"] .skill-tag:first-child,
+.rtl .skill-tag:first-child {
+    margin-left: 0;
+}
+
+/* =================================================================
+   ICONS AND IMAGES RTL
+================================================================= */
+
+/* Icon adjustments */
+html[dir="rtl"] .icon-before,
+body[dir="rtl"] .icon-before,
+.rtl .icon-before {
+    margin-right: 0;
+    margin-left: 0.5rem;
+    order: 2;
+}
+
+html[dir="rtl"] .icon-after,
+body[dir="rtl"] .icon-after,
+.rtl .icon-after {
+    margin-left: 0;
+    margin-right: 0.5rem;
+    order: -1;
+}
+
+/* Arrow icons */
+html[dir="rtl"] .arrow-right,
+body[dir="rtl"] .arrow-right,
+.rtl .arrow-right {
+    transform: rotate(180deg);
+}
+
+html[dir="rtl"] .arrow-left,
+body[dir="rtl"] .arrow-left,
+.rtl .arrow-left {
+    transform: rotate(180deg);
+}
+
+/* Chevron icons */
+html[dir="rtl"] .chevron-right,
+body[dir="rtl"] .chevron-right,
+.rtl .chevron-right {
+    transform: rotate(180deg);
+}
+
+html[dir="rtl"] .chevron-left,
+body[dir="rtl"] .chevron-left,
+.rtl .chevron-left {
+    transform: rotate(180deg);
+}
+
+/* =================================================================
+   MODAL AND POPUPS RTL
+================================================================= */
+
+html[dir="rtl"] .modal,
+body[dir="rtl"] .modal,
+.rtl .modal {
+    direction: rtl;
+}
+
+html[dir="rtl"] .modal-header,
+body[dir="rtl"] .modal-header,
+.rtl .modal-header {
+    text-align: right;
+}
+
+html[dir="rtl"] .modal-body,
+body[dir="rtl"] .modal-body,
+.rtl .modal-body {
+    text-align: right;
+}
+
+html[dir="rtl"] .modal-close,
+body[dir="rtl"] .modal-close,
+.rtl .modal-close {
+    right: auto;
+    left: 1rem;
+}
+
+/* Tooltips */
+html[dir="rtl"] .tooltip,
+body[dir="rtl"] .tooltip,
+.rtl .tooltip {
+    direction: rtl;
+    text-align: right;
+}
+
+/* =================================================================
+   BREADCRUMBS RTL
+================================================================= */
+
+html[dir="rtl"] .breadcrumbs,
+body[dir="rtl"] .breadcrumbs,
+.rtl .breadcrumbs {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .breadcrumbs li,
+body[dir="rtl"] .breadcrumbs li,
+.rtl .breadcrumbs li {
+    float: right;
+}
+
+html[dir="rtl"] .breadcrumbs li:after,
+body[dir="rtl"] .breadcrumbs li:after,
+.rtl .breadcrumbs li:after {
+    content: "‹";
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+html[dir="rtl"] .breadcrumbs li:last-child:after,
+body[dir="rtl"] .breadcrumbs li:last-child:after,
+.rtl .breadcrumbs li:last-child:after {
+    content: "";
+}
+
+/* =================================================================
+   PAGINATION RTL
+================================================================= */
+
+html[dir="rtl"] .pagination,
+body[dir="rtl"] .pagination,
+.rtl .pagination {
+    direction: rtl;
+}
+
+html[dir="rtl"] .pagination .prev,
+body[dir="rtl"] .pagination .prev,
+.rtl .pagination .prev {
+    float: right;
+}
+
+html[dir="rtl"] .pagination .next,
+body[dir="rtl"] .pagination .next,
+.rtl .pagination .next {
+    float: left;
+}
+
+/* =================================================================
+   SEARCH FORMS RTL
+================================================================= */
+
+html[dir="rtl"] .search-form,
+body[dir="rtl"] .search-form,
+.rtl .search-form {
+    direction: rtl;
+}
+
+html[dir="rtl"] .search-input,
+body[dir="rtl"] .search-input,
+.rtl .search-input {
+    text-align: right;
+    direction: rtl;
+    padding-right: 1rem;
+    padding-left: 3rem;
+}
+
+html[dir="rtl"] .search-button,
+body[dir="rtl"] .search-button,
+.rtl .search-button {
+    right: auto;
+    left: 0.5rem;
+}
+
+/* =================================================================
+   SOCIAL LINKS RTL
+================================================================= */
+
+html[dir="rtl"] .social-links,
+body[dir="rtl"] .social-links,
+.rtl .social-links {
+    direction: rtl;
+}
+
+html[dir="rtl"] .social-links li,
+body[dir="rtl"] .social-links li,
+.rtl .social-links li {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+html[dir="rtl"] .social-links li:first-child,
+body[dir="rtl"] .social-links li:first-child,
+.rtl .social-links li:first-child {
+    margin-left: 0;
+}
+
+/* =================================================================
+   RESPONSIVE RTL ADJUSTMENTS
+================================================================= */
+
+/* Mobile RTL adjustments */
+@media (max-width: 767px) {
+    html[dir="rtl"] .mobile-menu-toggle,
+    body[dir="rtl"] .mobile-menu-toggle,
+    .rtl .mobile-menu-toggle {
+        left: 1rem;
+        right: auto;
+    }
+    
+    html[dir="rtl"] .main-navigation,
+    body[dir="rtl"] .main-navigation,
+    .rtl .main-navigation {
+        right: -100%;
+        left: auto;
+    }
+    
+    html[dir="rtl"] .main-navigation.active,
+    body[dir="rtl"] .main-navigation.active,
+    .rtl .main-navigation.active {
+        right: 0;
+    }
+    
+    html[dir="rtl"] .job-meta,
+    body[dir="rtl"] .job-meta,
+    .rtl .job-meta {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    html[dir="rtl"] .job-meta-item,
+    body[dir="rtl"] .job-meta-item,
+    .rtl .job-meta-item {
+        margin-left: 0;
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* Tablet RTL adjustments */
+@media (min-width: 768px) {
+    html[dir="rtl"] .main-navigation li,
+    body[dir="rtl"] .main-navigation li,
+    .rtl .main-navigation li {
+        margin-left: 2rem;
+        margin-right: 0;
+    }
+    
+    html[dir="rtl"] .main-navigation li:first-child,
+    body[dir="rtl"] .main-navigation li:first-child,
+    .rtl .main-navigation li:first-child {
+        margin-left: 0;
+    }
+}
+
+/* =================================================================
+   LANGUAGE-SPECIFIC ADJUSTMENTS
+================================================================= */
+
+/* Arabic language adjustments */
+html[lang="ar"] body,
+body[lang="ar"],
+.lang-ar {
+    font-family: 'Noto Sans Arabic', 'Amiri', 'Cairo', 'Tajawal', Arial, sans-serif;
+    line-height: 1.8;
+}
+
+/* Hebrew language adjustments */
+html[lang="he"] body,
+body[lang="he"],
+.lang-he {
+    font-family: 'Noto Sans Hebrew', 'Frank Ruhl Libre', 'David Libre', Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Persian/Farsi language adjustments */
+html[lang="fa"] body,
+body[lang="fa"],
+.lang-fa {
+    font-family: 'Noto Sans Arabic', 'Vazir', 'Shabnam', 'Tahoma', Arial, sans-serif;
+    line-height: 1.8;
+}
+
+/* Urdu language adjustments */
+html[lang="ur"] body,
+body[lang="ur"],
+.lang-ur {
+    font-family: 'Noto Sans Arabic', 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', Arial, sans-serif;
+    line-height: 2;
+}
+
+/* =================================================================
+   ACCESSIBILITY RTL ENHANCEMENTS
+================================================================= */
+
+/* Focus styles for RTL */
+html[dir="rtl"] .focus-visible:focus-visible,
+body[dir="rtl"] .focus-visible:focus-visible,
+.rtl .focus-visible:focus-visible {
+    outline-offset: 2px;
+}
+
+/* Skip link for RTL */
+html[dir="rtl"] .skip-link,
+body[dir="rtl"] .skip-link,
+.rtl .skip-link {
+    right: 6px;
+    left: auto;
+}
+
+html[dir="rtl"] .skip-link:focus,
+body[dir="rtl"] .skip-link:focus,
+.rtl .skip-link:focus {
+    right: 6px;
+}
+
+/* =================================================================
+   PRINT RTL ADJUSTMENTS
+================================================================= */
+
+@media print {
+    html[dir="rtl"],
+    body[dir="rtl"],
+    .rtl {
+        direction: rtl;
+        text-align: right;
+    }
+    
+    html[dir="rtl"] .print-header,
+    body[dir="rtl"] .print-header,
+    .rtl .print-header {
+        text-align: right;
+    }
+    
+    html[dir="rtl"] .print-footer,
+    body[dir="rtl"] .print-footer,
+    .rtl .print-footer {
+        text-align: right;
+    }
+    
+    html[dir="rtl"] table,
+    body[dir="rtl"] table,
+    .rtl table {
+        direction: rtl;
+    }
+    
+    html[dir="rtl"] th,
+    html[dir="rtl"] td,
+    body[dir="rtl"] th,
+    body[dir="rtl"] td,
+    .rtl th,
+    .rtl td {
+        text-align: right;
+    }
+}
+
+/* =================================================================
+   UTILITY CLASSES FOR RTL
+================================================================= */
+
+/* RTL-specific utility classes */
+.rtl-only {
+    display: none;
+}
+
+html[dir="rtl"] .rtl-only,
+body[dir="rtl"] .rtl-only,
+.rtl .rtl-only {
+    display: block;
+}
+
+.ltr-only {
+    display: block;
+}
+
+html[dir="rtl"] .ltr-only,
+body[dir="rtl"] .ltr-only,
+.rtl .ltr-only {
+    display: none;
+}
+
+/* Force text direction */
+.force-ltr {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+.force-rtl {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+/* Numbers and mixed content */
+.numbers-ltr {
+    direction: ltr;
+    text-align: left;
+    display: inline-block;
+}
+
+.mixed-content {
+    unicode-bidi: plaintext;
+}
+
+/* =================================================================
+   END OF FILE
+================================================================= */
+
+/*
+ * RTL Implementation Notes:
+ * 
+ * 1. This stylesheet supports Arabic, Hebrew, Persian, and Urdu languages
+ * 2. Font stacks are optimized for each language
+ * 3. All layout components are properly mirrored
+ * 4. Icons and arrows are rotated appropriately
+ * 5. Form inputs maintain proper RTL behavior
+ * 6. Mobile navigation works correctly in RTL
+ * 7. Job listings and recruitment components are RTL-ready
+ * 8. Print styles maintain RTL formatting
+ * 9. Accessibility features work in RTL mode
+ * 10. Responsive design maintains RTL behavior across all breakpoints
+ */

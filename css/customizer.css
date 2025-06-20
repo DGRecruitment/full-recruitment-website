@@ -1,0 +1,1423 @@
+/*
+=================================================================
+RECRUITPRO THEME - CUSTOMIZER CSS
+=================================================================
+WordPress Customizer Interface & Live Preview Styling
+Version: 1.0.0
+Author: RecruitPro Team
+Description: Enhanced customizer experience for recruitment websites
+=================================================================
+
+TABLE OF CONTENTS:
+1. CUSTOMIZER FOUNDATION & VARIABLES
+2. CUSTOMIZER PANEL STYLING
+3. CONTROL GROUP STYLING
+4. INPUT & FORM CONTROLS
+5. COLOR PICKER ENHANCEMENTS
+6. RECRUITMENT-SPECIFIC CONTROLS
+7. LIVE PREVIEW ENHANCEMENTS
+8. RESPONSIVE CUSTOMIZER DESIGN
+9. CUSTOMIZER NOTIFICATIONS
+10. ADVANCED CONTROL TYPES
+11. MEDIA CONTROLS & UPLOADS
+12. TYPOGRAPHY CONTROLS
+13. ACCESSIBILITY ENHANCEMENTS
+14. DARK MODE SUPPORT
+15. PERFORMANCE OPTIMIZATIONS
+
+=================================================================
+*/
+
+/* =================================================================
+   1. CUSTOMIZER FOUNDATION & VARIABLES
+================================================================= */
+
+/* Customizer Root Variables */
+:root {
+    /* RecruitPro Brand Colors */
+    --customizer-primary: #2563eb;
+    --customizer-primary-light: #3b82f6;
+    --customizer-primary-dark: #1d4ed8;
+    --customizer-primary-50: #eff6ff;
+    --customizer-primary-100: #dbeafe;
+    --customizer-primary-600: #2563eb;
+
+    /* Secondary Colors */
+    --customizer-secondary: #10b981;
+    --customizer-secondary-light: #34d399;
+    --customizer-secondary-dark: #059669;
+    --customizer-secondary-50: #ecfdf5;
+
+    /* Neutral Colors */
+    --customizer-text: #1f2937;
+    --customizer-text-light: #6b7280;
+    --customizer-text-muted: #9ca3af;
+    --customizer-background: #ffffff;
+    --customizer-background-alt: #f9fafb;
+    --customizer-background-dark: #111827;
+    --customizer-border: #e5e7eb;
+    --customizer-border-light: #f3f4f6;
+
+    /* Status Colors */
+    --customizer-success: #10b981;
+    --customizer-warning: #f59e0b;
+    --customizer-error: #ef4444;
+    --customizer-info: #3b82f6;
+
+    /* Customizer Specific */
+    --customizer-panel-bg: #f1f1f1;
+    --customizer-control-bg: #ffffff;
+    --customizer-control-border: #ddd;
+    --customizer-control-focus: #2563eb;
+    --customizer-control-hover: #f8f9fa;
+
+    /* Typography */
+    --customizer-font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --customizer-font-size-xs: 11px;
+    --customizer-font-size-sm: 12px;
+    --customizer-font-size-base: 13px;
+    --customizer-font-size-lg: 14px;
+    --customizer-font-size-xl: 16px;
+
+    /* Spacing */
+    --customizer-spacing-xs: 4px;
+    --customizer-spacing-sm: 8px;
+    --customizer-spacing-md: 12px;
+    --customizer-spacing-lg: 16px;
+    --customizer-spacing-xl: 20px;
+    --customizer-spacing-2xl: 24px;
+
+    /* Borders & Radius */
+    --customizer-border-radius: 4px;
+    --customizer-border-radius-lg: 6px;
+    --customizer-border-width: 1px;
+
+    /* Shadows */
+    --customizer-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --customizer-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --customizer-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+    /* Transitions */
+    --customizer-transition: all 0.2s ease;
+    --customizer-transition-fast: all 0.15s ease;
+}
+
+/* =================================================================
+   2. CUSTOMIZER PANEL STYLING
+================================================================= */
+
+/* Main Customizer Container */
+#customize-controls {
+    background: var(--customizer-panel-bg);
+    font-family: var(--customizer-font-primary);
+    font-size: var(--customizer-font-size-base);
+    line-height: 1.4;
+}
+
+/* Customizer Header */
+#customize-header-actions {
+    background: var(--customizer-primary);
+    border-bottom: 1px solid var(--customizer-primary-dark);
+}
+
+#customize-header-actions .customize-controls-close {
+    color: var(--customizer-background);
+    background: transparent;
+    border: none;
+    padding: var(--customizer-spacing-md);
+    font-size: var(--customizer-font-size-lg);
+    transition: var(--customizer-transition-fast);
+}
+
+#customize-header-actions .customize-controls-close:hover,
+#customize-header-actions .customize-controls-close:focus {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--customizer-background);
+}
+
+/* Save & Publish Button */
+#save {
+    background: var(--customizer-success) !important;
+    border-color: var(--customizer-success) !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    font-weight: 600;
+    padding: var(--customizer-spacing-sm) var(--customizer-spacing-lg) !important;
+    border-radius: var(--customizer-border-radius) !important;
+    transition: var(--customizer-transition) !important;
+}
+
+#save:hover,
+#save:focus {
+    background: #059669 !important;
+    border-color: #059669 !important;
+    transform: translateY(-1px);
+}
+
+#save:disabled {
+    background: var(--customizer-text-muted) !important;
+    border-color: var(--customizer-text-muted) !important;
+}
+
+/* Customizer Loading */
+.wp-full-overlay.loading .wp-full-overlay-main {
+    background: var(--customizer-background);
+}
+
+.wp-full-overlay-main .spinner {
+    border-color: var(--customizer-primary);
+    border-top-color: transparent;
+}
+
+/* Panel Navigation */
+#customize-controls .customize-info {
+    background: var(--customizer-background);
+    border: none;
+    border-bottom: 1px solid var(--customizer-border);
+    padding: var(--customizer-spacing-lg);
+}
+
+#customize-controls .customize-info .customize-panel-description,
+#customize-controls .customize-info .customize-section-description {
+    color: var(--customizer-text-light);
+    font-style: normal;
+    line-height: 1.6;
+}
+
+/* Panel & Section Titles */
+.customize-pane-child .customize-section-title h3,
+.customize-pane-child .customize-panel-title h3 {
+    font-size: var(--customizer-font-size-lg);
+    font-weight: 600;
+    color: var(--customizer-text);
+    margin: 0;
+    padding: var(--customizer-spacing-lg);
+    background: var(--customizer-background);
+    border-bottom: 1px solid var(--customizer-border);
+}
+
+/* Back Button */
+.customize-pane-child .customize-section-title .customize-section-back,
+.customize-pane-child .customize-panel-title .customize-panel-back {
+    background: transparent;
+    color: var(--customizer-primary);
+    border: none;
+    padding: var(--customizer-spacing-sm);
+    margin-right: var(--customizer-spacing-sm);
+    border-radius: var(--customizer-border-radius);
+    transition: var(--customizer-transition-fast);
+}
+
+.customize-pane-child .customize-section-title .customize-section-back:hover,
+.customize-pane-child .customize-panel-title .customize-panel-back:hover {
+    background: var(--customizer-primary-50);
+    color: var(--customizer-primary-dark);
+}
+
+/* =================================================================
+   3. CONTROL GROUP STYLING
+================================================================= */
+
+/* Control Container */
+.customize-control {
+    margin-bottom: var(--customizer-spacing-lg);
+    background: var(--customizer-control-bg);
+    border: 1px solid var(--customizer-control-border);
+    border-radius: var(--customizer-border-radius);
+    padding: var(--customizer-spacing-lg);
+    transition: var(--customizer-transition-fast);
+}
+
+.customize-control:hover {
+    border-color: var(--customizer-primary);
+    box-shadow: var(--customizer-shadow-sm);
+}
+
+.customize-control.has-error {
+    border-color: var(--customizer-error);
+    background: #fef2f2;
+}
+
+/* Control Labels */
+.customize-control-title {
+    font-weight: 600;
+    color: var(--customizer-text);
+    margin-bottom: var(--customizer-spacing-sm);
+    font-size: var(--customizer-font-size-base);
+    line-height: 1.4;
+}
+
+.customize-control-description {
+    color: var(--customizer-text-light);
+    font-size: var(--customizer-font-size-sm);
+    line-height: 1.5;
+    margin-top: var(--customizer-spacing-xs);
+    font-style: italic;
+}
+
+/* Control Sections */
+.customize-control-section {
+    border-left: 4px solid var(--customizer-primary);
+    padding-left: var(--customizer-spacing-md);
+    margin: var(--customizer-spacing-xl) 0;
+}
+
+/* Required Field Indicator */
+.customize-control.required .customize-control-title::after {
+    content: ' *';
+    color: var(--customizer-error);
+    font-weight: 700;
+}
+
+/* Control Groups */
+.customize-control-group {
+    background: var(--customizer-background-alt);
+    border: 1px solid var(--customizer-border-light);
+    border-radius: var(--customizer-border-radius-lg);
+    padding: var(--customizer-spacing-lg);
+    margin: var(--customizer-spacing-lg) 0;
+}
+
+.customize-control-group .customize-control-title {
+    color: var(--customizer-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: var(--customizer-font-size-xs);
+    letter-spacing: 0.5px;
+    margin-bottom: var(--customizer-spacing-md);
+}
+
+/* =================================================================
+   4. INPUT & FORM CONTROLS
+================================================================= */
+
+/* Text Inputs */
+.customize-control input[type="text"],
+.customize-control input[type="email"],
+.customize-control input[type="url"],
+.customize-control input[type="tel"],
+.customize-control input[type="number"],
+.customize-control input[type="password"],
+.customize-control textarea,
+.customize-control select {
+    width: 100%;
+    padding: var(--customizer-spacing-sm) var(--customizer-spacing-md);
+    border: 1px solid var(--customizer-border);
+    border-radius: var(--customizer-border-radius);
+    font-size: var(--customizer-font-size-base);
+    line-height: 1.4;
+    color: var(--customizer-text);
+    background: var(--customizer-background);
+    transition: var(--customizer-transition-fast);
+}
+
+.customize-control input:focus,
+.customize-control textarea:focus,
+.customize-control select:focus {
+    border-color: var(--customizer-control-focus);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.customize-control input:disabled,
+.customize-control textarea:disabled,
+.customize-control select:disabled {
+    background: var(--customizer-background-alt);
+    color: var(--customizer-text-muted);
+    cursor: not-allowed;
+}
+
+/* Textarea Specific */
+.customize-control textarea {
+    min-height: 80px;
+    resize: vertical;
+    font-family: var(--customizer-font-primary);
+}
+
+/* Select Dropdown */
+.customize-control select {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 10px;
+    padding-right: var(--customizer-spacing-2xl);
+    appearance: none;
+}
+
+/* Checkbox & Radio Controls */
+.customize-control input[type="checkbox"],
+.customize-control input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin-right: var(--customizer-spacing-sm);
+    vertical-align: middle;
+    accent-color: var(--customizer-primary);
+}
+
+.customize-control .customize-control-content label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    cursor: pointer;
+    margin-bottom: var(--customizer-spacing-sm);
+    padding: var(--customizer-spacing-xs) var(--customizer-spacing-sm);
+    border-radius: var(--customizer-border-radius);
+    transition: var(--customizer-transition-fast);
+}
+
+.customize-control .customize-control-content label:hover {
+    background: var(--customizer-control-hover);
+}
+
+/* Range Slider */
+.customize-control input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--customizer-border);
+    outline: none;
+    appearance: none;
+}
+
+.customize-control input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--customizer-primary);
+    cursor: pointer;
+    box-shadow: var(--customizer-shadow-sm);
+}
+
+.customize-control input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--customizer-primary);
+    cursor: pointer;
+    border: none;
+    box-shadow: var(--customizer-shadow-sm);
+}
+
+/* Range Value Display */
+.customize-control .range-value {
+    display: inline-block;
+    background: var(--customizer-primary);
+    color: var(--customizer-background);
+    padding: 2px 6px;
+    border-radius: var(--customizer-border-radius);
+    font-size: var(--customizer-font-size-xs);
+    font-weight: 600;
+    margin-left: var(--customizer-spacing-sm);
+}
+
+/* =================================================================
+   5. COLOR PICKER ENHANCEMENTS
+================================================================= */
+
+/* Color Control Container */
+.customize-control-color {
+    position: relative;
+}
+
+.customize-control-color .wp-color-picker {
+    width: 100%;
+    padding: var(--customizer-spacing-sm) var(--customizer-spacing-md);
+    border: 1px solid var(--customizer-border);
+    border-radius: var(--customizer-border-radius);
+    font-size: var(--customizer-font-size-base);
+}
+
+/* Color Picker Button */
+.wp-picker-container .wp-color-picker {
+    width: 100% !important;
+    padding: var(--customizer-spacing-sm) var(--customizer-spacing-md) !important;
+    border: 1px solid var(--customizer-border) !important;
+    border-radius: var(--customizer-border-radius) !important;
+}
+
+.wp-picker-container .wp-picker-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--customizer-spacing-sm);
+    margin-top: var(--customizer-spacing-sm);
+}
+
+.wp-picker-container .button {
+    background: var(--customizer-primary) !important;
+    border-color: var(--customizer-primary) !important;
+    color: var(--customizer-background) !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    border-radius: var(--customizer-border-radius) !important;
+    padding: 6px 12px !important;
+    font-size: var(--customizer-font-size-sm) !important;
+    transition: var(--customizer-transition) !important;
+}
+
+.wp-picker-container .button:hover {
+    background: var(--customizer-primary-dark) !important;
+    border-color: var(--customizer-primary-dark) !important;
+}
+
+/* Color Palette */
+.customize-control-color .color-palette {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: var(--customizer-spacing-xs);
+    margin-top: var(--customizer-spacing-sm);
+}
+
+.customize-control-color .color-palette .color-option {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--customizer-border);
+    border-radius: var(--customizer-border-radius);
+    cursor: pointer;
+    transition: var(--customizer-transition-fast);
+}
+
+.customize-control-color .color-palette .color-option:hover,
+.customize-control-color .color-palette .color-option.selected {
+    border-color: var(--customizer-primary);
+    transform: scale(1.1);
+    box-shadow: var(--customizer-shadow-md);
+}
+
+/* Color Picker Iris */
+.iris-picker {
+    border: 1px solid var(--customizer-border) !important;
+    border-radius: var(--customizer-border-radius-lg) !important;
+    box-shadow: var(--customizer-shadow-lg) !important;
+}
+
+.iris-picker .iris-slider {
+    border: 1px solid var(--customizer-border) !important;
+    border-radius: var(--customizer-border-radius) !important;
+}
+
+/* =================================================================
+   6. RECRUITMENT-SPECIFIC CONTROLS
+================================================================= */
+
+/* RecruitPro Panel */
+.customize-panel.recruitpro-panel {
+    background: linear-gradient(135deg, var(--customizer-primary), var(--customizer-primary-dark));
+    color: var(--customizer-background);
+}
+
+.customize-panel.recruitpro-panel .customize-panel-title h3 {
+    color: var(--customizer-background);
+    background: transparent;
+    border: none;
+}
+
+.customize-panel.recruitpro-panel .customize-panel-description {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Job Settings Controls */
+.customize-control.job-settings {
+    border-left: 4px solid var(--customizer-secondary);
+    background: var(--customizer-secondary-50);
+}
+
+.customize-control.job-settings .customize-control-title {
+    color: var(--customizer-secondary-dark);
+}
+
+/* CRM Integration Controls */
+.customize-control.crm-integration {
+    border-left: 4px solid var(--customizer-warning);
+    background: #fef3c7;
+}
+
+.customize-control.crm-integration .customize-control-title {
+    color: #92400e;
+}
+
+/* AI Chat Controls */
+.customize-control.ai-chat-settings {
+    border-left: 4px solid var(--customizer-info);
+    background: #dbeafe;
+}
+
+.customize-control.ai-chat-settings .customize-control-title {
+    color: #1e40af;
+}
+
+/* Social Media Controls */
+.customize-control.social-media {
+    border-left: 4px solid #8b5cf6;
+    background: #f3e8ff;
+}
+
+.customize-control.social-media .customize-control-title {
+    color: #7c3aed;
+}
+
+/* Logo Upload Control */
+.customize-control-image .customize-control-content {
+    position: relative;
+}
+
+.customize-control-image .customize-control-content .thumbnail {
+    border: 2px dashed var(--customizer-border);
+    border-radius: var(--customizer-border-radius-lg);
+    padding: var(--customizer-spacing-xl);
+    text-align: center;
+    background: var(--customizer-background-alt);
+    transition: var(--customizer-transition-fast);
+}
+
+.customize-control-image .customize-control-content .thumbnail:hover {
+    border-color: var(--customizer-primary);
+    background: var(--customizer-primary-50);
+}
+
+.customize-control-image .customize-control-content .thumbnail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--customizer-border-radius);
+}
+
+/* Company Information Group */
+.customize-control-group.company-info {
+    background: linear-gradient(135deg, var(--customizer-primary-50), var(--customizer-secondary-50));
+    border: 1px solid var(--customizer-primary-100);
+}
+
+.customize-control-group.company-info .customize-control-title {
+    color: var(--customizer-primary-dark);
+}
+
+/* Typography Control Group */
+.customize-control-group.typography-settings {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.customize-control-group.typography-settings .font-preview {
+    background: var(--customizer-background);
+    border: 1px solid var(--customizer-border);
+    border-radius: var(--customizer-border-radius);
+    padding: var(--customizer-spacing-lg);
+    margin-top: var(--customizer-spacing-sm);
+}
+
+.customize-control-group.typography-settings .font-preview h3 {
+    margin: 0 0 var(--customizer-spacing-sm) 0;
+    font-size: var(--customizer-font-size-lg);
+}
+
+.customize-control-group.typography-settings .font-preview p {
+    margin: 0;
+    color: var(--customizer-text-light);
+    font-size: var(--customizer-font-size-sm);
+}
+
+/* =================================================================
+   7. LIVE PREVIEW ENHANCEMENTS
+================================================================= */
+
+/* Preview Frame */
+#customize-preview iframe {
+    border: 3px solid var(--customizer-primary);
+    border-radius: var(--customizer-border-radius-lg);
+    box-shadow: var(--customizer-shadow-lg);
+}
+
+/* Preview Loading */
+#customize-preview .wp-full-overlay-main .spinner {
+    border-color: var(--customizer-primary);
+    border-top-color: transparent;
+}
+
+/* Device Preview Buttons */
+.wp-full-overlay-footer .devices {
+    background: var(--customizer-background);
+    border-top: 1px solid var(--customizer-border);
+    padding: var(--customizer-spacing-sm);
+    display: flex;
+    justify-content: center;
+    gap: var(--customizer-spacing-xs);
+}
+
+.wp-full-overlay-footer .devices button {
+    background: transparent;
+    border: 1px solid var(--customizer-border);
+    color: var(--customizer-text-light);
+    padding: var(--customizer-spacing-sm);
+    border-radius: var(--customizer-border-radius);
+    cursor: pointer;
+    transition: var(--customizer-transition-fast);
+    min-width: 40px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wp-full-overlay-footer .devices button:hover,
+.wp-full-overlay-footer .devices button.active {
+    background: var(--customizer-primary);
+    border-color: var(--customizer-primary);
+    color: var(--customizer-background);
+}
+
+/* Preview Selection Indicators */
+.customize-partial-edit-shortcuts-shown .customize-partial-edit-shortcut button {
+    background: var(--customizer-primary) !important;
+    border-color: var(--customizer-primary) !important;
+    color: var(--customizer-background) !important;
+    box-shadow: var(--customizer-shadow-md) !important;
+    border-radius: var(--customizer-border-radius) !important;
+    font-size: var(--customizer-font-size-xs) !important;
+}
+
+/* Change Indicators */
+.customize-control.has-changes {
+    border-left: 4px solid var(--customizer-warning);
+    background: #fef3c7;
+}
+
+.customize-control.has-changes .customize-control-title::before {
+    content: '● ';
+    color: var(--customizer-warning);
+    font-weight: 700;
+}
+
+/* =================================================================
+   8. RESPONSIVE CUSTOMIZER DESIGN
+================================================================= */
+
+/* Mobile Customizer Layout */
+@media screen and (max-width: 782px) {
+    #customize-controls {
+        width: 100%;
+        height: 100%;
+    }
+
+    .wp-full-overlay-sidebar {
+        width: 100% !important;
+    }
+
+    .wp-full-overlay.expanded #customize-controls {
+        left: 0;
+    }
+
+    .customize-control {
+        padding: var(--customizer-spacing-md);
+        margin-bottom: var(--customizer-spacing-md);
+    }
+
+    .customize-control-title {
+        font-size: var(--customizer-font-size-lg);
+    }
+
+    /* Touch-friendly controls */
+    .customize-control input,
+    .customize-control textarea,
+    .customize-control select,
+    .customize-control button {
+        min-height: 44px;
+        font-size: var(--customizer-font-size-lg);
+    }
+
+    .customize-control input[type="checkbox"],
+    .customize-control input[type="radio"] {
+        width: 20px;
+        height: 20px;
+        min-height: auto;
+    }
+
+    /* Mobile color picker */
+    .wp-picker-container .wp-color-picker {
+        min-height: 44px !important;
+    }
+
+    .customize-control-color .color-palette .color-option {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* Mobile device preview */
+    .wp-full-overlay-footer .devices button {
+        min-width: 48px;
+        height: 44px;
+        font-size: var(--customizer-font-size-lg);
+    }
+}
+
+/* Tablet Customizer Layout */
+@media screen and (max-width: 1024px) and (min-width: 783px) {
+    #customize-controls {
+        width: 320px;
+    }
+
+    .customize-control {
+        padding: var(--customizer-spacing-lg);
+    }
+
+    .customize-control input,
+    .customize-control textarea,
+    .customize-control select {
+        font-size: var(--customizer-font-size-base);
+    }
+}
+
+/* Large Screen Optimizations */
+@media screen and (min-width: 1400px) {
+    #customize-controls {
+        width: 360px;
+    }
+
+    .customize-control-group {
+        padding: var(--customizer-spacing-2xl);
+    }
+
+    .customize-control {
+        padding: var(--customizer-spacing-xl);
+    }
+}
+
+/* =================================================================
+   9. CUSTOMIZER NOTIFICATIONS
+================================================================= */
+
+/* Notification Container */
+#customize-notifications-area {
+    background: var(--customizer-background);
+    border-bottom: 1px solid var(--customizer-border);
+}
+
+/* Notification Types */
+.customize-control-notifications-container .notice {
+    background: var(--customizer-background);
+    border-left: 4px solid var(--customizer-info);
+    border-radius: var(--customizer-border-radius);
+    margin: var(--customizer-spacing-sm) 0;
+    padding: var(--customizer-spacing-md);
+    box-shadow: var(--customizer-shadow-sm);
+}
+
+.customize-control-notifications-container .notice.notice-error {
+    border-left-color: var(--customizer-error);
+    background: #fef2f2;
+    color: #991b1b;
+}
+
+.customize-control-notifications-container .notice.notice-warning {
+    border-left-color: var(--customizer-warning);
+    background: #fffbeb;
+    color: #92400e;
+}
+
+.customize-control-notifications-container .notice.notice-success {
+    border-left-color: var(--customizer-success);
+    background: #f0fdf4;
+    color: #14532d;
+}
+
+.customize-control-notifications-container .notice.notice-info {
+    border-left-color: var(--customizer-info);
+    background: #eff6ff;
+    color: #1e40af;
+}
+
+/* Notification Message */
+.customize-control-notifications-container .notice p {
+    margin: 0;
+    font-size: var(--customizer-font-size-sm);
+    line-height: 1.5;
+}
+
+/* Dismiss Button */
+.customize-control-notifications-container .notice .notice-dismiss {
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: var(--customizer-spacing-xs);
+    border-radius: var(--customizer-border-radius);
+    transition: var(--customizer-transition-fast);
+}
+
+.customize-control-notifications-container .notice .notice-dismiss:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Global Notifications */
+.customize-changeset-locked-notification,
+.customize-loading,
+.customize-error {
+    background: var(--customizer-error);
+    color: var(--customizer-background);
+    padding: var(--customizer-spacing-lg);
+    text-align: center;
+    font-weight: 600;
+}
+
+.customize-changeset-locked-notification.info,
+.customize-loading.info {
+    background: var(--customizer-info);
+}
+
+/* =================================================================
+   10. ADVANCED CONTROL TYPES
+================================================================= */
+
+/* Toggle Switch Control */
+.customize-control-toggle {
+    position: relative;
+}
+
+.customize-control-toggle .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    background: var(--customizer-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--customizer-transition);
+}
+
+.customize-control-toggle .toggle-switch::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: var(--customizer-background);
+    border-radius: 50%;
+    transition: var(--customizer-transition);
+    box-shadow: var(--customizer-shadow-sm);
+}
+
+.customize-control-toggle input:checked + .toggle-switch {
+    background: var(--customizer-primary);
+}
+
+.customize-control-toggle input:checked + .toggle-switch::before {
+    transform: translateX(24px);
+}
+
+.customize-control-toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Multi-Select Control */
+.customize-control-multiselect .multiselect-container {
+    border: 1px solid var(--customizer-border);
+    border-radius: var(--customizer-border-radius);
+    background: var(--customizer-background);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.customize-control-multiselect .multiselect-option {
+    display: flex;
+    align-items: center;
+    padding: var(--customizer-spacing-sm) var(--customizer-spacing-md);
+    border-bottom: 1px solid var(--customizer-border-light);
+    cursor: pointer;
+    transition: var(--customizer-transition-fast);
+}
+
+.customize-control-multiselect .multiselect-option:hover {
+    background: var(--customizer-control-hover);
+}
+
+.customize-control-multiselect .multiselect-option:last-child {
+    border-bottom: none;
+}
+
+.customize-control-multiselect .multiselect-option input {
+    margin-right: var(--customizer-spacing-sm);
+}
+
+/* Sortable List Control */
+.customize-control-sortable .sortable-list {
+    border: 1px solid var(--customizer-border);
+    border-radius: var(--customizer-border-radius);
+    background: var(--customizer-background);
+}
+
+.customize-control-sortable .sortable-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--customizer-spacing-md);
+    border-bottom: 1px solid var(--customizer-border-light);
+    background: var(--customizer-background);
+    cursor: move;
+    transition: var(--customizer-transition-fast);
+}
+
+.customize-control-sortable .sortable-item:hover {
+    background: var(--customizer-control-hover);
+}
+
+.customize-control-sortable .sortable-item:last-child {
+    border-bottom: none;
+}
+
+.customize-control-sortable .sortable-handle {
+    color: var(--customizer-text-muted);
+    cursor: grab;
+    margin-right: var(--customizer-spacing-sm);
+}
+
+.customize-control-sortable .sortable-handle:active {
+    cursor: grabbing;
+}
+
+/* Code Editor Control */
+.customize-control-code .code-editor {
+    border: 1px solid var(--customizer-border);
+    border-radius: var(--customizer-border-radius);
+    font-family: var(--customizer-font-primary);
+    font-size: var(--customizer-font-size-sm);
+    background: #f8f9fa;
+    padding: var(--customizer-spacing-md);
+    min-height: 120px;
+    resize: vertical;
+}
+
+.customize-control-code .code-editor:focus {
+    border-color: var(--customizer-control-focus);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* =================================================================
+   11. MEDIA CONTROLS & UPLOADS
+================================================================= */
+
+/* Media Upload Control */
+.customize-control-media .attachment-media-view {
+    border: 2px dashed var(--customizer-border);
+    border-radius: var(--customizer-border-radius-lg);
+    padding: var(--customizer-spacing-2xl);
+    text-align: center;
+    background: var(--customizer-background-alt);
+    transition: var(--customizer-transition-fast);
+    cursor: pointer;
+}
+
+.customize-control-media .attachment-media-view:hover {
+    border-color: var(--customizer-primary);
+    background: var(--customizer-primary-50);
+}
+
+.customize-control-media .attachment-media-view.selected {
+    border-color: var(--customizer-primary);
+    border-style: solid;
+    background: var(--customizer-primary-50);
+}
+
+.customize-control-media .placeholder {
+    color: var(--customizer-text-muted);
+    font-size: var(--customizer-font-size-sm);
+    line-height: 1.5;
+}
+
+.customize-control-media .thumbnail {
+    max-width: 100%;
+    border-radius: var(--customizer-border-radius);
+    box-shadow: var(--customizer-shadow-sm);
+}
+
+/* Media Upload Actions */
+.customize-control-media .actions {
+    display: flex;
+    gap: var(--customizer-spacing-sm);
+    margin-top: var(--customizer-spacing-md);
+    justify-content: center;
+}
+
+.customize-control-media .actions button {
+    background: var(--customizer-primary);
+    color: var(--customizer-background);
+    border: none;
+    padding: var(--customizer-spacing-sm) var(--customizer-spacing-md);
+    border-radius: var(--customizer-border-radius);
+    font-size: var(--customizer-font-size-sm);
+    cursor: pointer;
+    transition: var(--customizer-transition);
+}
+
+.customize-control-media .actions button:hover {
+    background: var(--customizer-primary-dark);
+    transform: translateY(-1px);
+}
+
+.customize-control-media .actions .remove-button {
+    background: var(--customizer-error);
+}
+
+.customize-control-media .actions .remove-button:hover {
+    background: #dc2626;
+}
+
+/* Cropped Image Control */
+.customize-control-cropped_image .current-image {
+    position: relative;
+    display: inline-block;
+}
+
+.customize-control-cropped_image .current-image img {
+    border-radius: var(--customizer-border-radius);
+    box-shadow: var(--customizer-shadow-sm);
+}
+
+.customize-control-cropped_image .crop-info {
+    background: var(--customizer-info);
+    color: var(--customizer-background);
+    padding: var(--customizer-spacing-xs) var(--customizer-spacing-sm);
+    border-radius: var(--customizer-border-radius);
+    font-size: var(--customizer-font-size-xs);
+    margin-top: var(--customizer-spacing-sm);
+    display: inline-block;
+}
+
+/* =================================================================
+   12. TYPOGRAPHY CONTROLS
+================================================================= */
+
+/* Font Family Control */
+.customize-control-font-family .font-preview {
+    background: var(--customizer-background);
+    border: 1px solid var(--customizer-border);
+    border-radius: var(--customizer-border-radius);
+    padding: var(--customizer-spacing-lg);
+    margin-top: var(--customizer-spacing-sm);
+    text-align: center;
+}
+
+.customize-control-font-family .font-preview .sample-text {
+    font-size: var(--customizer-font-size-xl);
+    line-height: 1.4;
+    margin-bottom: var(--customizer-spacing-sm);
+}
+
+.customize-control-font-family .font-preview .font-details {
+    font-size: var(--customizer-font-size-xs);
+    color: var(--customizer-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Font Weight Control */
+.customize-control-font-weight .weight-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--customizer-spacing-xs);
+    margin-top: var(--customizer-spacing-sm);
+}
+
+.customize-control-font-weight .weight-option {
+    text-align: center;
+    padding: var(--customizer-spacing-sm);
+    border: 1px solid var(--customizer-border);
+    border-radius: var(--customizer-border-radius);
+    cursor: pointer;
+    transition: var(--customizer-transition-fast);
+    font-size: var(--customizer-font-size-sm);
+}
+
+.customize-control-font-weight .weight-option:hover,
+.customize-control-font-weight .weight-option.selected {
+    border-color: var(--customizer-primary);
+    background: var(--customizer-primary-50);
+    color: var(--customizer-primary-dark);
+}
+
+/* Typography Group */
+.customize-control-group.typography {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    border: 1px solid #cbd5e1;
+}
+
+.customize-control-group.typography .typography-preview {
+    background: var(--customizer-background);
+    border: 1px solid var(--customizer-border);
+    border-radius: var(--customizer-border-radius-lg);
+    padding: var(--customizer-spacing-2xl);
+    margin: var(--customizer-spacing-lg) 0;
+    text-align: center;
+}
+
+.customize-control-group.typography .typography-preview h1 {
+    margin: 0 0 var(--customizer-spacing-sm) 0;
+    color: var(--customizer-text);
+}
+
+.customize-control-group.typography .typography-preview p {
+    margin: 0;
+    color: var(--customizer-text-light);
+    line-height: 1.6;
+}
+
+/* =================================================================
+   13. ACCESSIBILITY ENHANCEMENTS
+================================================================= */
+
+/* Focus Management */
+.customize-control *:focus {
+    outline: 2px solid var(--customizer-primary);
+    outline-offset: 2px;
+}
+
+.customize-control input:focus,
+.customize-control textarea:focus,
+.customize-control select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+    :root {
+        --customizer-text: #000000;
+        --customizer-background: #ffffff;
+        --customizer-border: #000000;
+        --customizer-primary: #0000ff;
+    }
+
+    .customize-control,
+    .customize-control input,
+    .customize-control textarea,
+    .customize-control select {
+        border-width: 2px;
+    }
+
+    .customize-control button,
+    #save {
+        border: 2px solid currentColor !important;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .customize-control:hover {
+        transform: none;
+    }
+}
+
+/* Screen Reader Text */
+.customize-control .screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+/* Skip Links */
+.customize-control .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.customize-control .skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    background: var(--customizer-primary);
+    color: var(--customizer-background);
+    padding: var(--customizer-spacing-sm);
+    border-radius: var(--customizer-border-radius);
+    text-decoration: none;
+}
+
+/* ARIA Live Regions */
+.customize-control .live-region {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* =================================================================
+   14. DARK MODE SUPPORT
+================================================================= */
+
+/* Dark Mode Detection */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --customizer-text: #f9fafb;
+        --customizer-text-light: #d1d5db;
+        --customizer-text-muted: #9ca3af;
+        --customizer-background: #1f2937;
+        --customizer-background-alt: #374151;
+        --customizer-background-dark: #111827;
+        --customizer-border: #4b5563;
+        --customizer-border-light: #6b7280;
+        --customizer-panel-bg: #111827;
+        --customizer-control-bg: #374151;
+        --customizer-control-border: #4b5563;
+        --customizer-control-hover: #4b5563;
+    }
+
+    #customize-controls {
+        background: var(--customizer-background-dark);
+        color: var(--customizer-text);
+    }
+
+    .customize-control input,
+    .customize-control textarea,
+    .customize-control select {
+        background: var(--customizer-background-alt);
+        color: var(--customizer-text);
+        border-color: var(--customizer-border);
+    }
+
+    .iris-picker {
+        background: var(--customizer-background-alt) !important;
+        border-color: var(--customizer-border) !important;
+    }
+}
+
+/* Manual Dark Mode Toggle */
+.customize-controls.dark-mode {
+    --customizer-text: #f9fafb;
+    --customizer-text-light: #d1d5db;
+    --customizer-text-muted: #9ca3af;
+    --customizer-background: #1f2937;
+    --customizer-background-alt: #374151;
+    --customizer-border: #4b5563;
+    --customizer-control-bg: #374151;
+    --customizer-control-hover: #4b5563;
+}
+
+/* Dark Mode Toggle Button */
+.customize-control.dark-mode-toggle {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--customizer-background-dark);
+    border-color: var(--customizer-border);
+    margin-bottom: 0;
+}
+
+.customize-control.dark-mode-toggle button {
+    width: 100%;
+    background: var(--customizer-primary);
+    color: var(--customizer-background);
+    border: none;
+    padding: var(--customizer-spacing-md);
+    border-radius: var(--customizer-border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--customizer-transition);
+}
+
+.customize-control.dark-mode-toggle button:hover {
+    background: var(--customizer-primary-dark);
+    transform: translateY(-1px);
+}
+
+/* =================================================================
+   15. PERFORMANCE OPTIMIZATIONS
+================================================================= */
+
+/* GPU Acceleration */
+.customize-control,
+.wp-picker-container,
+.customize-control-media .attachment-media-view {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Reduce Paint Operations */
+.customize-control input,
+.customize-control textarea,
+.customize-control select {
+    contain: layout style;
+}
+
+/* Optimize Transitions */
+.customize-control {
+    transition-property: border-color, box-shadow, background-color;
+}
+
+/* Critical Animations Only */
+@media (prefers-reduced-motion: no-preference) {
+    .customize-control-toggle .toggle-switch::before,
+    .customize-control button,
+    #save {
+        transition: transform var(--customizer-transition-fast), 
+                   background-color var(--customizer-transition-fast);
+    }
+}
+
+/* Memory Management */
+.customize-control.out-of-view {
+    will-change: auto;
+    transform: none;
+}
+
+/* =================================================================
+   UTILITY CLASSES
+================================================================= */
+
+/* Spacing Utilities */
+.customizer-mt-0 { margin-top: 0 !important; }
+.customizer-mt-1 { margin-top: var(--customizer-spacing-xs) !important; }
+.customizer-mt-2 { margin-top: var(--customizer-spacing-sm) !important; }
+.customizer-mt-3 { margin-top: var(--customizer-spacing-md) !important; }
+.customizer-mt-4 { margin-top: var(--customizer-spacing-lg) !important; }
+
+.customizer-mb-0 { margin-bottom: 0 !important; }
+.customizer-mb-1 { margin-bottom: var(--customizer-spacing-xs) !important; }
+.customizer-mb-2 { margin-bottom: var(--customizer-spacing-sm) !important; }
+.customizer-mb-3 { margin-bottom: var(--customizer-spacing-md) !important; }
+.customizer-mb-4 { margin-bottom: var(--customizer-spacing-lg) !important; }
+
+/* Text Utilities */
+.customizer-text-center { text-align: center !important; }
+.customizer-text-left { text-align: left !important; }
+.customizer-text-right { text-align: right !important; }
+
+.customizer-text-primary { color: var(--customizer-primary) !important; }
+.customizer-text-secondary { color: var(--customizer-secondary) !important; }
+.customizer-text-muted { color: var(--customizer-text-muted) !important; }
+
+/* Display Utilities */
+.customizer-hidden { display: none !important; }
+.customizer-visible { display: block !important; }
+.customizer-flex { display: flex !important; }
+.customizer-inline-flex { display: inline-flex !important; }
+
+/* Border Utilities */
+.customizer-border { border: 1px solid var(--customizer-border) !important; }
+.customizer-border-0 { border: 0 !important; }
+.customizer-border-primary { border-color: var(--customizer-primary) !important; }
+
+.customizer-rounded { border-radius: var(--customizer-border-radius) !important; }
+.customizer-rounded-lg { border-radius: var(--customizer-border-radius-lg) !important; }
+
+/* Background Utilities */
+.customizer-bg-primary { background-color: var(--customizer-primary) !important; }
+.customizer-bg-secondary { background-color: var(--customizer-secondary) !important; }
+.customizer-bg-light { background-color: var(--customizer-background-alt) !important; }
+
+/* =================================================================
+   END OF CUSTOMIZER CSS
+================================================================= */

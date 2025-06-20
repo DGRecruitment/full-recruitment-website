@@ -1,0 +1,1889 @@
+/*
+=================================================================
+RECRUITPRO THEME - ACCESSIBILITY CSS
+=================================================================
+WCAG 2.1 AA Compliance & Enhanced Accessibility Features
+Version: 1.0.0
+Author: RecruitPro Team
+Description: Comprehensive accessibility enhancements for recruitment websites
+=================================================================
+
+TABLE OF CONTENTS:
+1. SCREEN READER OPTIMIZATIONS
+2. FOCUS MANAGEMENT & KEYBOARD NAVIGATION
+3. SKIP LINKS & NAVIGATION AIDS
+4. HIGH CONTRAST MODE SUPPORT
+5. REDUCED MOTION PREFERENCES
+6. TEXT SPACING & READABILITY
+7. FORM ACCESSIBILITY ENHANCEMENTS
+8. COLOR CONTRAST IMPROVEMENTS
+9. ARIA LIVE REGIONS & ANNOUNCEMENTS
+10. RECRUITMENT-SPECIFIC ACCESSIBILITY
+11. MOBILE ACCESSIBILITY ENHANCEMENTS
+12. PRINT ACCESSIBILITY
+13. ASSISTIVE TECHNOLOGY SUPPORT
+14. ERROR HANDLING & VALIDATION
+15. INTERNATIONALIZATION SUPPORT
+
+=================================================================
+*/
+
+/* =================================================================
+   1. SCREEN READER OPTIMIZATIONS
+================================================================= */
+
+/* Screen Reader Only Content */
+.sr-only,
+.screen-reader-text {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    word-wrap: normal !important;
+}
+
+/* Show screen reader text when focused */
+.sr-only-focusable:focus,
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    -webkit-clip-path: none !important;
+    clip-path: none !important;
+    color: #21759b;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    height: auto;
+    left: 6px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 7px;
+    width: auto;
+    z-index: 100000;
+}
+
+/* Screen reader landmarks */
+.sr-landmark {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.sr-landmark:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 999999;
+}
+
+/* Enhanced screen reader descriptions */
+.sr-description {
+    display: none;
+}
+
+.sr-instructions {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Screen reader table headers */
+.sr-table-caption {
+    caption-side: top;
+    font-weight: 600;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Screen reader form instructions */
+.sr-form-instructions {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* =================================================================
+   2. FOCUS MANAGEMENT & KEYBOARD NAVIGATION
+================================================================= */
+
+/* Enhanced focus indicators */
+*:focus {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 4px #2563eb;
+}
+
+/* Focus within containers */
+*:focus-within {
+    outline: none;
+}
+
+/* High visibility focus for interactive elements */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus,
+[role="button"]:focus,
+[role="link"]:focus {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 4px #2563eb;
+    position: relative;
+    z-index: 1;
+}
+
+/* Focus for specific recruitment elements */
+.job-card:focus,
+.candidate-card:focus,
+.application-form:focus {
+    outline: 3px solid #2563eb;
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+/* Focus management for modals */
+.modal-open {
+    overflow: hidden;
+}
+
+.modal-focus-trap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+}
+
+.modal:focus {
+    outline: none;
+}
+
+.modal-content:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: -2px;
+}
+
+/* Keyboard navigation indicators */
+.keyboard-navigation .btn:focus,
+.keyboard-navigation .form-control:focus,
+.keyboard-navigation .nav-link:focus {
+    background-image: linear-gradient(45deg, transparent 40%, #2563eb 40%, #2563eb 60%, transparent 60%);
+    background-size: 4px 4px;
+    background-repeat: repeat;
+    background-position: 0 0;
+    animation: keyboard-focus-animation 1s infinite;
+}
+
+@keyframes keyboard-focus-animation {
+    0% { background-position: 0 0; }
+    100% { background-position: 4px 4px; }
+}
+
+/* Focus visible only for keyboard navigation */
+.js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+    box-shadow: none;
+}
+
+.js-focus-visible .focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 4px #2563eb;
+}
+
+/* Tab order indicators for debugging */
+.show-tab-order [tabindex]:before,
+.show-tab-order button:before,
+.show-tab-order input:before,
+.show-tab-order textarea:before,
+.show-tab-order select:before,
+.show-tab-order a:before {
+    content: attr(tabindex);
+    position: absolute;
+    top: -20px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 3px;
+    z-index: 1000;
+}
+
+/* =================================================================
+   3. SKIP LINKS & NAVIGATION AIDS
+================================================================= */
+
+/* Skip navigation links */
+.skip-links {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    z-index: 999999;
+    width: 100%;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 0 0 6px 6px;
+    transition: top 0.3s ease;
+    border: 2px solid #fff;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: none;
+}
+
+.skip-link:hover {
+    background: #333;
+    text-decoration: underline;
+}
+
+/* Multiple skip links */
+.skip-links-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.skip-links-list .skip-link:nth-child(1) { left: 6px; }
+.skip-links-list .skip-link:nth-child(2) { left: 150px; }
+.skip-links-list .skip-link:nth-child(3) { left: 300px; }
+.skip-links-list .skip-link:nth-child(4) { left: 450px; }
+
+/* Breadcrumb navigation accessibility */
+.breadcrumb-nav {
+    margin-bottom: 20px;
+}
+
+.breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.875rem;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-item:not(:last-child)::after {
+    content: "›";
+    margin: 0 8px;
+    color: #666;
+    font-weight: normal;
+    speak: none;
+}
+
+.breadcrumb-link {
+    color: #2563eb;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.breadcrumb-link:hover,
+.breadcrumb-link:focus {
+    background: #f3f4f6;
+    text-decoration: underline;
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.breadcrumb-current {
+    color: #374151;
+    font-weight: 600;
+    padding: 4px 8px;
+}
+
+/* Page navigation helpers */
+.page-navigation {
+    margin: 40px 0;
+}
+
+.page-nav-label {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #374151;
+}
+
+.page-nav-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.page-nav-link {
+    flex: 1;
+    padding: 15px 20px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #374151;
+    transition: all 0.2s ease;
+}
+
+.page-nav-link:hover,
+.page-nav-link:focus {
+    background: #f3f4f6;
+    border-color: #2563eb;
+    color: #2563eb;
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.page-nav-direction {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+    margin-bottom: 5px;
+}
+
+.page-nav-title {
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* =================================================================
+   4. HIGH CONTRAST MODE SUPPORT
+================================================================= */
+
+/* High contrast mode detection and overrides */
+@media (prefers-contrast: high) {
+    :root {
+        --color-text: #000000;
+        --color-background: #ffffff;
+        --color-border: #000000;
+        --color-primary: #0000ff;
+        --color-secondary: #008000;
+        --color-success: #008000;
+        --color-warning: #ff8c00;
+        --color-error: #ff0000;
+        --color-text-light: #000000;
+        --color-text-muted: #000000;
+        --color-background-alt: #f0f0f0;
+        --color-border-light: #666666;
+    }
+
+    /* Remove all shadows and gradients */
+    *,
+    *::before,
+    *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        background-image: none !important;
+    }
+
+    /* Ensure sufficient contrast for all elements */
+    .btn {
+        border: 2px solid #000000 !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+
+    .btn:hover,
+    .btn:focus {
+        background: #000000 !important;
+        color: #ffffff !important;
+    }
+
+    .btn-primary {
+        background: #0000ff !important;
+        color: #ffffff !important;
+        border-color: #0000ff !important;
+    }
+
+    .form-control {
+        border: 2px solid #000000 !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+
+    .form-control:focus {
+        border-color: #0000ff !important;
+        background: #ffffff !important;
+    }
+
+    /* High contrast navigation */
+    .main-navigation a {
+        border: 1px solid #000000 !important;
+        margin: 2px !important;
+    }
+
+    /* High contrast job cards */
+    .job-card,
+    .candidate-card,
+    .post-card {
+        border: 3px solid #000000 !important;
+        background: #ffffff !important;
+    }
+
+    /* High contrast modals */
+    .modal-content {
+        border: 3px solid #000000 !important;
+        background: #ffffff !important;
+    }
+
+    /* High contrast links */
+    a {
+        color: #0000ff !important;
+        text-decoration: underline !important;
+    }
+
+    a:visited {
+        color: #800080 !important;
+    }
+
+    a:hover,
+    a:focus {
+        background: #ffff00 !important;
+        color: #000000 !important;
+    }
+}
+
+/* Custom high contrast mode toggle */
+.high-contrast-mode {
+    --color-text: #000000;
+    --color-background: #ffffff;
+    --color-border: #000000;
+    --color-primary: #0000ff;
+    --color-secondary: #008000;
+    filter: contrast(200%);
+}
+
+.high-contrast-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 999999;
+    background: #000;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.high-contrast-toggle:focus {
+    outline: 3px solid #ffff00;
+    outline-offset: 2px;
+}
+
+/* =================================================================
+   5. REDUCED MOTION PREFERENCES
+================================================================= */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transform: none !important;
+    }
+
+    /* Remove hover animations */
+    .job-card:hover,
+    .post-card:hover,
+    .btn:hover {
+        transform: none !important;
+    }
+
+    /* Remove loading animations */
+    .loading::after,
+    .spinner,
+    .ai-chat-dots .ai-chat-dot {
+        animation: none !important;
+    }
+
+    /* Remove parallax effects */
+    .parallax,
+    .hero-background {
+        transform: none !important;
+        position: static !important;
+    }
+
+    /* Remove slide animations */
+    .modal,
+    .dropdown-menu,
+    .tooltip {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    /* Keep essential focus animations */
+    *:focus {
+        transition: outline 0.1s ease !important;
+    }
+}
+
+/* Reduced motion toggle */
+.reduced-motion-toggle {
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    z-index: 999999;
+    background: #2563eb;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.reduced-motion-mode * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* =================================================================
+   6. TEXT SPACING & READABILITY
+================================================================= */
+
+/* Enhanced text spacing for accessibility */
+.accessible-text-spacing {
+    line-height: 1.6 !important;
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.16em !important;
+    paragraph-spacing: 2em !important;
+}
+
+/* Text spacing controls */
+.text-spacing-controls {
+    position: fixed;
+    top: 90px;
+    right: 10px;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.spacing-control {
+    background: #4b5563;
+    color: #fff;
+    border: 1px solid #6b7280;
+    padding: 6px 10px;
+    font-size: 11px;
+    border-radius: 3px;
+    cursor: pointer;
+    min-width: 80px;
+    text-align: center;
+}
+
+.spacing-control:focus {
+    outline: 2px solid #fbbf24;
+    outline-offset: 2px;
+}
+
+/* Font size controls */
+.font-size-small { font-size: 0.875em !important; }
+.font-size-normal { font-size: 1em !important; }
+.font-size-large { font-size: 1.125em !important; }
+.font-size-larger { font-size: 1.25em !important; }
+.font-size-largest { font-size: 1.5em !important; }
+
+/* Line height controls */
+.line-height-tight { line-height: 1.25 !important; }
+.line-height-normal { line-height: 1.5 !important; }
+.line-height-relaxed { line-height: 1.75 !important; }
+.line-height-loose { line-height: 2 !important; }
+
+/* Letter spacing controls */
+.letter-spacing-tight { letter-spacing: -0.025em !important; }
+.letter-spacing-normal { letter-spacing: 0 !important; }
+.letter-spacing-wide { letter-spacing: 0.025em !important; }
+.letter-spacing-wider { letter-spacing: 0.05em !important; }
+.letter-spacing-widest { letter-spacing: 0.1em !important; }
+
+/* Reading aids */
+.reading-ruler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fbbf24;
+    pointer-events: none;
+    z-index: 999998;
+    display: none;
+}
+
+.reading-ruler.active {
+    display: block;
+}
+
+.reading-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999997;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.7) 45%,
+        transparent 50%,
+        transparent 50%,
+        rgba(0, 0, 0, 0.7) 55%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    display: none;
+}
+
+.reading-mask.active {
+    display: block;
+}
+
+/* =================================================================
+   7. FORM ACCESSIBILITY ENHANCEMENTS
+================================================================= */
+
+/* Enhanced form labels */
+.form-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+    cursor: pointer;
+}
+
+.form-label.required::after {
+    content: " *";
+    color: #dc2626;
+    font-weight: 700;
+    margin-left: 2px;
+}
+
+.form-label-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 400;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+/* Form field grouping */
+.form-fieldset {
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.form-legend {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: #374151;
+    padding: 0 12px;
+    margin-bottom: 16px;
+}
+
+/* Form instructions */
+.form-instructions {
+    background: #f3f4f6;
+    border-left: 4px solid #2563eb;
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 0 8px 8px 0;
+}
+
+.form-instructions-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1f2937;
+}
+
+.form-instructions-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #4b5563;
+}
+
+/* Form validation feedback */
+.form-field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+    width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-control.error {
+    border-color: #dc2626;
+    background-color: #fef2f2;
+}
+
+.form-control.success {
+    border-color: #059669;
+    background-color: #f0fdf4;
+}
+
+/* Error messages */
+.error-message {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.4;
+}
+
+.error-message::before {
+    content: "⚠";
+    flex-shrink: 0;
+    font-size: 1rem;
+    margin-top: -1px;
+}
+
+.success-message {
+    color: #059669;
+    font-size: 0.875rem;
+    margin-top: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.4;
+}
+
+.success-message::before {
+    content: "✓";
+    flex-shrink: 0;
+    font-weight: 700;
+    margin-top: -1px;
+}
+
+/* Form help text */
+.form-help {
+    font-size: 0.8125rem;
+    color: #6b7280;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+/* Required field indicators */
+.required-fields-note {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 20px;
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 6px;
+}
+
+.required-fields-note::before {
+    content: "*";
+    color: #dc2626;
+    font-weight: 700;
+    margin-right: 4px;
+}
+
+/* File upload accessibility */
+.file-upload-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.file-upload-input {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+}
+
+.file-upload-label {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #f9fafb;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.file-upload-label:hover,
+.file-upload-input:focus + .file-upload-label {
+    background: #f3f4f6;
+    border-color: #2563eb;
+}
+
+.file-upload-icon {
+    font-size: 2rem;
+    color: #6b7280;
+}
+
+.file-upload-text {
+    font-weight: 600;
+    color: #374151;
+}
+
+.file-upload-hint {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Checkbox and radio accessibility */
+.form-check {
+    position: relative;
+    display: block;
+    margin-bottom: 12px;
+    padding-left: 32px;
+    cursor: pointer;
+    line-height: 1.5;
+}
+
+.form-check-input {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.form-check-label {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1.5;
+}
+
+.form-check-label::before {
+    content: "";
+    position: absolute;
+    left: -32px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.form-check-input:checked + .form-check-label::before {
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+.form-check-input:checked + .form-check-label::after {
+    content: "✓";
+    position: absolute;
+    left: -28px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.form-check-input:focus + .form-check-label::before {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Radio button styles */
+.form-radio .form-check-label::before {
+    border-radius: 50%;
+}
+
+.form-radio .form-check-input:checked + .form-check-label::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    left: -26px;
+    top: 4px;
+    margin-top: 0;
+}
+
+/* =================================================================
+   8. COLOR CONTRAST IMPROVEMENTS
+================================================================= */
+
+/* Ensure minimum contrast ratios */
+.low-contrast-warning {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #f59e0b;
+    margin-bottom: 16px;
+}
+
+/* Color blind friendly palette */
+.colorblind-safe {
+    --cb-blue: #0173b2;
+    --cb-orange: #de8f05;
+    --cb-green: #029e73;
+    --cb-red: #d55e00;
+    --cb-purple: #cc78bc;
+    --cb-brown: #ca9161;
+    --cb-pink: #fbafe4;
+    --cb-gray: #949494;
+}
+
+/* Status colors with sufficient contrast */
+.status-new { 
+    background: #dbeafe; 
+    color: #1e40af; 
+    border: 1px solid #3b82f6; 
+}
+
+.status-reviewing { 
+    background: #fef3c7; 
+    color: #92400e; 
+    border: 1px solid #f59e0b; 
+}
+
+.status-interview { 
+    background: #d1fae5; 
+    color: #065f46; 
+    border: 1px solid #10b981; 
+}
+
+.status-hired { 
+    background: #dcfce7; 
+    color: #14532d; 
+    border: 1px solid #22c55e; 
+}
+
+.status-rejected { 
+    background: #fee2e2; 
+    color: #991b1b; 
+    border: 1px solid #ef4444; 
+}
+
+/* Link contrast improvements */
+a {
+    color: #1d4ed8;
+    text-decoration: underline;
+    text-decoration-color: rgba(29, 78, 216, 0.5);
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+}
+
+a:hover,
+a:focus {
+    color: #1e3a8a;
+    text-decoration-color: #1e3a8a;
+    text-decoration-thickness: 2px;
+}
+
+a:visited {
+    color: #7c3aed;
+}
+
+/* Button contrast improvements */
+.btn-contrast-high {
+    background: #000;
+    color: #fff;
+    border: 2px solid #000;
+    font-weight: 600;
+}
+
+.btn-contrast-high:hover,
+.btn-contrast-high:focus {
+    background: #fff;
+    color: #000;
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* =================================================================
+   9. ARIA LIVE REGIONS & ANNOUNCEMENTS
+================================================================= */
+
+/* ARIA live regions for dynamic content */
+.sr-live-region {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.sr-status {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+
+/* Form validation announcements */
+.form-validation-summary {
+    background: #fee2e2;
+    border: 2px solid #dc2626;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 20px;
+    color: #991b1b;
+}
+
+.form-validation-summary h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.125rem;
+    color: #7f1d1d;
+}
+
+.form-validation-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.form-validation-list li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.form-validation-list li::before {
+    content: "⚠";
+    color: #dc2626;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Success announcements */
+.success-announcement {
+    background: #f0fdf4;
+    border: 2px solid #16a34a;
+    border-radius: 6px;
+    padding: 16px;
+    color: #14532d;
+    margin-bottom: 20px;
+}
+
+.success-announcement h3 {
+    margin: 0 0 8px 0;
+    color: #15803d;
+}
+
+/* Loading announcements */
+.loading-announcement {
+    background: #f3f4f6;
+    border: 2px solid #6b7280;
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-top: 2px solid #2563eb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Page navigation announcements */
+.page-change-announcement {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* =================================================================
+   10. RECRUITMENT-SPECIFIC ACCESSIBILITY
+================================================================= */
+
+/* Job listing accessibility */
+.job-listing-accessible {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    background: #fff;
+    transition: border-color 0.2s ease;
+}
+
+.job-listing-accessible:focus-within {
+    border-color: #2563eb;
+    outline: none;
+}
+
+.job-title-accessible {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.job-title-accessible a {
+    color: #1f2937;
+    text-decoration: none;
+    outline-offset: 4px;
+}
+
+.job-title-accessible a:hover,
+.job-title-accessible a:focus {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.job-meta-accessible {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 12px;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.job-meta-item-accessible {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.job-meta-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.job-description-accessible {
+    line-height: 1.6;
+    margin-bottom: 16px;
+    color: #374151;
+}
+
+.job-skills-accessible {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.job-skill-tag {
+    background: #f3f4f6;
+    color: #374151;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    border: 1px solid #d1d5db;
+}
+
+.job-actions-accessible {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Application form accessibility */
+.application-form-accessible {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.application-form-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1f2937;
+}
+
+.application-form-description {
+    color: #6b7280;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+/* CV upload accessibility */
+.cv-upload-accessible {
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    background: #f9fafb;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cv-upload-accessible:hover,
+.cv-upload-accessible:focus-within {
+    border-color: #2563eb;
+    background: #f3f4f6;
+}
+
+.cv-upload-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    color: #6b7280;
+}
+
+.cv-upload-text {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 4px;
+}
+
+.cv-upload-hint {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Candidate profile accessibility */
+.candidate-profile-accessible {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 16px;
+}
+
+.candidate-header-accessible {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.candidate-avatar-accessible {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e5e7eb;
+}
+
+.candidate-info-accessible {
+    flex: 1;
+    min-width: 0;
+}
+
+.candidate-name-accessible {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #1f2937;
+}
+
+.candidate-title-accessible {
+    color: #6b7280;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.candidate-location-accessible {
+    font-size: 0.875rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* =================================================================
+   11. MOBILE ACCESSIBILITY ENHANCEMENTS
+================================================================= */
+
+/* Touch target sizes */
+@media (max-width: 768px) {
+    .btn,
+    .form-control,
+    .nav-link,
+    .pagination-link,
+    .checkbox-label,
+    .radio-label {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Mobile navigation accessibility */
+    .mobile-nav-accessible {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: #fff;
+        border-right: 1px solid #e5e7eb;
+        transition: left 0.3s ease;
+        z-index: 999999;
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .mobile-nav-accessible.open {
+        left: 0;
+    }
+
+    .mobile-nav-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    .mobile-nav-close:focus {
+        outline: 2px solid #2563eb;
+        outline-offset: 2px;
+    }
+
+    /* Mobile form improvements */
+    .form-control {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 16px;
+    }
+
+    /* Mobile modal improvements */
+    .modal-mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        z-index: 999999;
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .modal-mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .modal-mobile-close {
+        width: 44px;
+        height: 44px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+    }
+
+    /* Mobile scroll indicators */
+    .scroll-indicator {
+        position: fixed;
+        bottom: 60px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        background: #2563eb;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        z-index: 999998;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .scroll-indicator.visible {
+        opacity: 1;
+    }
+
+    .scroll-indicator:focus {
+        outline: 3px solid #fbbf24;
+        outline-offset: 2px;
+    }
+}
+
+/* =================================================================
+   12. PRINT ACCESSIBILITY
+================================================================= */
+
+@media print {
+    /* Ensure good contrast for printing */
+    * {
+        color: #000 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* Hide interactive elements */
+    .btn,
+    .form-control,
+    .nav-menu,
+    .modal,
+    .tooltip,
+    .skip-links,
+    .accessibility-controls {
+        display: none !important;
+    }
+
+    /* Ensure links are identifiable */
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
+        content: "";
+    }
+
+    /* Page breaks */
+    .job-card,
+    .candidate-profile,
+    .form-section {
+        page-break-inside: avoid;
+        margin-bottom: 20pt;
+        border: 1pt solid #ccc;
+        padding: 10pt;
+    }
+
+    /* Print-specific typography */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        font-weight: bold;
+    }
+
+    p, li {
+        orphans: 3;
+        widows: 3;
+    }
+
+    /* Print job listings */
+    .job-title {
+        font-size: 14pt;
+        font-weight: bold;
+        margin-bottom: 6pt;
+    }
+
+    .job-company {
+        font-size: 12pt;
+        margin-bottom: 4pt;
+    }
+
+    .job-description {
+        font-size: 10pt;
+        line-height: 1.4;
+    }
+}
+
+/* =================================================================
+   13. ASSISTIVE TECHNOLOGY SUPPORT
+================================================================= */
+
+/* Enhanced NVDA/JAWS support */
+.at-only {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
+/* Voice control landmarks */
+[data-voice-command] {
+    position: relative;
+}
+
+[data-voice-command]::before {
+    content: attr(data-voice-command);
+    position: absolute;
+    left: -9999px;
+    font-size: 0;
+}
+
+/* Dragon NaturallySpeaking support */
+.dragon-command {
+    position: relative;
+}
+
+.dragon-command[data-dragon-name]::after {
+    content: attr(data-dragon-name);
+    position: absolute;
+    left: -9999px;
+    speak: none;
+}
+
+/* Switch navigation support */
+.switch-nav-target {
+    outline: 3px solid transparent;
+    outline-offset: 2px;
+    transition: outline-color 0.2s ease;
+}
+
+.switch-nav-target.switch-selected {
+    outline-color: #fbbf24;
+    background-color: rgba(251, 191, 36, 0.1);
+}
+
+/* Eye tracking support */
+.eye-tracking-target {
+    min-width: 60px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Sip and puff support */
+.sip-puff-navigation {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 12px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sip-puff-navigation.visible {
+    opacity: 1;
+}
+
+.sip-puff-button {
+    width: 40px;
+    height: 40px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =================================================================
+   14. ERROR HANDLING & VALIDATION
+================================================================= */
+
+/* Accessible error states */
+.error-container {
+    background: #fee2e2;
+    border: 2px solid #dc2626;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+    color: #991b1b;
+}
+
+.error-container h2 {
+    margin: 0 0 12px 0;
+    color: #7f1d1d;
+    font-size: 1.25rem;
+}
+
+.error-container p {
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.error-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Form error summary */
+.form-error-summary {
+    background: #fee2e2;
+    border: 2px solid #dc2626;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+    color: #991b1b;
+}
+
+.form-error-summary h3 {
+    margin: 0 0 16px 0;
+    color: #7f1d1d;
+    font-size: 1.125rem;
+}
+
+.form-error-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.form-error-list li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.form-error-list li a {
+    color: #7f1d1d;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.form-error-list li a:hover,
+.form-error-list li a:focus {
+    color: #450a0a;
+}
+
+/* Field-level error indicators */
+.field-error {
+    border-color: #dc2626 !important;
+    background-color: #fef2f2;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.field-error-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #dc2626;
+    font-size: 20px;
+    pointer-events: none;
+}
+
+/* Success states */
+.field-success {
+    border-color: #16a34a !important;
+    background-color: #f0fdf4;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+.field-success-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #16a34a;
+    font-size: 20px;
+    pointer-events: none;
+}
+
+/* =================================================================
+   15. INTERNATIONALIZATION SUPPORT
+================================================================= */
+
+/* RTL language support */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .form-check {
+    padding-right: 32px;
+    padding-left: 0;
+}
+
+[dir="rtl"] .form-check-label::before {
+    left: auto;
+    right: -32px;
+}
+
+[dir="rtl"] .form-check-input:checked + .form-check-label::after {
+    left: auto;
+    right: -28px;
+}
+
+[dir="rtl"] .breadcrumb-item:not(:last-child)::after {
+    content: "‹";
+}
+
+[dir="rtl"] .skip-link {
+    left: auto;
+    right: 6px;
+}
+
+[dir="rtl"] .page-nav-link {
+    text-align: right;
+}
+
+/* Language-specific adjustments */
+.lang-ar,
+.lang-he {
+    font-family: 'Amiri', 'Noto Sans Arabic', serif;
+    line-height: 1.8;
+}
+
+.lang-zh,
+.lang-ja,
+.lang-ko {
+    font-family: 'Noto Sans CJK', sans-serif;
+    line-height: 1.7;
+}
+
+.lang-th {
+    font-family: 'Noto Sans Thai', sans-serif;
+    line-height: 1.6;
+}
+
+/* Font size adjustments for different scripts */
+.script-arabic {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.script-devanagari {
+    font-size: 1.05em;
+    line-height: 1.7;
+}
+
+.script-cyrillic {
+    line-height: 1.6;
+}
+
+/* Accessibility preferences persistence */
+.accessibility-preferences-saved {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #10b981;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    z-index: 999999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.accessibility-preferences-saved.show {
+    opacity: 1;
+}
+
+/* =================================================================
+   UTILITY CLASSES FOR ACCESSIBILITY
+================================================================= */
+
+/* Visibility utilities */
+.a11y-hidden { display: none !important; }
+.a11y-visible { display: block !important; }
+.a11y-sr-only { @extend .sr-only; }
+
+/* Focus utilities */
+.a11y-focus-ring:focus { outline: 3px solid #2563eb; outline-offset: 2px; }
+.a11y-no-focus:focus { outline: none; }
+
+/* Text utilities */
+.a11y-high-contrast { color: #000 !important; background: #fff !important; }
+.a11y-large-text { font-size: 1.25em !important; line-height: 1.6 !important; }
+.a11y-readable-font { font-family: Arial, sans-serif !important; }
+
+/* Skip utilities */
+.a11y-skip-content { @extend .skip-link; }
+
+/* ARIA utilities */
+.a11y-live-polite { speak: polite; }
+.a11y-live-assertive { speak: assertive; }
+.a11y-live-off { speak: none; }
+
+/* =================================================================
+   END OF ACCESSIBILITY CSS
+================================================================= */

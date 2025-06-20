@@ -1,0 +1,1053 @@
+/*
+ * Responsive Design Styles - RecruitPro Theme
+ * 
+ * Mobile-first responsive design for recruitment agencies
+ * Optimized for candidates and clients across all devices
+ * 
+ * @package RecruitPro
+ * @since 1.0.0
+ */
+
+/* =================================================================
+   BREAKPOINT VARIABLES (CSS Custom Properties)
+================================================================= */
+
+:root {
+    /* Breakpoints */
+    --breakpoint-xs: 320px;   /* Small phones */
+    --breakpoint-sm: 576px;   /* Large phones */
+    --breakpoint-md: 768px;   /* Tablets */
+    --breakpoint-lg: 992px;   /* Small desktops */
+    --breakpoint-xl: 1200px;  /* Large desktops */
+    --breakpoint-xxl: 1400px; /* Extra large screens */
+    
+    /* Container widths */
+    --container-sm: 540px;
+    --container-md: 720px;
+    --container-lg: 960px;
+    --container-xl: 1140px;
+    --container-xxl: 1320px;
+    
+    /* Spacing scale */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-xxl: 4rem;
+}
+
+/* =================================================================
+   MOBILE-FIRST BASE STYLES (320px+)
+================================================================= */
+
+/* Base mobile styles */
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Container system */
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Grid system - mobile first */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.5rem;
+}
+
+.col {
+    flex: 1;
+    padding: 0 0.5rem;
+    min-width: 0;
+}
+
+/* Column classes */
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+.col-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+.col-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+.col-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+.col-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+.col-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+
+/* =================================================================
+   MOBILE TYPOGRAPHY (320px+)
+================================================================= */
+
+h1 { font-size: 1.875rem; line-height: 1.2; margin-bottom: 1rem; }
+h2 { font-size: 1.5rem; line-height: 1.3; margin-bottom: 0.875rem; }
+h3 { font-size: 1.25rem; line-height: 1.4; margin-bottom: 0.75rem; }
+h4 { font-size: 1.125rem; line-height: 1.4; margin-bottom: 0.75rem; }
+h5 { font-size: 1rem; line-height: 1.5; margin-bottom: 0.5rem; }
+h6 { font-size: 0.875rem; line-height: 1.5; margin-bottom: 0.5rem; }
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* =================================================================
+   MOBILE NAVIGATION
+================================================================= */
+
+.header-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 1rem;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+}
+
+.site-logo {
+    max-width: 150px;
+    height: auto;
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #2563eb;
+}
+
+.mobile-menu-toggle:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* Main navigation - hidden on mobile */
+.main-navigation {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: #ffffff;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    z-index: 999;
+}
+
+.main-navigation.active {
+    left: 0;
+}
+
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 1rem;
+}
+
+.main-navigation li {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.main-navigation a {
+    display: block;
+    padding: 1rem 0;
+    color: #374151;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.main-navigation a:hover,
+.main-navigation a:focus {
+    color: #2563eb;
+}
+
+/* Sub-menus on mobile */
+.main-navigation .sub-menu {
+    display: none;
+    padding-left: 1rem;
+}
+
+.main-navigation .menu-item-has-children > a::after {
+    content: '+';
+    float: right;
+    font-size: 1.2rem;
+}
+
+.main-navigation .menu-item-has-children.open > a::after {
+    content: '−';
+}
+
+.main-navigation .menu-item-has-children.open .sub-menu {
+    display: block;
+}
+
+/* =================================================================
+   MOBILE HERO SECTION
+================================================================= */
+
+.hero-section {
+    padding: 6rem 1rem 3rem;
+    text-align: center;
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    color: #ffffff;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    max-width: 100%;
+}
+
+.hero-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-primary,
+.btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: inline-block;
+    touch-action: manipulation;
+}
+
+.btn-primary {
+    background: #ffffff;
+    color: #2563eb;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+/* =================================================================
+   MOBILE FORMS & INPUTS
+================================================================= */
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.875rem;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 1.5;
+    background: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-control:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    outline: none;
+}
+
+/* File upload styling */
+.file-upload-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+}
+
+.file-upload-input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-upload-label {
+    display: block;
+    padding: 2rem 1rem;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    text-align: center;
+    background: #f9fafb;
+    transition: all 0.3s ease;
+}
+
+.file-upload-label:hover,
+.file-upload-input:focus + .file-upload-label {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+/* Select dropdowns */
+.form-select {
+    width: 100%;
+    padding: 0.875rem;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #ffffff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") no-repeat right 0.75rem center/1.5em 1.5em;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* =================================================================
+   MOBILE JOB LISTINGS
+================================================================= */
+
+.job-listings {
+    padding: 2rem 1rem;
+}
+
+.job-listing-item {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job-listing-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.job-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.job-company {
+    font-size: 1rem;
+    color: #2563eb;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.job-meta-item {
+    background: #f3f4f6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.job-excerpt {
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.job-apply-btn {
+    width: 100%;
+    background: #2563eb;
+    color: #ffffff;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    touch-action: manipulation;
+}
+
+.job-apply-btn:hover {
+    background: #1d4ed8;
+}
+
+/* =================================================================
+   MOBILE FEATURES GRID
+================================================================= */
+
+.features-grid {
+    padding: 3rem 1rem;
+    background: #f9fafb;
+}
+
+.features-container {
+    max-width: 100%;
+}
+
+.features-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.features-subtitle {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 3rem;
+    font-size: 1.125rem;
+}
+
+.features-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.feature-item {
+    background: #ffffff;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-4px);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: #eff6ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    color: #2563eb;
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+}
+
+.feature-description {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* =================================================================
+   MOBILE FOOTER
+================================================================= */
+
+.footer-main {
+    background: #1f2937;
+    color: #ffffff;
+    padding: 3rem 1rem 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #d1d5db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.875rem;
+}
+
+/* =================================================================
+   SMALL MOBILE DEVICES (320px - 575px)
+================================================================= */
+
+@media (max-width: 575px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .job-listing-item {
+        padding: 1.25rem;
+    }
+    
+    .job-meta {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .job-meta-item {
+        text-align: center;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* =================================================================
+   LARGE MOBILE / SMALL TABLET (576px+)
+================================================================= */
+
+@media (min-width: 576px) {
+    .container {
+        max-width: var(--container-sm);
+        padding: 0 1.5rem;
+    }
+    
+    .hero-cta {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: auto;
+        min-width: 160px;
+    }
+    
+    .features-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Column classes for small screens */
+    .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+    .col-sm-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-sm-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-sm-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-sm-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-sm-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-sm-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-sm-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-sm-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-sm-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-sm-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-sm-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+}
+
+/* =================================================================
+   TABLET (768px+)
+================================================================= */
+
+@media (min-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+    
+    .container {
+        max-width: var(--container-md);
+        padding: 0 2rem;
+    }
+    
+    /* Typography scaling */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    
+    /* Header adjustments */
+    .header-main {
+        padding: 1rem 2rem;
+    }
+    
+    .mobile-menu-toggle {
+        display: none;
+    }
+    
+    .main-navigation {
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        overflow: visible;
+    }
+    
+    .main-navigation ul {
+        display: flex;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .main-navigation li {
+        border-bottom: none;
+        margin-left: 2rem;
+        position: relative;
+    }
+    
+    .main-navigation a {
+        padding: 0.5rem 0;
+    }
+    
+    .main-navigation .sub-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 0.5rem 0;
+        min-width: 200px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+    
+    .main-navigation .menu-item-has-children:hover .sub-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    /* Hero section */
+    .hero-section {
+        padding: 8rem 2rem 4rem;
+        min-height: 80vh;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    /* Job listings */
+    .job-listings {
+        padding: 4rem 2rem;
+    }
+    
+    .job-listing-item {
+        padding: 2rem;
+    }
+    
+    .job-meta {
+        flex-direction: row;
+    }
+    
+    .job-apply-btn {
+        width: auto;
+        min-width: 150px;
+    }
+    
+    /* Features grid */
+    .features-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+    
+    .features-grid {
+        padding: 4rem 2rem;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Column classes for medium screens */
+    .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+    .col-md-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-md-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-md-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-md-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-md-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-md-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-md-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-md-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-md-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-md-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+}
+
+/* =================================================================
+   SMALL DESKTOP (992px+)
+================================================================= */
+
+@media (min-width: 992px) {
+    .container {
+        max-width: var(--container-lg);
+    }
+    
+    /* Hero section */
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    /* Features grid */
+    .features-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Column classes for large screens */
+    .col-lg-12 { flex: 0 0 100%; max-width: 100%; }
+    .col-lg-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-lg-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-lg-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-lg-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-lg-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-lg-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-lg-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-lg-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-lg-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-lg-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+}
+
+/* =================================================================
+   LARGE DESKTOP (1200px+)
+================================================================= */
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: var(--container-xl);
+    }
+    
+    /* Typography */
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.25rem; }
+    
+    /* Hero section */
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.375rem;
+    }
+    
+    /* Column classes for extra large screens */
+    .col-xl-12 { flex: 0 0 100%; max-width: 100%; }
+    .col-xl-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-xl-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-xl-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-xl-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-xl-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-xl-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-xl-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-xl-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-xl-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-xl-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-xl-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+}
+
+/* =================================================================
+   EXTRA LARGE DESKTOP (1400px+)
+================================================================= */
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: var(--container-xxl);
+    }
+    
+    /* Hero section */
+    .hero-title {
+        font-size: 4.5rem;
+    }
+    
+    /* Column classes for extra extra large screens */
+    .col-xxl-12 { flex: 0 0 100%; max-width: 100%; }
+    .col-xxl-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-xxl-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-xxl-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-xxl-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-xxl-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-xxl-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-xxl-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-xxl-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-xxl-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-xxl-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-xxl-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+}
+
+/* =================================================================
+   UTILITY CLASSES FOR RESPONSIVE DESIGN
+================================================================= */
+
+/* Display utilities */
+.d-block { display: block !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-flex { display: flex !important; }
+.d-grid { display: grid !important; }
+.d-none { display: none !important; }
+
+/* Responsive display utilities */
+@media (max-width: 575px) {
+    .d-xs-none { display: none !important; }
+    .d-xs-block { display: block !important; }
+    .d-xs-flex { display: flex !important; }
+}
+
+@media (min-width: 576px) {
+    .d-sm-none { display: none !important; }
+    .d-sm-block { display: block !important; }
+    .d-sm-flex { display: flex !important; }
+}
+
+@media (min-width: 768px) {
+    .d-md-none { display: none !important; }
+    .d-md-block { display: block !important; }
+    .d-md-flex { display: flex !important; }
+}
+
+@media (min-width: 992px) {
+    .d-lg-none { display: none !important; }
+    .d-lg-block { display: block !important; }
+    .d-lg-flex { display: flex !important; }
+}
+
+@media (min-width: 1200px) {
+    .d-xl-none { display: none !important; }
+    .d-xl-block { display: block !important; }
+    .d-xl-flex { display: flex !important; }
+}
+
+/* Text alignment utilities */
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+
+@media (max-width: 767px) {
+    .text-sm-center { text-align: center !important; }
+    .text-sm-left { text-align: left !important; }
+}
+
+@media (min-width: 768px) {
+    .text-md-left { text-align: left !important; }
+    .text-md-center { text-align: center !important; }
+    .text-md-right { text-align: right !important; }
+}
+
+/* Spacing utilities */
+.m-0 { margin: 0 !important; }
+.m-1 { margin: 0.5rem !important; }
+.m-2 { margin: 1rem !important; }
+.m-3 { margin: 1.5rem !important; }
+.m-4 { margin: 2rem !important; }
+.m-5 { margin: 3rem !important; }
+
+.p-0 { padding: 0 !important; }
+.p-1 { padding: 0.5rem !important; }
+.p-2 { padding: 1rem !important; }
+.p-3 { padding: 1.5rem !important; }
+.p-4 { padding: 2rem !important; }
+.p-5 { padding: 3rem !important; }
+
+/* =================================================================
+   TOUCH AND MOBILE OPTIMIZATIONS
+================================================================= */
+
+/* Touch-friendly sizing */
+.touch-target {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Prevent text selection on touch devices */
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Optimize touch interactions */
+.touch-action-manipulation {
+    touch-action: manipulation;
+}
+
+/* Remove tap highlight */
+.no-tap-highlight {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* =================================================================
+   ACCESSIBILITY ENHANCEMENTS
+================================================================= */
+
+/* Focus styles for better accessibility */
+.focus-visible:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #2563eb;
+    color: #ffffff;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 10000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* =================================================================
+   PERFORMANCE OPTIMIZATIONS FOR MOBILE
+================================================================= */
+
+/* Reduce animations on slow devices */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Optimize scroll performance */
+.scroll-optimized {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
+
+/* =================================================================
+   HIGH DPI / RETINA DISPLAYS
+================================================================= */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* High DPI optimizations */
+    .retina-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* =================================================================
+   LANDSCAPE ORIENTATION
+================================================================= */
+
+@media (orientation: landscape) and (max-height: 600px) {
+    .hero-section {
+        min-height: 100vh;
+        padding: 5rem 1rem 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* =================================================================
+   END OF FILE
+================================================================= */

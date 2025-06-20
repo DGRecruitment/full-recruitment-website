@@ -1,0 +1,2108 @@
+/*
+=================================================================
+RECRUITPRO THEME - ELEMENTOR INTEGRATION CSS
+=================================================================
+Elementor Page Builder Integration & Custom Widgets
+Version: 1.0.0
+Author: RecruitPro Team
+Description: Seamless Elementor integration for recruitment websites
+=================================================================
+
+TABLE OF CONTENTS:
+1. ELEMENTOR FOUNDATION & VARIABLES
+2. THEME COMPATIBILITY LAYER
+3. CUSTOM RECRUITMENT WIDGETS
+4. JOB LISTING WIDGETS
+5. CANDIDATE FORM WIDGETS
+6. COMPANY SHOWCASE WIDGETS
+7. TESTIMONIAL & REVIEW WIDGETS
+8. STATISTICS & COUNTERS
+9. CALL-TO-ACTION WIDGETS
+10. HERO SECTION WIDGETS
+11. TEAM MEMBER WIDGETS
+12. PROCESS STEP WIDGETS
+13. PRICING TABLE WIDGETS
+14. BLOG & NEWS WIDGETS
+15. CONTACT & LOCATION WIDGETS
+16. SOCIAL MEDIA WIDGETS
+17. RESPONSIVE ELEMENTOR DESIGN
+18. ACCESSIBILITY ENHANCEMENTS
+19. PERFORMANCE OPTIMIZATIONS
+20. ELEMENTOR EDITOR STYLING
+
+=================================================================
+*/
+
+/* =================================================================
+   1. ELEMENTOR FOUNDATION & VARIABLES
+================================================================= */
+
+/* Elementor Variables - Inherit from Theme */
+:root {
+    /* RecruitPro Brand Colors for Elementor */
+    --elementor-primary: #2563eb;
+    --elementor-primary-light: #3b82f6;
+    --elementor-primary-dark: #1d4ed8;
+    --elementor-primary-50: #eff6ff;
+    --elementor-primary-100: #dbeafe;
+    --elementor-primary-500: #3b82f6;
+    --elementor-primary-600: #2563eb;
+    --elementor-primary-700: #1d4ed8;
+    --elementor-primary-900: #1e3a8a;
+
+    /* Secondary Colors */
+    --elementor-secondary: #10b981;
+    --elementor-secondary-light: #34d399;
+    --elementor-secondary-dark: #059669;
+    --elementor-secondary-50: #ecfdf5;
+    --elementor-secondary-100: #d1fae5;
+
+    /* Accent Colors */
+    --elementor-accent: #f59e0b;
+    --elementor-accent-light: #fbbf24;
+    --elementor-accent-dark: #d97706;
+
+    /* Neutral Colors */
+    --elementor-text: #1f2937;
+    --elementor-text-light: #6b7280;
+    --elementor-text-muted: #9ca3af;
+    --elementor-background: #ffffff;
+    --elementor-background-alt: #f9fafb;
+    --elementor-background-dark: #111827;
+    --elementor-border: #e5e7eb;
+    --elementor-border-light: #f3f4f6;
+
+    /* Status Colors */
+    --elementor-success: #10b981;
+    --elementor-warning: #f59e0b;
+    --elementor-error: #ef4444;
+    --elementor-info: #3b82f6;
+
+    /* Typography */
+    --elementor-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --elementor-font-secondary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --elementor-font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+
+    /* Spacing */
+    --elementor-spacing-xs: 4px;
+    --elementor-spacing-sm: 8px;
+    --elementor-spacing-md: 16px;
+    --elementor-spacing-lg: 24px;
+    --elementor-spacing-xl: 32px;
+    --elementor-spacing-2xl: 48px;
+    --elementor-spacing-3xl: 64px;
+    --elementor-spacing-4xl: 80px;
+    --elementor-spacing-5xl: 96px;
+
+    /* Border Radius */
+    --elementor-radius-sm: 4px;
+    --elementor-radius-md: 6px;
+    --elementor-radius-lg: 8px;
+    --elementor-radius-xl: 12px;
+    --elementor-radius-2xl: 16px;
+    --elementor-radius-full: 9999px;
+
+    /* Shadows */
+    --elementor-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --elementor-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --elementor-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --elementor-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --elementor-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    /* Transitions */
+    --elementor-transition-fast: 150ms ease-in-out;
+    --elementor-transition-normal: 300ms ease-in-out;
+    --elementor-transition-slow: 500ms ease-in-out;
+
+    /* Container Widths */
+    --elementor-container-sm: 640px;
+    --elementor-container-md: 768px;
+    --elementor-container-lg: 1024px;
+    --elementor-container-xl: 1280px;
+    --elementor-container-2xl: 1536px;
+}
+
+/* Elementor Container Adjustments */
+.elementor-container {
+    max-width: var(--elementor-container-xl);
+    margin: 0 auto;
+    padding-left: var(--elementor-spacing-md);
+    padding-right: var(--elementor-spacing-md);
+}
+
+.elementor-container.elementor-container-fluid {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* =================================================================
+   2. THEME COMPATIBILITY LAYER
+================================================================= */
+
+/* Elementor Page Title Integration */
+.elementor-page-title {
+    display: none;
+}
+
+.elementor-page .entry-title {
+    display: none;
+}
+
+/* Reset Elementor Default Styles */
+.elementor-widget-wrap {
+    align-items: stretch;
+}
+
+.elementor-section {
+    position: relative;
+}
+
+.elementor-section-wrap {
+    overflow: hidden;
+}
+
+/* Typography Inheritance */
+.elementor-widget-heading h1,
+.elementor-widget-heading h2,
+.elementor-widget-heading h3,
+.elementor-widget-heading h4,
+.elementor-widget-heading h5,
+.elementor-widget-heading h6 {
+    font-family: var(--elementor-font-secondary);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    color: var(--elementor-text);
+}
+
+.elementor-widget-text-editor {
+    font-family: var(--elementor-font-primary);
+    line-height: 1.6;
+    color: var(--elementor-text);
+}
+
+.elementor-widget-text-editor p {
+    margin-bottom: var(--elementor-spacing-md);
+}
+
+.elementor-widget-text-editor h1,
+.elementor-widget-text-editor h2,
+.elementor-widget-text-editor h3,
+.elementor-widget-text-editor h4,
+.elementor-widget-text-editor h5,
+.elementor-widget-text-editor h6 {
+    font-family: var(--elementor-font-secondary);
+    font-weight: 700;
+    margin-bottom: var(--elementor-spacing-md);
+    color: var(--elementor-text);
+}
+
+/* Button Integration */
+.elementor-widget-button .elementor-button {
+    background: var(--elementor-primary);
+    border: none;
+    border-radius: var(--elementor-radius-md);
+    color: var(--elementor-background);
+    font-family: var(--elementor-font-primary);
+    font-weight: 600;
+    padding: var(--elementor-spacing-md) var(--elementor-spacing-xl);
+    text-decoration: none;
+    transition: all var(--elementor-transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--elementor-spacing-sm);
+}
+
+.elementor-widget-button .elementor-button:hover {
+    background: var(--elementor-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--elementor-shadow-lg);
+}
+
+.elementor-widget-button .elementor-button:focus {
+    outline: 2px solid var(--elementor-primary);
+    outline-offset: 2px;
+}
+
+/* Icon Integration */
+.elementor-widget-icon i {
+    color: var(--elementor-primary);
+    transition: color var(--elementor-transition-fast);
+}
+
+.elementor-widget-icon:hover i {
+    color: var(--elementor-primary-dark);
+}
+
+/* Image Integration */
+.elementor-widget-image img {
+    border-radius: var(--elementor-radius-lg);
+    box-shadow: var(--elementor-shadow-sm);
+    transition: transform var(--elementor-transition-normal), box-shadow var(--elementor-transition-normal);
+}
+
+.elementor-widget-image:hover img {
+    transform: scale(1.02);
+    box-shadow: var(--elementor-shadow-lg);
+}
+
+/* Spacer Integration */
+.elementor-widget-spacer {
+    clear: both;
+}
+
+/* Divider Integration */
+.elementor-widget-divider .elementor-divider-separator {
+    border-top: 2px solid var(--elementor-border);
+}
+
+.elementor-widget-divider.elementor-divider-primary .elementor-divider-separator {
+    border-color: var(--elementor-primary);
+}
+
+/* =================================================================
+   3. CUSTOM RECRUITMENT WIDGETS
+================================================================= */
+
+/* RecruitPro Widget Base Styles */
+.elementor-widget.recruitpro-widget {
+    background: var(--elementor-background);
+    border-radius: var(--elementor-radius-xl);
+    box-shadow: var(--elementor-shadow-sm);
+    overflow: hidden;
+    transition: all var(--elementor-transition-normal);
+}
+
+.elementor-widget.recruitpro-widget:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--elementor-shadow-xl);
+}
+
+.recruitpro-widget-header {
+    background: linear-gradient(135deg, var(--elementor-primary), var(--elementor-primary-dark));
+    color: var(--elementor-background);
+    padding: var(--elementor-spacing-lg) var(--elementor-spacing-xl);
+    text-align: center;
+}
+
+.recruitpro-widget-title {
+    font-family: var(--elementor-font-secondary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: inherit;
+}
+
+.recruitpro-widget-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: var(--elementor-spacing-xs) 0 0;
+}
+
+.recruitpro-widget-content {
+    padding: var(--elementor-spacing-xl);
+}
+
+.recruitpro-widget-footer {
+    padding: var(--elementor-spacing-lg) var(--elementor-spacing-xl);
+    background: var(--elementor-background-alt);
+    text-align: center;
+    border-top: 1px solid var(--elementor-border);
+}
+
+/* Widget Icons */
+.recruitpro-widget-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--elementor-background);
+    border-radius: var(--elementor-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--elementor-spacing-md);
+    box-shadow: var(--elementor-shadow-md);
+    color: var(--elementor-primary);
+    font-size: 1.5rem;
+}
+
+/* =================================================================
+   4. JOB LISTING WIDGETS
+================================================================= */
+
+/* Job Cards Widget */
+.elementor-widget-recruitpro-job-cards .job-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--elementor-spacing-xl);
+}
+
+.elementor-widget-recruitpro-job-cards .job-card {
+    background: var(--elementor-background);
+    border: 1px solid var(--elementor-border);
+    border-radius: var(--elementor-radius-xl);
+    padding: var(--elementor-spacing-xl);
+    transition: all var(--elementor-transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.elementor-widget-recruitpro-job-cards .job-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--elementor-primary), var(--elementor-secondary));
+    transform: scaleX(0);
+    transition: transform var(--elementor-transition-normal);
+}
+
+.elementor-widget-recruitpro-job-cards .job-card:hover::before {
+    transform: scaleX(1);
+}
+
+.elementor-widget-recruitpro-job-cards .job-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--elementor-shadow-xl);
+    border-color: var(--elementor-primary);
+}
+
+.job-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--elementor-spacing-md);
+    margin-bottom: var(--elementor-spacing-lg);
+}
+
+.job-company-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--elementor-radius-lg);
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--elementor-background-alt);
+    border: 1px solid var(--elementor-border);
+}
+
+.job-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.job-title {
+    font-family: var(--elementor-font-secondary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--elementor-spacing-xs);
+    line-height: 1.3;
+    color: var(--elementor-text);
+}
+
+.job-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--elementor-transition-fast);
+}
+
+.job-title a:hover {
+    color: var(--elementor-primary);
+}
+
+.job-company {
+    font-size: 1rem;
+    color: var(--elementor-text-light);
+    margin-bottom: var(--elementor-spacing-xs);
+}
+
+.job-location {
+    font-size: 0.875rem;
+    color: var(--elementor-text-muted);
+    display: flex;
+    align-items: center;
+    gap: var(--elementor-spacing-xs);
+}
+
+.job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--elementor-spacing-sm);
+    margin-bottom: var(--elementor-spacing-lg);
+}
+
+.job-meta-item {
+    background: var(--elementor-background-alt);
+    color: var(--elementor-text-muted);
+    padding: var(--elementor-spacing-xs) var(--elementor-spacing-sm);
+    border-radius: var(--elementor-radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.job-meta-item.job-type {
+    background: var(--elementor-primary-50);
+    color: var(--elementor-primary);
+}
+
+.job-meta-item.job-level {
+    background: var(--elementor-secondary-50);
+    color: var(--elementor-secondary);
+}
+
+.job-excerpt {
+    color: var(--elementor-text-light);
+    line-height: 1.6;
+    margin-bottom: var(--elementor-spacing-lg);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.job-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--elementor-spacing-xs);
+    margin-bottom: var(--elementor-spacing-lg);
+}
+
+.job-skill {
+    background: var(--elementor-background-alt);
+    color: var(--elementor-text);
+    padding: var(--elementor-spacing-xs) var(--elementor-spacing-sm);
+    border-radius: var(--elementor-radius-full);
+    font-size: 0.75rem;
+    border: 1px solid var(--elementor-border);
+}
+
+.job-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--elementor-spacing-lg);
+    border-top: 1px solid var(--elementor-border-light);
+}
+
+.job-salary {
+    font-weight: 700;
+    color: var(--elementor-secondary);
+    font-size: 1.125rem;
+}
+
+.job-posted {
+    font-size: 0.875rem;
+    color: var(--elementor-text-muted);
+}
+
+.job-apply-btn {
+    background: var(--elementor-primary);
+    color: var(--elementor-background);
+    padding: var(--elementor-spacing-sm) var(--elementor-spacing-lg);
+    border: none;
+    border-radius: var(--elementor-radius-md);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--elementor-transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--elementor-spacing-xs);
+}
+
+.job-apply-btn:hover {
+    background: var(--elementor-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--elementor-shadow-md);
+}
+
+/* Job Search Widget */
+.elementor-widget-recruitpro-job-search .job-search-form {
+    background: var(--elementor-background);
+    border: 1px solid var(--elementor-border);
+    border-radius: var(--elementor-radius-xl);
+    padding: var(--elementor-spacing-xl);
+    box-shadow: var(--elementor-shadow-lg);
+}
+
+.job-search-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: var(--elementor-spacing-md);
+    align-items: end;
+}
+
+.job-search-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-search-label {
+    font-weight: 600;
+    margin-bottom: var(--elementor-spacing-xs);
+    color: var(--elementor-text);
+    font-size: 0.875rem;
+}
+
+.job-search-input,
+.job-search-select {
+    padding: var(--elementor-spacing-md);
+    border: 1px solid var(--elementor-border);
+    border-radius: var(--elementor-radius-md);
+    font-size: 1rem;
+    background: var(--elementor-background);
+    color: var(--elementor-text);
+    transition: border-color var(--elementor-transition-fast);
+}
+
+.job-search-input:focus,
+.job-search-select:focus {
+    outline: none;
+    border-color: var(--elementor-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.job-search-btn {
+    background: var(--elementor-primary);
+    color: var(--elementor-background);
+    border: none;
+    padding: var(--elementor-spacing-md) var(--elementor-spacing-xl);
+    border-radius: var(--elementor-radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--elementor-transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--elementor-spacing-sm);
+}
+
+.job-search-btn:hover {
+    background: var(--elementor-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--elementor-shadow-md);
+}
+
+/* Job Categories Widget */
+.elementor-widget-recruitpro-job-categories .job-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--elementor-spacing-lg);
+}
+
+.job-category-card {
+    background: var(--elementor-background);
+    border: 1px solid var(--elementor-border);
+    border-radius: var(--elementor-radius-lg);
+    padding: var(--elementor-spacing-xl);
+    text-align: center;
+    transition: all var(--elementor-transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.job-category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--elementor-primary);
+    transform: scaleX(0);
+    transition: transform var(--elementor-transition-normal);
+}
+
+.job-category-card:hover::before {
+    transform: scaleX(1);
+}
+
+.job-category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--elementor-shadow-lg);
+    border-color: var(--elementor-primary);
+}
+
+.job-category-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--elementor-primary-50);
+    border-radius: var(--elementor-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--elementor-spacing-lg);
+    color: var(--elementor-primary);
+    font-size: 2rem;
+    transition: all var(--elementor-transition-normal);
+}
+
+.job-category-card:hover .job-category-icon {
+    background: var(--elementor-primary);
+    color: var(--elementor-background);
+    transform: scale(1.1);
+}
+
+.job-category-title {
+    font-family: var(--elementor-font-secondary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--elementor-spacing-sm);
+    color: var(--elementor-text);
+}
+
+.job-category-count {
+    font-size: 0.875rem;
+    color: var(--elementor-text-muted);
+    margin-bottom: var(--elementor-spacing-md);
+}
+
+.job-category-description {
+    color: var(--elementor-text-light);
+    line-height: 1.5;
+    font-size: 0.875rem;
+}
+
+/* =================================================================
+   5. CANDIDATE FORM WIDGETS
+================================================================= */
+
+/* Application Form Widget */
+.elementor-widget-recruitpro-application-form .application-form {
+    background: var(--elementor-background);
+    border-radius: var(--elementor-radius-xl);
+    padding: var(--elementor-spacing-2xl);
+    box-shadow: var(--elementor-shadow-lg);
+    border: 1px solid var(--elementor-border);
+}
+
+.application-form-header {
+    text-align: center;
+    margin-bottom: var(--elementor-spacing-2xl);
+    padding-bottom: var(--elementor-spacing-lg);
+    border-bottom: 2px solid var(--elementor-primary);
+}
+
+.application-form-title {
+    font-family: var(--elementor-font-secondary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--elementor-spacing-sm);
+    color: var(--elementor-text);
+}
+
+.application-form-subtitle {
+    color: var(--elementor-text-light);
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+
+.application-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--elementor-spacing-lg);
+    margin-bottom: var(--elementor-spacing-lg);
+}
+
+.application-form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.application-form-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.application-form-label {
+    font-weight: 600;
+    margin-bottom: var(--elementor-spacing-sm);
+    color: var(--elementor-text);
+    font-size: 0.875rem;
+}
+
+.application-form-label.required::after {
+    content: ' *';
+    color: var(--elementor-error);
+    font-weight: 700;
+}
+
+.application-form-input,
+.application-form-textarea,
+.application-form-select {
+    padding: var(--elementor-spacing-md);
+    border: 1px solid var(--elementor-border);
+    border-radius: var(--elementor-radius-md);
+    font-size: 1rem;
+    background: var(--elementor-background);
+    color: var(--elementor-text);
+    transition: all var(--elementor-transition-fast);
+}
+
+.application-form-input:focus,
+.application-form-textarea:focus,
+.application-form-select:focus {
+    outline: none;
+    border-color: var(--elementor-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.application-form-textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: var(--elementor-font-primary);
+}
+
+/* File Upload Styling */
+.application-form-file-upload {
+    border: 2px dashed var(--elementor-border);
+    border-radius: var(--elementor-radius-lg);
+    padding: var(--elementor-spacing-2xl);
+    text-align: center;
+    background: var(--elementor-background-alt);
+    cursor: pointer;
+    transition: all var(--elementor-transition-fast);
+    position: relative;
+}
+
+.application-form-file-upload:hover,
+.application-form-file-upload.dragover {
+    border-color: var(--elementor-primary);
+    background: var(--elementor-primary-50);
+}
+
+.application-form-file-upload input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-upload-icon {
+    font-size: 3rem;
+    color: var(--elementor-text-muted);
+    margin-bottom: var(--elementor-spacing-md);
+}
+
+.file-upload-text {
+    font-weight: 600;
+    color: var(--elementor-text);
+    margin-bottom: var(--elementor-spacing-sm);
+}
+
+.file-upload-hint {
+    font-size: 0.875rem;
+    color: var(--elementor-text-muted);
+}
+
+.application-form-submit {
+    background: var(--elementor-primary);
+    color: var(--elementor-background);
+    border: none;
+    padding: var(--elementor-spacing-lg) var(--elementor-spacing-2xl);
+    border-radius: var(--elementor-radius-md);
+    font-size: 1.125rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--elementor-transition-normal);
+    width: 100%;
+    margin-top: var(--elementor-spacing-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--elementor-spacing-sm);
+}
+
+.application-form-submit:hover {
+    background: var(--elementor-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--elementor-shadow-lg);
+}
+
+.application-form-submit:disabled {
+    background: var(--elementor-text-muted);
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Contact Form Widget */
+.elementor-widget-recruitpro-contact-form .contact-form {
+    background: var(--elementor-background);
+    border-radius: var(--elementor-radius-lg);
+    padding: var(--elementor-spacing-xl);
+    box-shadow: var(--elementor-shadow-md);
+}
+
+.contact-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--elementor-spacing-md);
+}
+
+.contact-form-field.full-width {
+    grid-column: 1 / -1;
+}
+
+/* =================================================================
+   6. COMPANY SHOWCASE WIDGETS
+================================================================= */
+
+/* Company Info Widget */
+.elementor-widget-recruitpro-company-info .company-showcase {
+    background: var(--elementor-background);
+    border-radius: var(--elementor-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--elementor-shadow-lg);
+}
+
+.company-header {
+    background: linear-gradient(135deg, var(--elementor-primary), var(--elementor-primary-dark));
+    color: var(--elementor-background);
+    padding: var(--elementor-spacing-2xl);
+    text-align: center;
+    position: relative;
+}
+
+.company-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: var(--elementor-background);
+    border-radius: 50% 50% 0 0;
+}
+
+.company-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: var(--elementor-radius-full);
+    object-fit: cover;
+    margin: 0 auto var(--elementor-spacing-lg);
+    border: 4px solid var(--elementor-background);
+    box-shadow: var(--elementor-shadow-lg);
+}
+
+.company-name {
+    font-family: var(--elementor-font-secondary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--elementor-spacing-sm);
+    color: inherit;
+}
+
+.company-tagline {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: var(--elementor-spacing-lg);
+}
+
+.company-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--elementor-spacing-xl);
+    margin-bottom: var(--elementor-spacing-lg);
+}
+
+.company-stat {
+    text-align: center;
+}
+
+.company-stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: inherit;
+    display: block;
+}
+
+.company-stat-label {
+    font-size: 0.875rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.company-content {
+    padding: var(--elementor-spacing-2xl);
+}
+
+.company-description {
+    color: var(--elementor-text-light);
+    line-height: 1.7;
+    margin-bottom: var(--elementor-spacing-xl);
+    font-size: 1.125rem;
+}
+
+.company-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--elementor-spacing-lg);
+    margin-bottom: var(--elementor-spacing-xl);
+}
+
+.company-highlight {
+    text-align: center;
+    padding: var(--elementor-spacing-lg);
+    background: var(--elementor-background-alt);
+    border-radius: var(--elementor-radius-lg);
+}
+
+.company-highlight-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--elementor-primary-50);
+    border-radius: var(--elementor-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--elementor-spacing-md);
+    color: var(--elementor-primary);
+    font-size: 1.5rem;
+}
+
+.company-highlight-title {
+    font-family: var(--elementor-font-secondary);
+    font-weight: 600;
+    margin-bottom: var(--elementor-spacing-xs);
+    color: var(--elementor-text);
+}
+
+.company-highlight-description {
+    font-size: 0.875rem;
+    color: var(--elementor-text-light);
+    line-height: 1.5;
+}
+
+/* Company Culture Widget */
+.elementor-widget-recruitpro-company-culture .culture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--elementor-spacing-xl);
+}
+
+.culture-item {
+    background: var(--elementor-background);
+    border-radius: var(--elementor-radius-lg);
+    padding: var(--elementor-spacing-xl);
+    text-align: center;
+    box-shadow: var(--elementor-shadow-sm);
+    border: 1px solid var(--elementor-border);
+    transition: all var(--elementor-transition-normal);
+}
+
+.culture-item:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--elementor-shadow-lg);
+    border-color: var(--elementor-primary);
+}
+
+.culture-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--elementor-primary), var(--elementor-secondary));
+    border-radius: var(--elementor-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--elementor-spacing-lg);
+    color: var(--elementor-background);
+    font-size: 2rem;
+}
+
+.culture-title {
+    font-family: var(--elementor-font-secondary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--elementor-spacing-sm);
+    color: var(--elementor-text);
+}
+
+.culture-description {
+    color: var(--elementor-text-light);
+    line-height: 1.6;
+}
+
+/* =================================================================
+   7. TESTIMONIAL & REVIEW WIDGETS
+================================================================= */
+
+/* Testimonials Widget */
+.elementor-widget-recruitpro-testimonials .testimonials-slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--elementor-radius-xl);
+}
+
+.testimonial-card {
+    background: var(--elementor-background);
+    border-radius: var(--elementor-radius-xl);
+    padding: var(--elementor-spacing-2xl);
+    text-align: center;
+    box-shadow: var(--elementor-shadow-lg);
+    border: 1px solid var(--elementor-border);
+    margin: 0 var(--elementor-spacing-md);
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4rem;
+    color: var(--elementor-primary);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.testimonial-quote {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--elementor-text-light);
+    margin-bottom: var(--elementor-spacing-xl);
+    line-height: 1.6;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--elementor-spacing-md);
+}
+
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--elementor-radius-full);
+    object-fit: cover;
+    border: 3px solid var(--elementor-primary);
+}
+
+.testimonial-info {
+    text-align: left;
+}
+
+.testimonial-name {
+    font-family: var(--elementor-font-secondary);
+    font-weight: 700;
+    margin-bottom: var(--elementor-spacing-xs);
+    color: var(--elementor-text);
+}
+
+.testimonial-position {
+    font-size: 0.875rem;
+    color: var(--elementor-text-muted);
+    margin-bottom: var(--elementor-spacing-xs);
+}
+
+.testimonial-company {
+    font-size: 0.875rem;
+    color: var(--elementor-primary);
+    font-weight: 600;
+}
+
+.testimonial-rating {
+    display: flex;
+    gap: 2px;
+    margin-top: var(--elementor-spacing-sm);
+}
+
+.testimonial-star {
+    color: var(--elementor-accent);
+    font-size: 1rem;
+}
+
+/* Reviews Grid Widget */
+.elementor-widget-recruitpro-reviews .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--elementor-spacing-lg);
+}
+
+.review-card {
+    background: var(--elementor-background);
+    border-radius: var(--elementor-radius-lg);
+    padding: var(--elementor-spacing-xl);
+    box-shadow: var(--elementor-shadow-sm);
+    border: 1px solid var(--elementor-border);
+    transition: all var(--elementor-transition-normal);
+}
+
+.review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--elementor-shadow-lg);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: var(--elementor-spacing-md);
+    margin-bottom: var(--elementor-spacing-lg);
+}
+
+.review-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--elementor-radius-full);
+    object-fit: cover;
+}
+
+.review-author-info {
+    flex: 1;
+}
+
+.review-author-name {
+    font-weight: 600;
+    margin-bottom: var(--elementor-spacing-xs);
+    color: var(--elementor-text);
+}
+
+.review-author-title {
+    font-size: 0.875rem;
+    color: var(--elementor-text-muted);
+}
+
+.review-rating {
+    display: flex;
+    gap: 2px;
+}
+
+.review-text {
+    color: var(--elementor-text-light);
+    line-height: 1.6;
+    margin-bottom: var(--elementor-spacing-md);
+}
+
+.review-date {
+    font-size: 0.875rem;
+    color: var(--elementor-text-muted);
+    text-align: right;
+}
+
+/* =================================================================
+   8. STATISTICS & COUNTERS
+================================================================= */
+
+/* Counter Widget */
+.elementor-widget-recruitpro-counter .counter-container {
+    text-align: center;
+    padding: var(--elementor-spacing-xl);
+    background: var(--elementor-background);
+    border-radius: var(--elementor-radius-lg);
+    box-shadow: var(--elementor-shadow-sm);
+    border: 1px solid var(--elementor-border);
+    transition: all var(--elementor-transition-normal);
+}
+
+.elementor-widget-recruitpro-counter .counter-container:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--elementor-shadow-lg);
+}
+
+.counter-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--elementor-primary), var(--elementor-secondary));
+    border-radius: var(--elementor-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--elementor-spacing-lg);
+    color: var(--elementor-background);
+    font-size: 2rem;
+}
+
+.counter-number {
+    font-family: var(--elementor-font-secondary);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--elementor-text);
+    margin-bottom: var(--elementor-spacing-sm);
+    line-height: 1;
+}
+
+.counter-suffix {
+    font-size: 1.5rem;
+    color: var(--elementor-primary);
+    font-weight: 700;
+}
+
+.counter-title {
+    font-family: var(--elementor-font-secondary);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--elementor-text);
+    margin-bottom: var(--elementor-spacing-sm);
+}
+
+.counter-description {
+    font-size: 0.875rem;
+    color: var(--elementor-text-light);
+    line-height: 1.5;
+}
+
+/* Statistics Grid Widget */
+.elementor-widget-recruitpro-statistics .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--elementor-spacing-lg);
+}
+
+.stat-card {
+    background: var(--elementor-background);
+    border: 1px solid var(--elementor-border);
+    border-radius: var(--elementor-radius-lg);
+    padding: var(--elementor-spacing-xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--elementor-transition-normal);
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--elementor-primary), var(--elementor-secondary), var(--elementor-accent));
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--elementor-shadow-xl);
+}
+
+.stat-number {
+    font-family: var(--elementor-font-secondary);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--elementor-primary);
+    margin-bottom: var(--elementor-spacing-xs);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--elementor-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+/* Progress Bar Widget */
+.elementor-widget-recruitpro-progress .progress-container {
+    background: var(--elementor-background);
+    border-radius: var(--elementor-radius-lg);
+    padding: var(--elementor-spacing-xl);
+    box-shadow: var(--elementor-shadow-sm);
+}
+
+.progress-item {
+    margin-bottom: var(--elementor-spacing-lg);
+}
+
+.progress-item:last-child {
+    margin-bottom: 0;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--elementor-spacing-sm);
+}
+
+.progress-title {
+    font-weight: 600;
+    color: var(--elementor-text);
+}
+
+.progress-percentage {
+    font-weight: 700;
+    color: var(--elementor-primary);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--elementor-border);
+    border-radius: var(--elementor-radius-full);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--elementor-primary), var(--elementor-secondary));
+    border-radius: var(--elementor-radius-full);
+    transition: width 1s ease-out;
+}
+
+/* =================================================================
+   9. CALL-TO-ACTION WIDGETS
+================================================================= */
+
+/* CTA Banner Widget */
+.elementor-widget-recruitpro-cta-banner .cta-banner {
+    background: linear-gradient(135deg, var(--elementor-primary), var(--elementor-primary-dark));
+    color: var(--elementor-background);
+    border-radius: var(--elementor-radius-xl);
+    padding: var(--elementor-spacing-3xl) var(--elementor-spacing-2xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="white" stop-opacity="0.1"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs><ellipse cx="50" cy="0" rx="50" ry="20" fill="url(%23a)"/></svg>') no-repeat center top;
+    background-size: 100% 100%;
+    pointer-events: none;
+}
+
+.cta-banner-content {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-banner-title {
+    font-family: var(--elementor-font-secondary);
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: var(--elementor-spacing-md);
+    color: inherit;
+    line-height: 1.2;
+}
+
+.cta-banner-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: var(--elementor-spacing-xl);
+    opacity: 0.95;
+    line-height: 1.5;
+}
+
+.cta-banner-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--elementor-spacing-lg);
+    flex-wrap: wrap;
+}
+
+.cta-banner-button {
+    background: var(--elementor-background);
+    color: var(--elementor-primary);
+    border: none;
+    padding: var(--elementor-spacing-lg) var(--elementor-spacing-2xl);
+    border-radius: var(--elementor-radius-lg);
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all var(--elementor-transition-normal);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--elementor-spacing-sm);
+    box-shadow: var(--elementor-shadow-lg);
+}
+
+.cta-banner-button:hover {
+    background: var(--elementor-secondary);
+    color: var(--elementor-background);
+    transform: translateY(-3px);
+    box-shadow: var(--elementor-shadow-xl);
+}
+
+.cta-banner-button.secondary {
+    background: transparent;
+    color: var(--elementor-background);
+    border: 2px solid var(--elementor-background);
+}
+
+.cta-banner-button.secondary:hover {
+    background: var(--elementor-background);
+    color: var(--elementor-primary);
+}
+
+/* Newsletter CTA Widget */
+.elementor-widget-recruitpro-newsletter-cta .newsletter-cta {
+    background: var(--elementor-background);
+    border: 1px solid var(--elementor-border);
+    border-radius: var(--elementor-radius-xl);
+    padding: var(--elementor-spacing-2xl);
+    text-align: center;
+    box-shadow: var(--elementor-shadow-lg);
+}
+
+.newsletter-cta-title {
+    font-family: var(--elementor-font-secondary);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--elementor-spacing-sm);
+    color: var(--elementor-text);
+}
+
+.newsletter-cta-description {
+    color: var(--elementor-text-light);
+    margin-bottom: var(--elementor-spacing-xl);
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: var(--elementor-spacing-md);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: var(--elementor-spacing-md);
+    border: 1px solid var(--elementor-border);
+    border-radius: var(--elementor-radius-md);
+    font-size: 1rem;
+    background: var(--elementor-background);
+    color: var(--elementor-text);
+}
+
+.newsletter-input:focus {
+    outline: none;
+    border-color: var(--elementor-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.newsletter-submit {
+    background: var(--elementor-primary);
+    color: var(--elementor-background);
+    border: none;
+    padding: var(--elementor-spacing-md) var(--elementor-spacing-xl);
+    border-radius: var(--elementor-radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--elementor-transition-fast);
+    white-space: nowrap;
+}
+
+.newsletter-submit:hover {
+    background: var(--elementor-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--elementor-shadow-md);
+}
+
+/* =================================================================
+   10. HERO SECTION WIDGETS
+================================================================= */
+
+/* Hero Banner Widget */
+.elementor-widget-recruitpro-hero-banner .hero-banner {
+    position: relative;
+    background: linear-gradient(135deg, var(--elementor-primary), var(--elementor-primary-dark), var(--elementor-secondary));
+    color: var(--elementor-background);
+    border-radius: var(--elementor-radius-2xl);
+    padding: var(--elementor-spacing-5xl) var(--elementor-spacing-2xl);
+    text-align: center;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-banner-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero-banner-title {
+    font-family: var(--elementor-font-secondary);
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: var(--elementor-spacing-lg);
+    color: inherit;
+    line-height: 1.1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-banner-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: var(--elementor-spacing-2xl);
+    opacity: 0.95;
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+.hero-banner-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--elementor-spacing-lg);
+    flex-wrap: wrap;
+    margin-bottom: var(--elementor-spacing-2xl);
+}
+
+.hero-banner-button {
+    background: var(--elementor-background);
+    color: var(--elementor-primary);
+    border: none;
+    padding: var(--elementor-spacing-lg) var(--elementor-spacing-2xl);
+    border-radius: var(--elementor-radius-lg);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all var(--elementor-transition-normal);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--elementor-spacing-sm);
+    box-shadow: var(--elementor-shadow-xl);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hero-banner-button:hover {
+    background: var(--elementor-secondary);
+    color: var(--elementor-background);
+    transform: translateY(-4px);
+    box-shadow: var(--elementor-shadow-2xl);
+}
+
+.hero-banner-button.outline {
+    background: transparent;
+    color: var(--elementor-background);
+    border: 2px solid var(--elementor-background);
+}
+
+.hero-banner-button.outline:hover {
+    background: var(--elementor-background);
+    color: var(--elementor-primary);
+}
+
+.hero-banner-features {
+    display: flex;
+    justify-content: center;
+    gap: var(--elementor-spacing-xl);
+    flex-wrap: wrap;
+    opacity: 0.9;
+}
+
+.hero-feature {
+    display: flex;
+    align-items: center;
+    gap: var(--elementor-spacing-sm);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.hero-feature-icon {
+    color: var(--elementor-secondary);
+    font-size: 1.25rem;
+}
+
+/* Hero Search Widget */
+.elementor-widget-recruitpro-hero-search .hero-search {
+    background: var(--elementor-background);
+    border-radius: var(--elementor-radius-xl);
+    padding: var(--elementor-spacing-2xl);
+    box-shadow: var(--elementor-shadow-2xl);
+    border: 1px solid var(--elementor-border);
+    backdrop-filter: blur(10px);
+}
+
+.hero-search-title {
+    font-family: var(--elementor-font-secondary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--elementor-spacing-lg);
+    color: var(--elementor-text);
+}
+
+.hero-search-form {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: var(--elementor-spacing-md);
+    align-items: end;
+}
+
+/* =================================================================
+   17. RESPONSIVE ELEMENTOR DESIGN
+================================================================= */
+
+/* Large Tablets and Small Desktops */
+@media (max-width: 1024px) {
+    .job-search-grid,
+    .hero-search-form {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--elementor-spacing-md);
+    }
+
+    .job-search-btn {
+        grid-column: 1 / -1;
+    }
+
+    .hero-banner-title {
+        font-size: 2.5rem;
+    }
+
+    .cta-banner-title {
+        font-size: 2rem;
+    }
+
+    .company-stats {
+        gap: var(--elementor-spacing-lg);
+    }
+
+    .testimonial-author {
+        flex-direction: column;
+        gap: var(--elementor-spacing-sm);
+    }
+
+    .testimonial-info {
+        text-align: center;
+    }
+}
+
+/* Standard Tablets */
+@media (max-width: 768px) {
+    .application-form-grid,
+    .contact-form-grid {
+        grid-template-columns: 1fr;
+        gap: var(--elementor-spacing-md);
+    }
+
+    .job-search-grid,
+    .hero-search-form {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-banner {
+        padding: var(--elementor-spacing-3xl) var(--elementor-spacing-lg);
+    }
+
+    .hero-banner-title {
+        font-size: 2rem;
+    }
+
+    .hero-banner-subtitle {
+        font-size: 1.125rem;
+    }
+
+    .hero-banner-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-banner-button {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .cta-banner {
+        padding: var(--elementor-spacing-2xl) var(--elementor-spacing-lg);
+    }
+
+    .cta-banner-title {
+        font-size: 1.75rem;
+    }
+
+    .cta-banner-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-banner-button {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+
+    .company-header {
+        padding: var(--elementor-spacing-xl);
+    }
+
+    .company-stats {
+        flex-direction: column;
+        gap: var(--elementor-spacing-md);
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        max-width: none;
+    }
+
+    .hero-banner-features {
+        flex-direction: column;
+        gap: var(--elementor-spacing-md);
+    }
+
+    .counter-number {
+        font-size: 2rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile Landscape */
+@media (max-width: 640px) {
+    .recruitpro-widget-content,
+    .application-form,
+    .company-content {
+        padding: var(--elementor-spacing-lg);
+    }
+
+    .job-card {
+        padding: var(--elementor-spacing-lg);
+    }
+
+    .job-card-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--elementor-spacing-sm);
+    }
+
+    .job-company-logo {
+        align-self: center;
+    }
+
+    .job-footer {
+        flex-direction: column;
+        gap: var(--elementor-spacing-md);
+        text-align: center;
+    }
+
+    .testimonial-card {
+        padding: var(--elementor-spacing-lg);
+    }
+
+    .testimonial-quote {
+        font-size: 1rem;
+    }
+
+    .culture-item,
+    .company-highlight {
+        padding: var(--elementor-spacing-md);
+    }
+
+    .culture-icon,
+    .company-highlight-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .counter-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .counter-number {
+        font-size: 1.75rem;
+    }
+
+    .hero-banner {
+        min-height: 400px;
+        padding: var(--elementor-spacing-2xl) var(--elementor-spacing-md);
+    }
+
+    .hero-banner-title {
+        font-size: 1.75rem;
+    }
+
+    .hero-banner-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+    .elementor-container {
+        padding-left: var(--elementor-spacing-sm);
+        padding-right: var(--elementor-spacing-sm);
+    }
+
+    .recruitpro-widget-content {
+        padding: var(--elementor-spacing-md);
+    }
+
+    .application-form {
+        padding: var(--elementor-spacing-lg);
+    }
+
+    .hero-banner-title {
+        font-size: 1.5rem;
+    }
+
+    .cta-banner-title {
+        font-size: 1.5rem;
+    }
+
+    .company-name {
+        font-size: 1.5rem;
+    }
+
+    .testimonial-author {
+        gap: var(--elementor-spacing-xs);
+    }
+
+    .testimonial-avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .job-meta {
+        justify-content: center;
+    }
+
+    .job-skills {
+        justify-content: center;
+    }
+
+    .company-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .counter-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+}
+
+/* =================================================================
+   18. ACCESSIBILITY ENHANCEMENTS
+================================================================= */
+
+/* Focus Management */
+.elementor-widget a:focus,
+.elementor-widget button:focus,
+.elementor-widget input:focus,
+.elementor-widget textarea:focus,
+.elementor-widget select:focus {
+    outline: 2px solid var(--elementor-primary);
+    outline-offset: 2px;
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+    :root {
+        --elementor-text: #000000;
+        --elementor-background: #ffffff;
+        --elementor-border: #000000;
+        --elementor-primary: #0000ff;
+        --elementor-secondary: #008000;
+    }
+
+    .elementor-widget.recruitpro-widget,
+    .job-card,
+    .testimonial-card,
+    .culture-item {
+        border: 2px solid #000000;
+    }
+
+    .elementor-widget-button .elementor-button,
+    .job-apply-btn,
+    .cta-banner-button {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .elementor-widget.recruitpro-widget,
+    .job-card,
+    .elementor-widget-button .elementor-button,
+    .job-apply-btn,
+    .cta-banner-button {
+        transition: none;
+    }
+
+    .elementor-widget.recruitpro-widget:hover,
+    .job-card:hover,
+    .elementor-widget-button .elementor-button:hover,
+    .job-apply-btn:hover,
+    .cta-banner-button:hover {
+        transform: none;
+    }
+
+    .progress-fill {
+        transition: none;
+    }
+}
+
+/* Screen Reader Support */
+.elementor-widget .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ARIA Live Regions */
+.elementor-widget .live-region {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* =================================================================
+   19. PERFORMANCE OPTIMIZATIONS
+================================================================= */
+
+/* GPU Acceleration */
+.elementor-widget.recruitpro-widget,
+.job-card,
+.testimonial-card,
+.culture-item,
+.counter-container,
+.stat-card {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Contain Layout */
+.elementor-widget {
+    contain: layout style;
+}
+
+/* Optimize Transitions */
+.elementor-widget * {
+    transition-property: transform, opacity, background-color, border-color, box-shadow;
+}
+
+/* Remove will-change after animation */
+.elementor-widget.animation-complete {
+    will-change: auto;
+}
+
+/* =================================================================
+   20. ELEMENTOR EDITOR STYLING
+================================================================= */
+
+/* Editor Panel Styling (when editing) */
+.elementor-editor-active .elementor-widget.recruitpro-widget {
+    border: 2px dashed var(--elementor-primary);
+    position: relative;
+}
+
+.elementor-editor-active .elementor-widget.recruitpro-widget::before {
+    content: 'RecruitPro Widget';
+    position: absolute;
+    top: -30px;
+    left: 0;
+    background: var(--elementor-primary);
+    color: var(--elementor-background);
+    padding: 4px 8px;
+    border-radius: var(--elementor-radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 1000;
+}
+
+/* Widget Drag Handles */
+.elementor-editor-active .elementor-widget.recruitpro-widget .elementor-widget-container {
+    position: relative;
+}
+
+/* Edit Mode Indicators */
+.elementor-editor-active .job-card,
+.elementor-editor-active .testimonial-card,
+.elementor-editor-active .culture-item {
+    border: 1px dashed var(--elementor-border);
+    background: rgba(37, 99, 235, 0.05);
+}
+
+/* Prevent Interactions in Edit Mode */
+.elementor-editor-active .job-apply-btn,
+.elementor-editor-active .cta-banner-button,
+.elementor-editor-active .newsletter-submit {
+    pointer-events: none;
+    cursor: default;
+}
+
+/* =================================================================
+   UTILITY CLASSES FOR ELEMENTOR
+================================================================= */
+
+/* Spacing Utilities */
+.elementor-mt-0 { margin-top: 0 !important; }
+.elementor-mt-1 { margin-top: var(--elementor-spacing-xs) !important; }
+.elementor-mt-2 { margin-top: var(--elementor-spacing-sm) !important; }
+.elementor-mt-3 { margin-top: var(--elementor-spacing-md) !important; }
+.elementor-mt-4 { margin-top: var(--elementor-spacing-lg) !important; }
+.elementor-mt-5 { margin-top: var(--elementor-spacing-xl) !important; }
+
+.elementor-mb-0 { margin-bottom: 0 !important; }
+.elementor-mb-1 { margin-bottom: var(--elementor-spacing-xs) !important; }
+.elementor-mb-2 { margin-bottom: var(--elementor-spacing-sm) !important; }
+.elementor-mb-3 { margin-bottom: var(--elementor-spacing-md) !important; }
+.elementor-mb-4 { margin-bottom: var(--elementor-spacing-lg) !important; }
+.elementor-mb-5 { margin-bottom: var(--elementor-spacing-xl) !important; }
+
+/* Text Utilities */
+.elementor-text-center { text-align: center !important; }
+.elementor-text-left { text-align: left !important; }
+.elementor-text-right { text-align: right !important; }
+
+.elementor-text-primary { color: var(--elementor-primary) !important; }
+.elementor-text-secondary { color: var(--elementor-secondary) !important; }
+.elementor-text-muted { color: var(--elementor-text-muted) !important; }
+
+/* Background Utilities */
+.elementor-bg-primary { background-color: var(--elementor-primary) !important; }
+.elementor-bg-secondary { background-color: var(--elementor-secondary) !important; }
+.elementor-bg-light { background-color: var(--elementor-background-alt) !important; }
+
+/* Border Utilities */
+.elementor-border { border: 1px solid var(--elementor-border) !important; }
+.elementor-border-0 { border: 0 !important; }
+.elementor-border-primary { border-color: var(--elementor-primary) !important; }
+
+.elementor-rounded { border-radius: var(--elementor-radius-md) !important; }
+.elementor-rounded-lg { border-radius: var(--elementor-radius-lg) !important; }
+.elementor-rounded-xl { border-radius: var(--elementor-radius-xl) !important; }
+.elementor-rounded-full { border-radius: var(--elementor-radius-full) !important; }
+
+/* Shadow Utilities */
+.elementor-shadow-none { box-shadow: none !important; }
+.elementor-shadow-sm { box-shadow: var(--elementor-shadow-sm) !important; }
+.elementor-shadow { box-shadow: var(--elementor-shadow-md) !important; }
+.elementor-shadow-lg { box-shadow: var(--elementor-shadow-lg) !important; }
+.elementor-shadow-xl { box-shadow: var(--elementor-shadow-xl) !important; }
+
+/* =================================================================
+   END OF ELEMENTOR INTEGRATION CSS
+================================================================= */

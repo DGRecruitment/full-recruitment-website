@@ -1,0 +1,1558 @@
+/*
+=================================================================
+RECRUITPRO THEME - CLASSIC EDITOR CSS
+=================================================================
+WordPress Classic Editor & TinyMCE Integration Styles
+Version: 1.0.0
+Author: RecruitPro Team
+Description: Classic Editor styling for recruitment content creation
+=================================================================
+
+TABLE OF CONTENTS:
+1. EDITOR FOUNDATION & VARIABLES
+2. TINYMCE EDITOR INTERFACE
+3. EDITOR CONTENT STYLING
+4. RECRUITMENT-SPECIFIC EDITOR STYLES
+5. TYPOGRAPHY & TEXT FORMATTING
+6. IMAGES & MEDIA STYLING
+7. TABLES & STRUCTURED DATA
+8. FORMS & INPUT ELEMENTS
+9. BUTTONS & INTERACTIVE ELEMENTS
+10. JOB POSTING EDITOR STYLES
+11. CANDIDATE PROFILE EDITOR
+12. ACCESSIBILITY ENHANCEMENTS
+13. RTL LANGUAGE SUPPORT
+14. RESPONSIVE EDITOR DESIGN
+15. PLUGIN INTEGRATION STYLES
+
+=================================================================
+*/
+
+/* =================================================================
+   1. EDITOR FOUNDATION & VARIABLES
+================================================================= */
+
+/* Editor Root Variables - Match Theme Colors */
+body.wp-editor {
+    /* Primary Colors */
+    --editor-primary: #2563eb;
+    --editor-primary-light: #3b82f6;
+    --editor-primary-dark: #1d4ed8;
+    --editor-primary-50: #eff6ff;
+    --editor-primary-100: #dbeafe;
+    --editor-primary-600: #2563eb;
+    --editor-primary-700: #1d4ed8;
+
+    /* Secondary Colors */
+    --editor-secondary: #10b981;
+    --editor-secondary-light: #34d399;
+    --editor-secondary-dark: #059669;
+    --editor-secondary-50: #ecfdf5;
+    --editor-secondary-100: #d1fae5;
+
+    /* Neutral Colors */
+    --editor-text: #1f2937;
+    --editor-text-light: #6b7280;
+    --editor-text-muted: #9ca3af;
+    --editor-background: #ffffff;
+    --editor-background-alt: #f9fafb;
+    --editor-border: #e5e7eb;
+    --editor-border-light: #f3f4f6;
+
+    /* Status Colors */
+    --editor-success: #10b981;
+    --editor-warning: #f59e0b;
+    --editor-error: #ef4444;
+    --editor-info: #3b82f6;
+
+    /* Typography */
+    --editor-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --editor-font-secondary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --editor-font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+
+    /* Font Sizes */
+    --editor-font-size-xs: 12px;
+    --editor-font-size-sm: 14px;
+    --editor-font-size-base: 16px;
+    --editor-font-size-lg: 18px;
+    --editor-font-size-xl: 20px;
+    --editor-font-size-2xl: 24px;
+    --editor-font-size-3xl: 30px;
+    --editor-font-size-4xl: 36px;
+
+    /* Spacing */
+    --editor-spacing-xs: 4px;
+    --editor-spacing-sm: 8px;
+    --editor-spacing-md: 16px;
+    --editor-spacing-lg: 24px;
+    --editor-spacing-xl: 32px;
+    --editor-spacing-2xl: 48px;
+
+    /* Border Radius */
+    --editor-radius-sm: 4px;
+    --editor-radius-md: 6px;
+    --editor-radius-lg: 8px;
+    --editor-radius-xl: 12px;
+    --editor-radius-full: 9999px;
+
+    /* Shadows */
+    --editor-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --editor-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --editor-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* Transitions */
+    --editor-transition-fast: 150ms ease-in-out;
+    --editor-transition-normal: 300ms ease-in-out;
+}
+
+/* Editor Body Base Styles */
+body.wp-editor {
+    font-family: var(--editor-font-primary);
+    font-size: var(--editor-font-size-base);
+    line-height: 1.6;
+    color: var(--editor-text);
+    background-color: var(--editor-background);
+    margin: 0;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* =================================================================
+   2. TINYMCE EDITOR INTERFACE
+================================================================= */
+
+/* TinyMCE Container */
+.mce-tinymce {
+    border: 2px solid var(--editor-border);
+    border-radius: var(--editor-radius-lg);
+    box-shadow: var(--editor-shadow-sm);
+    background: var(--editor-background);
+    overflow: hidden;
+}
+
+.mce-tinymce.mce-focus {
+    border-color: var(--editor-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Toolbar Styling */
+.mce-toolbar {
+    background: var(--editor-background-alt);
+    border-bottom: 1px solid var(--editor-border);
+    padding: var(--editor-spacing-sm);
+}
+
+.mce-toolbar-grp {
+    background: transparent;
+}
+
+/* Toolbar Buttons */
+.mce-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--editor-radius-sm);
+    color: var(--editor-text);
+    font-size: var(--editor-font-size-sm);
+    padding: var(--editor-spacing-xs) var(--editor-spacing-sm);
+    margin: 0 2px;
+    transition: all var(--editor-transition-fast);
+}
+
+.mce-btn:hover {
+    background: var(--editor-primary-50);
+    border-color: var(--editor-primary-100);
+    color: var(--editor-primary);
+}
+
+.mce-btn.mce-active,
+.mce-btn:active {
+    background: var(--editor-primary);
+    color: var(--editor-background);
+    border-color: var(--editor-primary-dark);
+}
+
+.mce-btn:focus {
+    outline: 2px solid var(--editor-primary);
+    outline-offset: 2px;
+}
+
+/* Toolbar Separators */
+.mce-toolbar .mce-toolbar-grp:not(:last-child) {
+    border-right: 1px solid var(--editor-border);
+    margin-right: var(--editor-spacing-sm);
+    padding-right: var(--editor-spacing-sm);
+}
+
+/* Dropdown Menus */
+.mce-menu {
+    background: var(--editor-background);
+    border: 1px solid var(--editor-border);
+    border-radius: var(--editor-radius-md);
+    box-shadow: var(--editor-shadow-lg);
+    padding: var(--editor-spacing-xs);
+}
+
+.mce-menu-item {
+    color: var(--editor-text);
+    padding: var(--editor-spacing-sm) var(--editor-spacing-md);
+    border-radius: var(--editor-radius-sm);
+    transition: all var(--editor-transition-fast);
+}
+
+.mce-menu-item:hover,
+.mce-menu-item.mce-selected {
+    background: var(--editor-primary-50);
+    color: var(--editor-primary);
+}
+
+/* Status Bar */
+.mce-statusbar {
+    background: var(--editor-background-alt);
+    border-top: 1px solid var(--editor-border);
+    padding: var(--editor-spacing-sm) var(--editor-spacing-md);
+    font-size: var(--editor-font-size-xs);
+    color: var(--editor-text-muted);
+}
+
+.mce-path {
+    font-family: var(--editor-font-mono);
+}
+
+.mce-path-item {
+    color: var(--editor-primary);
+    text-decoration: none;
+    padding: 2px 4px;
+    border-radius: var(--editor-radius-sm);
+    transition: all var(--editor-transition-fast);
+}
+
+.mce-path-item:hover {
+    background: var(--editor-primary-50);
+}
+
+/* =================================================================
+   3. EDITOR CONTENT STYLING
+================================================================= */
+
+/* Editor Content Area */
+.mce-content-body {
+    font-family: var(--editor-font-primary);
+    font-size: var(--editor-font-size-base);
+    line-height: 1.6;
+    color: var(--editor-text);
+    max-width: 100%;
+    margin: 0;
+    padding: var(--editor-spacing-lg);
+    background: var(--editor-background);
+}
+
+/* Content Width Limiting */
+.mce-content-body {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Content Spacing */
+.mce-content-body > *:first-child {
+    margin-top: 0;
+}
+
+.mce-content-body > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Paragraph Styling */
+.mce-content-body p {
+    margin-bottom: var(--editor-spacing-md);
+    line-height: 1.7;
+}
+
+.mce-content-body p:empty {
+    min-height: 1.6em;
+    margin-bottom: var(--editor-spacing-md);
+}
+
+/* Placeholder Text */
+.mce-content-body p[data-mce-placeholder]:not(:focus):empty:before {
+    content: attr(data-mce-placeholder);
+    color: var(--editor-text-muted);
+    font-style: italic;
+    pointer-events: none;
+    position: absolute;
+}
+
+/* =================================================================
+   4. RECRUITMENT-SPECIFIC EDITOR STYLES
+================================================================= */
+
+/* Job Posting Content */
+.mce-content-body .job-posting {
+    background: var(--editor-background-alt);
+    border: 1px solid var(--editor-border);
+    border-radius: var(--editor-radius-lg);
+    padding: var(--editor-spacing-lg);
+    margin: var(--editor-spacing-lg) 0;
+}
+
+.mce-content-body .job-title {
+    font-family: var(--editor-font-secondary);
+    font-size: var(--editor-font-size-2xl);
+    font-weight: 700;
+    color: var(--editor-text);
+    margin-bottom: var(--editor-spacing-md);
+    line-height: 1.3;
+    border-bottom: 2px solid var(--editor-primary);
+    padding-bottom: var(--editor-spacing-sm);
+}
+
+.mce-content-body .job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--editor-spacing-md);
+    margin-bottom: var(--editor-spacing-lg);
+    padding: var(--editor-spacing-md);
+    background: var(--editor-primary-50);
+    border-radius: var(--editor-radius-md);
+}
+
+.mce-content-body .job-meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--editor-spacing-xs);
+    font-size: var(--editor-font-size-sm);
+    color: var(--editor-text-light);
+}
+
+.mce-content-body .job-meta-item strong {
+    color: var(--editor-text);
+    font-weight: 600;
+}
+
+/* Job Sections */
+.mce-content-body .job-section {
+    margin: var(--editor-spacing-xl) 0;
+    padding: var(--editor-spacing-lg);
+    border-left: 4px solid var(--editor-primary);
+    background: var(--editor-background);
+}
+
+.mce-content-body .job-section-title {
+    font-family: var(--editor-font-secondary);
+    font-size: var(--editor-font-size-lg);
+    font-weight: 600;
+    color: var(--editor-primary);
+    margin-bottom: var(--editor-spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Job Requirements List */
+.mce-content-body .job-requirements {
+    list-style: none;
+    padding: 0;
+    margin: var(--editor-spacing-md) 0;
+}
+
+.mce-content-body .job-requirements li {
+    position: relative;
+    padding-left: var(--editor-spacing-lg);
+    margin-bottom: var(--editor-spacing-sm);
+    line-height: 1.6;
+}
+
+.mce-content-body .job-requirements li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--editor-success);
+    font-weight: 700;
+    font-size: var(--editor-font-size-base);
+}
+
+/* Job Benefits */
+.mce-content-body .job-benefits {
+    background: var(--editor-secondary-50);
+    border: 1px solid var(--editor-secondary-100);
+    border-radius: var(--editor-radius-md);
+    padding: var(--editor-spacing-lg);
+    margin: var(--editor-spacing-lg) 0;
+}
+
+.mce-content-body .job-benefits h3 {
+    color: var(--editor-secondary);
+    margin-bottom: var(--editor-spacing-md);
+}
+
+/* Skills Tags */
+.mce-content-body .skills-container {
+    margin: var(--editor-spacing-md) 0;
+}
+
+.mce-content-body .skill-tag {
+    display: inline-block;
+    padding: var(--editor-spacing-xs) var(--editor-spacing-sm);
+    background: var(--editor-primary-100);
+    color: var(--editor-primary);
+    border-radius: var(--editor-radius-full);
+    font-size: var(--editor-font-size-sm);
+    font-weight: 500;
+    margin: 0 var(--editor-spacing-xs) var(--editor-spacing-xs) 0;
+}
+
+/* Salary Information */
+.mce-content-body .salary-info {
+    background: var(--editor-success);
+    color: var(--editor-background);
+    padding: var(--editor-spacing-md) var(--editor-spacing-lg);
+    border-radius: var(--editor-radius-md);
+    text-align: center;
+    font-size: var(--editor-font-size-lg);
+    font-weight: 600;
+    margin: var(--editor-spacing-lg) 0;
+}
+
+/* Company Information */
+.mce-content-body .company-info {
+    background: var(--editor-background);
+    border: 2px solid var(--editor-border);
+    border-radius: var(--editor-radius-lg);
+    padding: var(--editor-spacing-lg);
+    margin: var(--editor-spacing-xl) 0;
+    text-align: center;
+}
+
+.mce-content-body .company-logo {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: var(--editor-spacing-md);
+    border-radius: var(--editor-radius-md);
+}
+
+.mce-content-body .company-name {
+    font-size: var(--editor-font-size-xl);
+    font-weight: 700;
+    color: var(--editor-text);
+    margin-bottom: var(--editor-spacing-sm);
+}
+
+/* =================================================================
+   5. TYPOGRAPHY & TEXT FORMATTING
+================================================================= */
+
+/* Headings */
+.mce-content-body h1,
+.mce-content-body h2,
+.mce-content-body h3,
+.mce-content-body h4,
+.mce-content-body h5,
+.mce-content-body h6 {
+    font-family: var(--editor-font-secondary);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-top: var(--editor-spacing-xl);
+    margin-bottom: var(--editor-spacing-md);
+    color: var(--editor-text);
+}
+
+.mce-content-body h1 {
+    font-size: var(--editor-font-size-4xl);
+    font-weight: 900;
+    border-bottom: 3px solid var(--editor-primary);
+    padding-bottom: var(--editor-spacing-sm);
+}
+
+.mce-content-body h2 {
+    font-size: var(--editor-font-size-3xl);
+    font-weight: 800;
+    color: var(--editor-primary);
+}
+
+.mce-content-body h3 {
+    font-size: var(--editor-font-size-2xl);
+    font-weight: 700;
+    color: var(--editor-text);
+}
+
+.mce-content-body h4 {
+    font-size: var(--editor-font-size-xl);
+    font-weight: 600;
+    color: var(--editor-text);
+}
+
+.mce-content-body h5 {
+    font-size: var(--editor-font-size-lg);
+    font-weight: 600;
+    color: var(--editor-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mce-content-body h6 {
+    font-size: var(--editor-font-size-base);
+    font-weight: 600;
+    color: var(--editor-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Text Emphasis */
+.mce-content-body strong,
+.mce-content-body b {
+    font-weight: 600;
+    color: var(--editor-text);
+}
+
+.mce-content-body em,
+.mce-content-body i {
+    font-style: italic;
+    color: var(--editor-text-light);
+}
+
+.mce-content-body mark {
+    background: var(--editor-warning);
+    color: var(--editor-background);
+    padding: 2px 4px;
+    border-radius: var(--editor-radius-sm);
+    font-weight: 500;
+}
+
+.mce-content-body small {
+    font-size: var(--editor-font-size-sm);
+    color: var(--editor-text-muted);
+}
+
+/* Code Formatting */
+.mce-content-body code {
+    font-family: var(--editor-font-mono);
+    font-size: var(--editor-font-size-sm);
+    background: var(--editor-background-alt);
+    color: var(--editor-primary);
+    padding: 2px 6px;
+    border-radius: var(--editor-radius-sm);
+    border: 1px solid var(--editor-border);
+}
+
+.mce-content-body pre {
+    font-family: var(--editor-font-mono);
+    font-size: var(--editor-font-size-sm);
+    background: var(--editor-background-alt);
+    color: var(--editor-text);
+    padding: var(--editor-spacing-lg);
+    border-radius: var(--editor-radius-md);
+    border: 1px solid var(--editor-border);
+    overflow-x: auto;
+    line-height: 1.5;
+    margin: var(--editor-spacing-lg) 0;
+}
+
+.mce-content-body pre code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: inherit;
+}
+
+/* Blockquotes */
+.mce-content-body blockquote {
+    border-left: 4px solid var(--editor-primary);
+    padding-left: var(--editor-spacing-lg);
+    margin: var(--editor-spacing-xl) 0;
+    font-style: italic;
+    font-size: var(--editor-font-size-lg);
+    color: var(--editor-text-light);
+    background: var(--editor-primary-50);
+    padding: var(--editor-spacing-lg);
+    border-radius: 0 var(--editor-radius-md) var(--editor-radius-md) 0;
+}
+
+.mce-content-body blockquote cite {
+    display: block;
+    font-style: normal;
+    font-size: var(--editor-font-size-sm);
+    color: var(--editor-text-muted);
+    margin-top: var(--editor-spacing-sm);
+}
+
+.mce-content-body blockquote cite::before {
+    content: '— ';
+}
+
+/* Links */
+.mce-content-body a {
+    color: var(--editor-primary);
+    text-decoration: underline;
+    text-decoration-color: rgba(37, 99, 235, 0.3);
+    text-underline-offset: 2px;
+    transition: all var(--editor-transition-fast);
+}
+
+.mce-content-body a:hover {
+    color: var(--editor-primary-dark);
+    text-decoration-color: var(--editor-primary-dark);
+}
+
+.mce-content-body a:focus {
+    outline: 2px solid var(--editor-primary);
+    outline-offset: 2px;
+    border-radius: var(--editor-radius-sm);
+}
+
+/* =================================================================
+   6. IMAGES & MEDIA STYLING
+================================================================= */
+
+/* Image Styling */
+.mce-content-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--editor-radius-md);
+    box-shadow: var(--editor-shadow-sm);
+    margin: var(--editor-spacing-md) 0;
+}
+
+.mce-content-body img.alignleft {
+    float: left;
+    margin: 0 var(--editor-spacing-lg) var(--editor-spacing-md) 0;
+}
+
+.mce-content-body img.alignright {
+    float: right;
+    margin: 0 0 var(--editor-spacing-md) var(--editor-spacing-lg);
+}
+
+.mce-content-body img.aligncenter {
+    display: block;
+    margin: var(--editor-spacing-lg) auto;
+}
+
+.mce-content-body img.alignnone {
+    margin: var(--editor-spacing-md) 0;
+}
+
+/* Figure and Caption */
+.mce-content-body figure {
+    margin: var(--editor-spacing-xl) 0;
+    text-align: center;
+}
+
+.mce-content-body figure img {
+    margin-bottom: var(--editor-spacing-sm);
+}
+
+.mce-content-body figcaption {
+    font-size: var(--editor-font-size-sm);
+    color: var(--editor-text-muted);
+    font-style: italic;
+    line-height: 1.4;
+    padding: 0 var(--editor-spacing-md);
+}
+
+/* WordPress Image Classes */
+.mce-content-body .wp-caption {
+    background: var(--editor-background-alt);
+    border: 1px solid var(--editor-border);
+    border-radius: var(--editor-radius-md);
+    padding: var(--editor-spacing-sm);
+    margin: var(--editor-spacing-lg) 0;
+    text-align: center;
+    max-width: 100%;
+}
+
+.mce-content-body .wp-caption img {
+    margin: 0;
+    border-radius: var(--editor-radius-sm);
+}
+
+.mce-content-body .wp-caption-text {
+    font-size: var(--editor-font-size-sm);
+    color: var(--editor-text-muted);
+    margin-top: var(--editor-spacing-sm);
+    line-height: 1.4;
+}
+
+/* Gallery Styles */
+.mce-content-body .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--editor-spacing-md);
+    margin: var(--editor-spacing-xl) 0;
+}
+
+.mce-content-body .gallery-item {
+    margin: 0;
+}
+
+.mce-content-body .gallery-item img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border-radius: var(--editor-radius-sm);
+}
+
+.mce-content-body .gallery-caption {
+    font-size: var(--editor-font-size-xs);
+    color: var(--editor-text-muted);
+    margin-top: var(--editor-spacing-xs);
+    text-align: center;
+}
+
+/* Video Embeds */
+.mce-content-body .wp-video,
+.mce-content-body .wp-embed-responsive {
+    margin: var(--editor-spacing-xl) 0;
+}
+
+.mce-content-body iframe,
+.mce-content-body embed,
+.mce-content-body object,
+.mce-content-body video {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--editor-radius-md);
+    box-shadow: var(--editor-shadow-sm);
+}
+
+/* =================================================================
+   7. TABLES & STRUCTURED DATA
+================================================================= */
+
+/* Table Styling */
+.mce-content-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--editor-spacing-xl) 0;
+    background: var(--editor-background);
+    border-radius: var(--editor-radius-md);
+    overflow: hidden;
+    box-shadow: var(--editor-shadow-sm);
+}
+
+.mce-content-body th,
+.mce-content-body td {
+    padding: var(--editor-spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--editor-border);
+}
+
+.mce-content-body th {
+    background: var(--editor-primary);
+    color: var(--editor-background);
+    font-weight: 600;
+    font-size: var(--editor-font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mce-content-body tr:nth-child(even) {
+    background: var(--editor-background-alt);
+}
+
+.mce-content-body tr:hover {
+    background: var(--editor-primary-50);
+}
+
+.mce-content-body tr:last-child td {
+    border-bottom: none;
+}
+
+/* Table Caption */
+.mce-content-body table caption {
+    caption-side: top;
+    padding: var(--editor-spacing-md);
+    font-weight: 600;
+    color: var(--editor-text);
+    text-align: left;
+    border-bottom: 2px solid var(--editor-primary);
+    margin-bottom: var(--editor-spacing-sm);
+}
+
+/* Recruitment-Specific Tables */
+.mce-content-body .salary-table th {
+    background: var(--editor-success);
+}
+
+.mce-content-body .requirements-table th {
+    background: var(--editor-warning);
+}
+
+.mce-content-body .candidate-table th {
+    background: var(--editor-secondary);
+}
+
+/* =================================================================
+   8. FORMS & INPUT ELEMENTS
+================================================================= */
+
+/* Form Elements in Editor */
+.mce-content-body form {
+    background: var(--editor-background-alt);
+    padding: var(--editor-spacing-lg);
+    border-radius: var(--editor-radius-md);
+    border: 1px solid var(--editor-border);
+    margin: var(--editor-spacing-xl) 0;
+}
+
+.mce-content-body fieldset {
+    border: 2px solid var(--editor-border);
+    border-radius: var(--editor-radius-md);
+    padding: var(--editor-spacing-lg);
+    margin: var(--editor-spacing-md) 0;
+}
+
+.mce-content-body legend {
+    font-weight: 600;
+    color: var(--editor-primary);
+    padding: 0 var(--editor-spacing-sm);
+    font-size: var(--editor-font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mce-content-body label {
+    display: block;
+    font-weight: 500;
+    color: var(--editor-text);
+    margin-bottom: var(--editor-spacing-xs);
+    font-size: var(--editor-font-size-sm);
+}
+
+.mce-content-body input[type="text"],
+.mce-content-body input[type="email"],
+.mce-content-body input[type="tel"],
+.mce-content-body input[type="url"],
+.mce-content-body input[type="password"],
+.mce-content-body textarea,
+.mce-content-body select {
+    width: 100%;
+    padding: var(--editor-spacing-sm) var(--editor-spacing-md);
+    border: 1px solid var(--editor-border);
+    border-radius: var(--editor-radius-sm);
+    font-size: var(--editor-font-size-base);
+    color: var(--editor-text);
+    background: var(--editor-background);
+    margin-bottom: var(--editor-spacing-md);
+}
+
+.mce-content-body input:focus,
+.mce-content-body textarea:focus,
+.mce-content-body select:focus {
+    outline: none;
+    border-color: var(--editor-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.mce-content-body input[type="checkbox"],
+.mce-content-body input[type="radio"] {
+    width: auto;
+    margin-right: var(--editor-spacing-xs);
+}
+
+/* =================================================================
+   9. BUTTONS & INTERACTIVE ELEMENTS
+================================================================= */
+
+/* Button Styling */
+.mce-content-body .button,
+.mce-content-body .btn,
+.mce-content-body button,
+.mce-content-body input[type="submit"],
+.mce-content-body input[type="button"] {
+    display: inline-block;
+    padding: var(--editor-spacing-sm) var(--editor-spacing-lg);
+    background: var(--editor-primary);
+    color: var(--editor-background);
+    border: none;
+    border-radius: var(--editor-radius-md);
+    font-size: var(--editor-font-size-base);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--editor-transition-fast);
+    margin: var(--editor-spacing-xs) var(--editor-spacing-xs) var(--editor-spacing-xs) 0;
+}
+
+.mce-content-body .button:hover,
+.mce-content-body .btn:hover {
+    background: var(--editor-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--editor-shadow-md);
+}
+
+/* Button Variations */
+.mce-content-body .button-secondary,
+.mce-content-body .btn-secondary {
+    background: var(--editor-secondary);
+}
+
+.mce-content-body .button-outline,
+.mce-content-body .btn-outline {
+    background: transparent;
+    color: var(--editor-primary);
+    border: 2px solid var(--editor-primary);
+}
+
+.mce-content-body .button-outline:hover,
+.mce-content-body .btn-outline:hover {
+    background: var(--editor-primary);
+    color: var(--editor-background);
+}
+
+/* Call-to-Action Buttons */
+.mce-content-body .cta-button {
+    background: linear-gradient(135deg, var(--editor-primary), var(--editor-primary-dark));
+    padding: var(--editor-spacing-md) var(--editor-spacing-xl);
+    font-size: var(--editor-font-size-lg);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--editor-radius-lg);
+    box-shadow: var(--editor-shadow-lg);
+}
+
+.mce-content-body .apply-button {
+    background: var(--editor-success);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* =================================================================
+   10. JOB POSTING EDITOR STYLES
+================================================================= */
+
+/* Job Posting Template */
+.mce-content-body .job-posting-template {
+    background: var(--editor-background);
+    border: 2px solid var(--editor-primary);
+    border-radius: var(--editor-radius-lg);
+    padding: var(--editor-spacing-xl);
+    margin: var(--editor-spacing-xl) 0;
+    position: relative;
+}
+
+.mce-content-body .job-posting-template::before {
+    content: 'Job Posting Template';
+    position: absolute;
+    top: -12px;
+    left: var(--editor-spacing-lg);
+    background: var(--editor-primary);
+    color: var(--editor-background);
+    padding: var(--editor-spacing-xs) var(--editor-spacing-sm);
+    border-radius: var(--editor-radius-sm);
+    font-size: var(--editor-font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Job Header Section */
+.mce-content-body .job-header-editor {
+    background: var(--editor-primary-50);
+    padding: var(--editor-spacing-lg);
+    border-radius: var(--editor-radius-md);
+    margin-bottom: var(--editor-spacing-lg);
+}
+
+.mce-content-body .job-quick-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--editor-spacing-md);
+    margin: var(--editor-spacing-lg) 0;
+}
+
+.mce-content-body .job-info-item {
+    background: var(--editor-background);
+    padding: var(--editor-spacing-md);
+    border-radius: var(--editor-radius-sm);
+    border-left: 4px solid var(--editor-primary);
+}
+
+.mce-content-body .job-info-label {
+    font-size: var(--editor-font-size-xs);
+    color: var(--editor-text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--editor-spacing-xs);
+}
+
+.mce-content-body .job-info-value {
+    font-size: var(--editor-font-size-base);
+    color: var(--editor-text);
+    font-weight: 500;
+}
+
+/* Job Description Sections */
+.mce-content-body .job-description-section {
+    margin: var(--editor-spacing-xl) 0;
+    padding: var(--editor-spacing-lg);
+    background: var(--editor-background-alt);
+    border-radius: var(--editor-radius-md);
+    border-left: 6px solid var(--editor-secondary);
+}
+
+.mce-content-body .job-responsibilities,
+.mce-content-body .job-qualifications,
+.mce-content-body .job-requirements {
+    margin: var(--editor-spacing-lg) 0;
+}
+
+/* Checklist Styles */
+.mce-content-body .checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.mce-content-body .checklist li {
+    position: relative;
+    padding-left: var(--editor-spacing-xl);
+    margin-bottom: var(--editor-spacing-md);
+    line-height: 1.6;
+}
+
+.mce-content-body .checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: var(--editor-font-size-lg);
+    color: var(--editor-primary);
+}
+
+.mce-content-body .checklist.completed li::before {
+    content: '☑';
+    color: var(--editor-success);
+}
+
+/* =================================================================
+   11. CANDIDATE PROFILE EDITOR
+================================================================= */
+
+/* Candidate Profile Template */
+.mce-content-body .candidate-profile-template {
+    background: var(--editor-background);
+    border: 2px solid var(--editor-secondary);
+    border-radius: var(--editor-radius-lg);
+    padding: var(--editor-spacing-xl);
+    margin: var(--editor-spacing-xl) 0;
+    position: relative;
+}
+
+.mce-content-body .candidate-profile-template::before {
+    content: 'Candidate Profile';
+    position: absolute;
+    top: -12px;
+    left: var(--editor-spacing-lg);
+    background: var(--editor-secondary);
+    color: var(--editor-background);
+    padding: var(--editor-spacing-xs) var(--editor-spacing-sm);
+    border-radius: var(--editor-radius-sm);
+    font-size: var(--editor-font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Candidate Header */
+.mce-content-body .candidate-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--editor-spacing-lg);
+    margin-bottom: var(--editor-spacing-xl);
+    padding: var(--editor-spacing-lg);
+    background: var(--editor-secondary-50);
+    border-radius: var(--editor-radius-md);
+}
+
+.mce-content-body .candidate-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--editor-background);
+    box-shadow: var(--editor-shadow-md);
+}
+
+.mce-content-body .candidate-details {
+    flex: 1;
+}
+
+.mce-content-body .candidate-name {
+    font-size: var(--editor-font-size-2xl);
+    font-weight: 700;
+    color: var(--editor-text);
+    margin-bottom: var(--editor-spacing-xs);
+}
+
+.mce-content-body .candidate-title {
+    font-size: var(--editor-font-size-lg);
+    color: var(--editor-secondary);
+    margin-bottom: var(--editor-spacing-sm);
+    font-weight: 600;
+}
+
+.mce-content-body .candidate-location {
+    color: var(--editor-text-muted);
+    font-size: var(--editor-font-size-sm);
+}
+
+/* Skills Section */
+.mce-content-body .skills-section {
+    margin: var(--editor-spacing-lg) 0;
+}
+
+.mce-content-body .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--editor-spacing-sm);
+    margin-top: var(--editor-spacing-md);
+}
+
+.mce-content-body .skill-level-beginner {
+    background: var(--editor-info);
+    color: var(--editor-background);
+}
+
+.mce-content-body .skill-level-intermediate {
+    background: var(--editor-warning);
+    color: var(--editor-background);
+}
+
+.mce-content-body .skill-level-advanced {
+    background: var(--editor-success);
+    color: var(--editor-background);
+}
+
+.mce-content-body .skill-level-expert {
+    background: var(--editor-error);
+    color: var(--editor-background);
+}
+
+/* Experience Timeline */
+.mce-content-body .experience-timeline {
+    position: relative;
+    padding-left: var(--editor-spacing-xl);
+    margin: var(--editor-spacing-xl) 0;
+}
+
+.mce-content-body .experience-timeline::before {
+    content: '';
+    position: absolute;
+    left: var(--editor-spacing-md);
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--editor-primary);
+}
+
+.mce-content-body .experience-item {
+    position: relative;
+    margin-bottom: var(--editor-spacing-xl);
+    background: var(--editor-background);
+    padding: var(--editor-spacing-lg);
+    border-radius: var(--editor-radius-md);
+    border: 1px solid var(--editor-border);
+}
+
+.mce-content-body .experience-item::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * var(--editor-spacing-xl) - 6px);
+    top: var(--editor-spacing-lg);
+    width: 12px;
+    height: 12px;
+    background: var(--editor-primary);
+    border-radius: 50%;
+    border: 3px solid var(--editor-background);
+}
+
+.mce-content-body .experience-date {
+    font-size: var(--editor-font-size-sm);
+    color: var(--editor-text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--editor-spacing-xs);
+}
+
+.mce-content-body .experience-company {
+    font-size: var(--editor-font-size-lg);
+    font-weight: 600;
+    color: var(--editor-primary);
+    margin-bottom: var(--editor-spacing-xs);
+}
+
+.mce-content-body .experience-role {
+    font-size: var(--editor-font-size-base);
+    font-weight: 500;
+    color: var(--editor-text);
+    margin-bottom: var(--editor-spacing-sm);
+}
+
+/* =================================================================
+   12. ACCESSIBILITY ENHANCEMENTS
+================================================================= */
+
+/* Focus Indicators */
+.mce-content-body *:focus {
+    outline: 2px solid var(--editor-primary);
+    outline-offset: 2px;
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+    body.wp-editor {
+        --editor-text: #000000;
+        --editor-background: #ffffff;
+        --editor-border: #000000;
+        --editor-primary: #0000ff;
+    }
+
+    .mce-content-body table th,
+    .mce-content-body .button,
+    .mce-content-body .btn {
+        border: 2px solid #000000;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .mce-btn,
+    .mce-content-body .button,
+    .mce-content-body .btn,
+    .mce-content-body a {
+        transition: none;
+    }
+
+    .mce-content-body .button:hover,
+    .mce-content-body .btn:hover {
+        transform: none;
+    }
+}
+
+/* Screen Reader Text */
+.mce-content-body .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip Links */
+.mce-content-body .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.mce-content-body .skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    background: var(--editor-primary);
+    color: var(--editor-background);
+    padding: var(--editor-spacing-sm) var(--editor-spacing-md);
+    border-radius: var(--editor-radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* =================================================================
+   13. RTL LANGUAGE SUPPORT
+================================================================= */
+
+/* RTL Text Direction */
+body.wp-editor[dir="rtl"] {
+    text-align: right;
+    direction: rtl;
+}
+
+body.wp-editor[dir="rtl"] .mce-content-body {
+    text-align: right;
+    direction: rtl;
+}
+
+/* RTL Adjustments */
+body.wp-editor[dir="rtl"] .mce-content-body blockquote {
+    border-left: none;
+    border-right: 4px solid var(--editor-primary);
+    padding-left: 0;
+    padding-right: var(--editor-spacing-lg);
+}
+
+body.wp-editor[dir="rtl"] .mce-content-body .job-requirements li {
+    padding-left: 0;
+    padding-right: var(--editor-spacing-lg);
+}
+
+body.wp-editor[dir="rtl"] .mce-content-body .job-requirements li::before {
+    left: auto;
+    right: 0;
+}
+
+body.wp-editor[dir="rtl"] .mce-content-body .experience-timeline {
+    padding-left: 0;
+    padding-right: var(--editor-spacing-xl);
+}
+
+body.wp-editor[dir="rtl"] .mce-content-body .experience-timeline::before {
+    left: auto;
+    right: var(--editor-spacing-md);
+}
+
+body.wp-editor[dir="rtl"] .mce-content-body .experience-item::before {
+    left: auto;
+    right: calc(-1 * var(--editor-spacing-xl) - 6px);
+}
+
+/* =================================================================
+   14. RESPONSIVE EDITOR DESIGN
+================================================================= */
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+    body.wp-editor {
+        padding: var(--editor-spacing-md);
+    }
+
+    .mce-content-body {
+        padding: var(--editor-spacing-md);
+    }
+
+    .mce-content-body .job-quick-info {
+        grid-template-columns: 1fr;
+    }
+
+    .mce-content-body .candidate-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mce-content-body .candidate-photo {
+        align-self: center;
+    }
+
+    .mce-content-body .skills-list {
+        justify-content: center;
+    }
+
+    .mce-content-body h1 {
+        font-size: var(--editor-font-size-3xl);
+    }
+
+    .mce-content-body h2 {
+        font-size: var(--editor-font-size-2xl);
+    }
+
+    .mce-content-body table {
+        font-size: var(--editor-font-size-sm);
+    }
+
+    .mce-content-body th,
+    .mce-content-body td {
+        padding: var(--editor-spacing-sm);
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+    body.wp-editor {
+        padding: var(--editor-spacing-sm);
+    }
+
+    .mce-content-body {
+        padding: var(--editor-spacing-sm);
+    }
+
+    .mce-content-body .job-posting-template,
+    .mce-content-body .candidate-profile-template {
+        padding: var(--editor-spacing-md);
+    }
+
+    .mce-content-body .experience-timeline {
+        padding-left: var(--editor-spacing-lg);
+    }
+
+    .mce-content-body .experience-timeline::before {
+        left: var(--editor-spacing-xs);
+    }
+
+    .mce-content-body .experience-item::before {
+        left: calc(-1 * var(--editor-spacing-lg) - 6px);
+    }
+
+    .mce-content-body .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mce-content-body h1 {
+        font-size: var(--editor-font-size-2xl);
+    }
+
+    .mce-content-body h2 {
+        font-size: var(--editor-font-size-xl);
+    }
+
+    .mce-content-body .button,
+    .mce-content-body .btn {
+        padding: var(--editor-spacing-sm);
+        font-size: var(--editor-font-size-sm);
+    }
+
+    .mce-content-body .cta-button {
+        padding: var(--editor-spacing-md);
+        font-size: var(--editor-font-size-base);
+    }
+}
+
+/* =================================================================
+   15. PLUGIN INTEGRATION STYLES
+================================================================= */
+
+/* TinyMCE Advanced Plugin */
+.mce-content-body .mce-item-table {
+    border: 1px dashed var(--editor-border);
+}
+
+.mce-content-body .mce-item-anchor {
+    background: var(--editor-primary-50);
+    border: 1px dashed var(--editor-primary);
+    padding: 2px 4px;
+    border-radius: var(--editor-radius-sm);
+}
+
+/* WordPress Shortcodes */
+.mce-content-body .wp-shortcode {
+    background: var(--editor-warning);
+    color: var(--editor-background);
+    padding: var(--editor-spacing-xs) var(--editor-spacing-sm);
+    border-radius: var(--editor-radius-sm);
+    font-family: var(--editor-font-mono);
+    font-size: var(--editor-font-size-sm);
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 2px;
+}
+
+/* Custom Recruitment Shortcodes */
+.mce-content-body .shortcode-job-application {
+    background: var(--editor-success);
+    border: 2px solid var(--editor-success);
+    color: var(--editor-background);
+    padding: var(--editor-spacing-md);
+    border-radius: var(--editor-radius-md);
+    text-align: center;
+    font-weight: 600;
+    margin: var(--editor-spacing-lg) 0;
+}
+
+.mce-content-body .shortcode-candidate-form {
+    background: var(--editor-secondary);
+    border: 2px solid var(--editor-secondary);
+    color: var(--editor-background);
+    padding: var(--editor-spacing-md);
+    border-radius: var(--editor-radius-md);
+    text-align: center;
+    font-weight: 600;
+    margin: var(--editor-spacing-lg) 0;
+}
+
+.mce-content-body .shortcode-job-search {
+    background: var(--editor-primary);
+    border: 2px solid var(--editor-primary);
+    color: var(--editor-background);
+    padding: var(--editor-spacing-md);
+    border-radius: var(--editor-radius-md);
+    text-align: center;
+    font-weight: 600;
+    margin: var(--editor-spacing-lg) 0;
+}
+
+/* Print Styles for Editor */
+@media print {
+    body.wp-editor {
+        background: white;
+        color: black;
+    }
+
+    .mce-content-body {
+        background: white;
+        color: black;
+        box-shadow: none;
+        border: none;
+    }
+
+    .mce-content-body .job-posting-template,
+    .mce-content-body .candidate-profile-template {
+        border: 2px solid black;
+        background: white;
+    }
+
+    .mce-content-body .button,
+    .mce-content-body .btn {
+        border: 2px solid black;
+        background: white;
+        color: black;
+    }
+
+    .mce-content-body table th {
+        background: #f0f0f0;
+        color: black;
+    }
+}
+
+/* =================================================================
+   UTILITY CLASSES FOR EDITOR
+================================================================= */
+
+/* Text Alignment */
+.mce-content-body .text-left { text-align: left; }
+.mce-content-body .text-center { text-align: center; }
+.mce-content-body .text-right { text-align: right; }
+.mce-content-body .text-justify { text-align: justify; }
+
+/* Text Colors */
+.mce-content-body .text-primary { color: var(--editor-primary); }
+.mce-content-body .text-secondary { color: var(--editor-secondary); }
+.mce-content-body .text-success { color: var(--editor-success); }
+.mce-content-body .text-warning { color: var(--editor-warning); }
+.mce-content-body .text-error { color: var(--editor-error); }
+.mce-content-body .text-muted { color: var(--editor-text-muted); }
+
+/* Background Colors */
+.mce-content-body .bg-primary { background-color: var(--editor-primary); color: var(--editor-background); }
+.mce-content-body .bg-secondary { background-color: var(--editor-secondary); color: var(--editor-background); }
+.mce-content-body .bg-success { background-color: var(--editor-success); color: var(--editor-background); }
+.mce-content-body .bg-warning { background-color: var(--editor-warning); color: var(--editor-background); }
+.mce-content-body .bg-error { background-color: var(--editor-error); color: var(--editor-background); }
+.mce-content-body .bg-light { background-color: var(--editor-background-alt); }
+
+/* Spacing Utilities */
+.mce-content-body .mb-0 { margin-bottom: 0; }
+.mce-content-body .mb-1 { margin-bottom: var(--editor-spacing-xs); }
+.mce-content-body .mb-2 { margin-bottom: var(--editor-spacing-sm); }
+.mce-content-body .mb-3 { margin-bottom: var(--editor-spacing-md); }
+.mce-content-body .mb-4 { margin-bottom: var(--editor-spacing-lg); }
+.mce-content-body .mb-5 { margin-bottom: var(--editor-spacing-xl); }
+
+.mce-content-body .mt-0 { margin-top: 0; }
+.mce-content-body .mt-1 { margin-top: var(--editor-spacing-xs); }
+.mce-content-body .mt-2 { margin-top: var(--editor-spacing-sm); }
+.mce-content-body .mt-3 { margin-top: var(--editor-spacing-md); }
+.mce-content-body .mt-4 { margin-top: var(--editor-spacing-lg); }
+.mce-content-body .mt-5 { margin-top: var(--editor-spacing-xl); }
+
+/* =================================================================
+   END OF CLASSIC EDITOR CSS
+================================================================= */
